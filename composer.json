@@ -1,0 +1,22 @@
+{
+  "name": "dosarkz/laravel-admin",
+  "description": "Laravel framework admin panel",
+  "authors": [
+    {
+      "name": "Yerzhan Ashenov",
+      "email": "ashenov.e@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "classmap": [
+      "src/Facade",
+      "src/Config",
+      "src/Provider"
+    ],
+    "psr-4": {
+      "Dosarkz\\LaravelAdmin\\": "src/"
+    }
+  }
+}
