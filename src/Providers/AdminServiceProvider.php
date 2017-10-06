@@ -18,7 +18,7 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__ . '/config/laravel-admin.php' => config_path('laravel-admin.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__.'/Install/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Install/Migrations');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
