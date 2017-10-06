@@ -3,7 +3,7 @@ namespace Dosarkz\LaravelAdmin\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
-class LaravelAdminFacade extends Facade {
+class AdminFacade extends Facade {
     /**
      * Get the registered name of the component.
      *

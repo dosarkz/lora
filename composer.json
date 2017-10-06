@@ -13,7 +13,8 @@
     "classmap": [
       "src/Facade",
       "src/Config",
-      "src/Provider"
+      "src/Providers",
+      "src/Commands"
     ],
     "psr-4": {
       "Dosarkz\\LaravelAdmin\\": "src/"

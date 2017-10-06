@@ -1,10 +1,11 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Provider;
+namespace Dosarkz\LaravelAdmin\Providers;
 
-use Dosarkz\LaravelAdmin\LaravelAdmin;
+use Dosarkz\LaravelAdmin\Admin;
+use Dosarkz\LaravelAdmin\Commands\InstallCommand;
 use Illuminate\Support\ServiceProvider;
 
-class LaravelUploaderServiceProvider extends ServiceProvider
+class AdminServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -16,6 +17,14 @@ class LaravelUploaderServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/config/laravel-admin.php' => config_path('laravel-admin.php'),
         ]);
+
+        $this->loadMigrationsFrom(__DIR__.'/Install/Migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
 
 
     }
@@ -31,7 +40,7 @@ class LaravelUploaderServiceProvider extends ServiceProvider
 
 
         $this->app->singleton('laravel-admin', function ($app) {
-            return new LaravelAdmin();
+            return new Admin();
         });
     }
 

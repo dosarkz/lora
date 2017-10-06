@@ -1,7 +1,7 @@
 <?php
 namespace Dosarkz\LaravelAdmin;
 
-class LaravelAdmin
+class Admin
 {
 
 }
