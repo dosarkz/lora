@@ -80,6 +80,12 @@ class CreateAdminMigrationsTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('admin_users');
+        Schema::dropIfExists('roles');
+        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('admin_user_roles');
+        Schema::dropIfExists('admin_user_permissions');
+        Schema::dropIfExists('images');
+        Schema::dropIfExists('role_permissions');
     }
 }
