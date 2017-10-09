@@ -19,10 +19,8 @@ class AdminServiceProvider extends ServiceProvider
         ]);
 
         $this->loadMigrationsFrom(__DIR__.'/../Install/Migrations');
-<<<<<<< HEAD
         $this->loadRoutesFrom(__DIR__.'/../Install/Routes/routes.php');
-=======
->>>>>>> 59bf59a507bc5b0db3528363348485dbac73a7d8
+
 
         if ($this->app->runningInConsole()) {
             $this->commands([
