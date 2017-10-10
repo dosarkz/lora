@@ -3,6 +3,7 @@ namespace Dosarkz\LaravelAdmin\Providers;
 
 use Dosarkz\LaravelAdmin\Admin;
 use Dosarkz\LaravelAdmin\Commands\InstallCommand;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -12,7 +13,7 @@ class AdminServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         $this->publishes([
             __DIR__ . '/config/laravel-admin.php' => config_path('laravel-admin.php'),
@@ -28,6 +29,10 @@ class AdminServiceProvider extends ServiceProvider
             ]);
         }
 
+        $router->aliasMiddleware('adminAuth', 'Dosarkz\LaravelAdmin\Middleware\AdminAuth');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'admin');
+        $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor/laravel-admin')], 'laravel-admin-assets');
+
 
     }
     /**
@@ -37,6 +42,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
 //        $this->app->register('Intervention\Image\ImageServiceProvider');
 //        $this->app->bind('Image', 'Intervention\Image\Facades\Image');
 
