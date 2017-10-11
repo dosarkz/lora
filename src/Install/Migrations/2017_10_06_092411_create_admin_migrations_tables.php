@@ -17,6 +17,7 @@ class CreateAdminMigrationsTables extends Migration
             $table->increments('id');
             $table->string('username', 190)->unique();
             $table->string('password', 60);
+            $table->string('email')->nullable();
             $table->string('name');
             $table->integer('role_id');
             $table->integer('user_id')->nullable();

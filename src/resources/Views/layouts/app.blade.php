@@ -39,7 +39,9 @@
 
 
         <div class="logo-lg">
-            <a href="/"><img src="/img/logo.svg" class="logo"></a>
+            <div class="logo">
+                <h3>Laravel Admin</h3>
+            </div>
         </div>
 
 
@@ -49,29 +51,20 @@
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-            @if(!auth()->guest())
+            @if(!auth()->guard('admin')->guest())
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{ Auth::user()->avatar ? "https://api.globalpay.kz/".Auth::user()->avatar : '/adminlte/img/user2-160x160.jpg'}}" class="user-image" alt="User Image">
-                                @if(Auth::user()->userRole->role->alias == 'support')
-                                    <span class="hidden-xs"> Менеджер GP</span>
-                                @elseif(Auth::user()->userRole->role->alias == 'owner')
-                                    <span class="hidden-xs"> {{Auth::user()->phone_number ? '+'.Auth::user()->phone_number : null}}</span>
-                                @endif
+                                <img src="/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs"> Менеджер GP</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="{{ Auth::user()->avatar ? "https://api.globalpay.kz/".Auth::user()->avatar : '/adminlte/img/user2-160x160.jpg'}}" class="img-circle" alt="User Image">
+                                    <img src="/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
-                                        @if(Auth::user()->userRole->role->alias == 'support')
-                                            <span class="hidden-xs"> Менеджер GP</span>
-                                        @elseif(Auth::user()->userRole->role->alias == 'owner')
-                                            <span class="hidden-xs"> {{Auth::user()->phone_number ? '+'.Auth::user()->phone_number : null}}</span>
-                                        @endif
-                                        <small>Зарегистрирован  {{auth()->user()->created_at}}</small>
+                                        <span class="hidden-xs"> Менеджер GP</span>
                                     </p>
                                 </li>
 
@@ -80,13 +73,13 @@
                                         <a href="/profile" class="btn btn-default btn-flat" style="margin-left: 0">Профиль</a>
                                     </div>
                                     <div class="pull-right">
-                                        @if (Auth::guest())
-                                            <a class="btn btn-default btn-flat" href="{{ secure_url_env('/login') }}">Войти</a>
+                                        @if (auth()->guard('admin')->guest())
+                                            <a class="btn btn-default btn-flat" href="{{ route('admin.getLogin') }}">Войти</a>
                                         @else
-                                            <a href="{{ secure_url_env('/logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">Выйти</a>
 
-                                            <form id="logout-form" action="{{ secure_url_env('/logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         @endif

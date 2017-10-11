@@ -4,6 +4,6 @@ class MainController
 {
     public function index()
     {
-        return view('admin.main.index');
+        return view('admin::main.index');
     }
 }

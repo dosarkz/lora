@@ -2,6 +2,8 @@
 
 namespace Dosarkz\LaravelAdmin\Commands;
 
+use Dosarkz\LaravelAdmin\Models\AdminUser;
+use Dosarkz\LaravelAdmin\Models\Role;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -42,15 +44,53 @@ class InstallCommand extends Command
             DB::connection()->getPdo();
 
             $this->info('Installing Laravel Admin...');
-            $this->call('migrate');
 
+            $this->info('1. Copy publish files');
+            $this->publishFiles();
+            $this->info('2. Running migration');
+            $this->call('migrate:refresh');
+            $this->info('3. Running seeder');
+            $this->databaseSeeder();
+            $this->info('3. Create admin user');
+            $this->createAdminUser();
+            $this->info('Installation was successful. Visit your_domain.com/admin to access admin panel');
             return true;
 
         } catch (\Exception $e) {
             print $e;
             die("Could not connect to the database.  Please check your configuration.");
         }
-
-
     }
+
+    /**
+     *  Copy master template to resource/view
+     */
+    public function publishFiles()
+    {
+        $this->callSilent('vendor:publish', [
+            '--tag'   => ['laravel-admin'],
+            '--force' => true
+        ]);
+        $this->info('Publish vendor was transferred successfully');
+    }
+
+    public function createAdminUser()
+    {
+        $data['username']     = $this->ask('Administrator login', 'admin');
+        $data['name'] = $this->ask('Admin name', 'Admin');
+        $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');
+        $data['password'] = bcrypt($this->secret('Administrator password','123456'));
+        $data['role_id']  = Role::where('alias', 'admin')->first()->id;
+        AdminUser::create($data);
+        $this->info('Admin User has been created');
+    }
+
+    public function databaseSeeder()
+    {
+        $this->call('db:seed', [
+            '--class' => 'Dosarkz\\LaravelAdmin\\Install\\Seeds\\RoleSeeder'
+        ]);
+    }
+
+
 }

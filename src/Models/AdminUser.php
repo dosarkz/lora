@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Install\Models;
+namespace Dosarkz\LaravelAdmin\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'username', 'role_id','user_id', 'avatar'
     ];
 
     /**
@@ -26,4 +26,6 @@ class AdminUser extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public $timestamps = true;
 }
