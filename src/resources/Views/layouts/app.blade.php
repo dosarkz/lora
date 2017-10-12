@@ -38,11 +38,10 @@
     <header class="main-header">
 
 
-        <div class="logo-lg">
-            <div class="logo">
-                <h3>Laravel Admin</h3>
-            </div>
-        </div>
+        <a href="/admin" class="logo">
+            <span class="logo-mini"><b>A</b>LV</span>
+            <span class="logo-lg"><b>Admin</b>Laravel</span>
+        </a>
 
 
 
@@ -56,15 +55,15 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs"> Менеджер GP</span>
+                                <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
-                                        <span class="hidden-xs"> Менеджер GP</span>
+                                        <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                                     </p>
                                 </li>
 
@@ -96,6 +95,46 @@
         </nav>
     </header>
 
+    @if(!auth()->guard('admin')->guest())
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>{{auth()->guard('admin')->user()->name}}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Онлайн</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Поиск...">
+                    <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="header">Навигация</li>
+                <li>
+                    <a href="/admin">
+                        <i class="fa fa-dashboard"></i> <span>Главная</span>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    @endif
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -117,14 +156,11 @@
 
 </div>
 <!-- Scripts -->
-<script src="/js/app.js"></script>
-
-<script src="/js/main.js"></script>
+<script src="/vendor/laravel-admin/jquery/jquery-3.2.1.min.js"></script>
+<script src="/vendor/laravel-admin/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="/vendor/laravel-admin/adminlte/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/vendor/laravel-admin/adminlte/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/vendor/laravel-admin/adminlte/js/demo.js"></script>
 

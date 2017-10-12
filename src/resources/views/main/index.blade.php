@@ -1,5 +1,5 @@
 @extends('admin::layouts.app')
-
+@section('title_page')Dashboard @endsection
 @section('content')
-    index.blade
+
 @endsection
