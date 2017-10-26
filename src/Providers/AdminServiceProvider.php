@@ -3,6 +3,7 @@ namespace Dosarkz\LaravelAdmin\Providers;
 
 use Dosarkz\LaravelAdmin\Admin;
 use Dosarkz\LaravelAdmin\Commands\InstallCommand;
+use Dosarkz\LaravelAdmin\Commands\ModuleMakeCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +27,7 @@ class AdminServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,
+                ModuleMakeCommand::class,
             ]);
         }
 

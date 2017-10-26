@@ -18,6 +18,16 @@
     ],
     "psr-4": {
       "Dosarkz\\LaravelAdmin\\": "src/"
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "Dosarkz\\LaravelAdmin\\Providers\\AdminServiceProvider"
+        ],
+        "aliases": {
+          "Admin": "Dosarkz\\LaravelAdmin\\Facade\\AdminFacade"
+        }
+      }
     }
   }
 }

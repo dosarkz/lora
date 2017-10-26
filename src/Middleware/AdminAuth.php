@@ -17,7 +17,6 @@ class AdminAuth
      */
     public function handle($request, Closure $next, $guard = null)
     {
-       // dd(Auth::guard($guard)->check());
         if (!Auth::guard($guard)->check() && $request->getRequestUri() != '/admin/login') {
             return redirect('/admin/login');
         }
