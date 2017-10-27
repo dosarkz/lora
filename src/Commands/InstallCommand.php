@@ -2,8 +2,8 @@
 
 namespace Dosarkz\LaravelAdmin\Commands;
 
-use Dosarkz\LaravelAdmin\Models\AdminUser;
-use Dosarkz\LaravelAdmin\Models\Role;
+use Dosarkz\LaravelAdmin\Modules\AdminUser\Models\AdminUser;
+use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -88,7 +88,7 @@ class InstallCommand extends Command
     public function databaseSeeder()
     {
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\LaravelAdmin\\Install\\Seeds\\RoleSeeder'
+            '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Role\\Database\\Seeders\\RoleSeeder'
         ]);
     }
 

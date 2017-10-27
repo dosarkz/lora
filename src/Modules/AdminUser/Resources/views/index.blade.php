@@ -1,36 +1,25 @@
-@extends('layouts.main')
-
-@section('title')
-    Товары
-@endsection
-
-@section('content-header-h1')
-    Товары
-    <small></small>
-@endsection
-
-@section('breadcrumb')
-    <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-    <li class="active"><a href="/admin/products">Товары</a></li>
-@endsection
+@extends('admin::layouts.app')
 
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border form-group">
-            <h3 class="box-title">Товары</h3>
+            <h3 class="box-title">{{trans('adminUser::crud.title_page_index')}}</h3>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                      <a class="btn btn-primary" href="/admin/products/create">Добавить</a>
+                      <a class="btn btn-primary" href="/admin/products/create">{{trans('admin::base.create')}}</a>
                   </div>
                     <table class="table">
                         <thead class="thead-inverse">
                         <tr>
-                            <th>id</th>
-                            <th>Название</th>
-                            <th>Действия</th>
+                            <th>{{trans('admin::base.id')}}</th>
+                            <th>{{trans('admin::base.name')}}</th>
+                            <th>{{trans('admin::base.email')}}</th>
+                            <th>{{trans('admin::base.roles')}}</th>
+                            <th>{{trans('admin::base.status')}}</th>
+                            <th>{{trans('admin::base.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,7 +27,10 @@
                             @foreach($model as $item)
                                 <tr>
                                     <td>{{$item->id}}</td>
-                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->roles }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td><a class="btn btn-primary" href="/admin/products/{{$item->id}}/edit">Редактировать</a>
                                  {{ Form::open(array('url' => '/admin/products/' . $item->id, 'class' => 'pull-right')) }}
                                         {{ Form::hidden('_method', 'DELETE') }}
@@ -50,8 +42,6 @@
                                 </tr>
 
                             @endforeach
-
-
                         @endif
 
 

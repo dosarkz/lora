@@ -10,11 +10,6 @@ Route::group([
 
     Route::group(['middleware' => 'adminAuth:admin'], function() {
         Route::get('/', 'MainController@index');
-        Route::resource('modules','ModuleController');
-        Route::resource('users', 'UserResourceController');
-
         Route::post('logout','AuthController@getLogout')->name('admin.logout');
     });
-
-
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Product\Providers;
+namespace Dosarkz\LaravelAdmin\Modules\Image\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
@@ -21,10 +21,10 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
+        // $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->registerFactories();
+        // $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -46,10 +46,10 @@ class ImageServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('product.php'),
+            __DIR__.'/../Config/config.php' => config_path('admin-image.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'page'
+            __DIR__.'/../Config/config.php', 'admin-image'
         );
     }
 
@@ -60,44 +60,7 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/product');
-
-        $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/product';
-        }, \Config::get('view.paths')), [$sourcePath]), 'page');
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = resource_path('lang/modules/product');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'product');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'product');
-        }
-    }
-
-    /**
-     * Register an additional directory of factories.
-     * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
-     */
-    public function registerFactories()
-    {
-        if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
-        }
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'adminImage');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Product\Providers;
+namespace Dosarkz\LaravelAdmin\Modules\AdminUser\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
@@ -22,9 +22,10 @@ class AdminUserServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerTranslations();
+        $this->registerRoutes();
         $this->registerConfig();
         $this->registerViews();
-        $this->registerFactories();
+       // $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -38,6 +39,11 @@ class AdminUserServiceProvider extends ServiceProvider
         //
     }
 
+    public function registerRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+    }
+
     /**
      * Register config.
      *
@@ -46,10 +52,10 @@ class AdminUserServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('product.php'),
+            __DIR__.'/../Config/config.php' => config_path('admin-user.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'page'
+            __DIR__.'/../Config/config.php', 'admin-user'
         );
     }
 
@@ -60,17 +66,7 @@ class AdminUserServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/product');
-
-        $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/product';
-        }, \Config::get('view.paths')), [$sourcePath]), 'page');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'adminUser');
     }
 
     /**
@@ -80,13 +76,7 @@ class AdminUserServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/product');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'product');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'product');
-        }
+        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'adminUser');
     }
 
     /**

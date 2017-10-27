@@ -1,20 +1,27 @@
 <?php
 
-namespace Modules\user\Http\Controllers;
+namespace Dosarkz\LaravelAdmin\Modules\AdminUser\Http\Controllers;
 
+use Dosarkz\LaravelAdmin\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
 
-class AdminUserController extends Controller
+class AdminUserController extends ModuleController
 {
+    public function __construct()
+    {
+        $model = config('admin-user.model');
+        $this->setModel(new $model);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('admin_user::index');
+        $model = $this->getModel()->paginate();
+        return view('adminUser::index', compact('model'));
     }
 
     /**
@@ -23,7 +30,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin_user::create');
+        return view('adminUser::create');
     }
 
     /**
@@ -41,7 +48,7 @@ class AdminUserController extends Controller
      */
     public function show()
     {
-        return view('admin_user::show');
+        return view('adminUser::show');
     }
 
     /**
@@ -50,7 +57,7 @@ class AdminUserController extends Controller
      */
     public function edit()
     {
-        return view('admin_user::edit');
+        return view('adminUser::edit');
     }
 
     /**
