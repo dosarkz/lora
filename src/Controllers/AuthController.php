@@ -1,4 +1,5 @@
-<?php namespace Dosarkz\LaravelAdmin\Controllers;
+<?php
+namespace Dosarkz\LaravelAdmin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Dosarkz\LaravelAdmin\Requests\LoginRequest;

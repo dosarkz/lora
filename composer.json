@@ -16,7 +16,9 @@
       "src/Facade",
       "src/Config",
       "src/Providers",
-      "src/Commands"
+      "src/Commands",
+      "src/Contracts",
+      "src/Exceptions"
     ],
     "psr-4": {
       "Dosarkz\\LaravelAdmin\\": "src/"

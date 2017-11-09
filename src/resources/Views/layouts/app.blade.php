@@ -16,10 +16,10 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/vendor/laravel-admin/adminlte/css/AdminLTE.css">
+    <link rel="stylesheet" href="/vendor/admin/adminlte/css/AdminLTE.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins -->
 
-    <link rel="stylesheet" href="/vendor/laravel-admin/adminlte/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
 
     <link href="/css/app.css" rel="stylesheet">
 
@@ -55,13 +55,13 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
                                         <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                                     </p>
@@ -88,6 +88,8 @@
                         </li>
                         <!-- Control Sidebar Toggle Button -->
 
+
+
                     </ul>
                 </div>
 
@@ -96,43 +98,35 @@
     </header>
 
     @if(!auth()->guard('admin')->guest())
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar user panel -->
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="/vendor/laravel-admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>{{auth()->guard('admin')->user()->name}}</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Онлайн</a>
+                    </div>
                 </div>
-                <div class="pull-left info">
-                    <p>{{auth()->guard('admin')->user()->name}}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Онлайн</a>
-                </div>
-            </div>
-            <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Поиск...">
-                    <span class="input-group-btn">
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Поиск...">
+                        <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
-                </div>
-            </form>
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <li class="header">Навигация</li>
-                <li>
-                    <a href="/admin">
-                        <i class="fa fa-dashboard"></i> <span>Главная</span>
-                    </a>
-                </li>
-
-            </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                @include('admin::menu.left_menu')
+            </section>
+            <!-- /.sidebar -->
+        </aside>
     @endif
 
     <div class="content-wrapper">
@@ -156,13 +150,13 @@
 
 </div>
 <!-- Scripts -->
-<script src="/vendor/laravel-admin/jquery/jquery-3.2.1.min.js"></script>
-<script src="/vendor/laravel-admin/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/admin/jquery/jquery-3.2.1.min.js"></script>
+<script src="/vendor/admin/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- AdminLTE App -->
-<script src="/vendor/laravel-admin/adminlte/js/app.min.js"></script>
+<script src="/vendor/admin/adminlte/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/vendor/laravel-admin/adminlte/js/demo.js"></script>
+<script src="/vendor/admin/adminlte/js/demo.js"></script>
 
 @yield('js-append')
 </body>

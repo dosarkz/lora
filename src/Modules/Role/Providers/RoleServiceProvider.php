@@ -46,10 +46,10 @@ class RoleServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('admin-role.php'),
-        ], 'config');
+            __DIR__.'/../Config/moduleRole.php' => config_path('moduleRole.php'),
+        ], 'moduleRole');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'admin-role'
+            __DIR__.'/../Config/moduleRole.php', 'moduleRole'
         );
     }
 
@@ -60,7 +60,7 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'adminRole');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'moduleRole');
     }
 
     /**
