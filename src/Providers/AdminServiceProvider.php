@@ -38,6 +38,7 @@ class AdminServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     public function registerMiddleware($router)

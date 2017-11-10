@@ -61,9 +61,20 @@ class Repository implements RepositoryInterface, Countable
 
         foreach ($this->providers as $module_name => $provider) {
             $this->app->register($provider);
-            $this->installModule($module_name);
+            if($module = Module::where('alias', $module_name)->first())
+            {
+                if(!$module->installed)
+                {
+                    $this->installModule($module_name);
+                }
+            }else{
+                $module = Module::create([
+                    'alias' => $module_name
+                ]);
+            }
 
-            $modules[$module_name] = new Module($this->app, $module_name, '');
+
+            $modules[] = $module;
         }
 
         return $modules;
