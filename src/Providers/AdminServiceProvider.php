@@ -4,6 +4,7 @@ namespace Dosarkz\LaravelAdmin\Providers;
 use Dosarkz\LaravelAdmin\Commands\AdminInstallCommand;
 use Dosarkz\LaravelAdmin\Commands\InstallCommand;
 use Dosarkz\LaravelAdmin\Commands\ModuleInstallCommand;
+use Dosarkz\LaravelAdmin\Models\Module;
 use Dosarkz\LaravelAdmin\Modules;
 use Dosarkz\LaravelAdmin\Repositories\Repository;
 use Illuminate\Routing\Router;
@@ -78,28 +79,24 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->baseModules() as $baseModule) {
+        foreach ($this->listModules() as $module_name => $baseModule) {
             $this->app->register($baseModule);
         }
-
         $this->app->register(HelperServiceProvider::class);
-
-        $this->app->singleton('modules', function ($app) {
-            $modules = array_merge(config('admin.modules.providers'), $this->baseModules());
-            return new Repository($app, $modules);
-        });
     }
 
     /**
      * @return array
      */
-    public function baseModules()
+    public function listModules()
     {
-        return [
+        $modules = [
             'superUser' =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
             'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
             'moduleRole' => Modules\Role\Providers\RoleServiceProvider::class,
         ];
+
+        return array_merge(config('admin.modules.providers'), $modules);
     }
 
     public function registerTranslations()
@@ -107,11 +104,6 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'admin');
     }
 
-
-    public function installModule()
-    {
-
-    }
 }
 
 

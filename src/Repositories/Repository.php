@@ -2,7 +2,7 @@
 namespace Dosarkz\LaravelAdmin\Repositories;
 
 use Countable;
-use Dosarkz\LaravelAdmin\Module;
+use Dosarkz\LaravelAdmin\Models\Module;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
@@ -69,7 +69,8 @@ class Repository implements RepositoryInterface, Countable
                 }
             }else{
                 $module = Module::create([
-                    'alias' => $module_name
+                    'alias' => $module_name,
+                    'name_en' => $module_name
                 ]);
             }
 

@@ -90,6 +90,9 @@ class AdminInstallCommand extends Command
         $this->call('db:seed', [
             '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Role\\Database\\Seeders\\RoleSeeder'
         ]);
+        $this->call('db:seed', [
+            '--class' => 'Dosarkz\\LaravelAdmin\\Database\\Seeders\\ModulesSeeder'
+        ]);
     }
 
 

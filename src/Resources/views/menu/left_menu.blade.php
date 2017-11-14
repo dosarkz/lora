@@ -12,8 +12,7 @@
         </a>
     </li>
 
-
-    @include('admin::navigation.menu',['lists'=> app()->modules->menu()])
+    @include('admin::navigation.menu',['lists'=> \Dosarkz\LaravelAdmin\Models\Module::where('menu_active', true)->get()])
 
 
 </ul>

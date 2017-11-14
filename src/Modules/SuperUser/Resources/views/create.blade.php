@@ -1,15 +1,15 @@
-@extends('layouts.main')
+@extends('admin::layouts.app')
 @section('title')
-    Добавить продукт
+    Добавить superUser
 @endsection
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Добавить товар</h3>
+            <h3 class="box-title">Добавить superUser</h3>
         </div>
-        @include('products.form',compact('model','discount'))
+        @include('superUser::form',compact('model'))
     </div>
-    </div>
+
 @endsection
 
 @section('css')

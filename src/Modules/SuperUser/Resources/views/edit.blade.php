@@ -1,13 +1,10 @@
-@extends('layouts.main')
-@section('title')
-    Редактировать товар
-@endsection
+@extends('admin::layouts.app')
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Редактировать товар</h3>
+            <h3 class="box-title">Редактировать superUser</h3>
         </div>
-        @include('products.form', compact('model','discount'))
+        @include('superUser::form',compact('model'))
     </div>
 @endsection
 

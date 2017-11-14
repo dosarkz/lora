@@ -10,6 +10,11 @@ Route::group([
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::get('/', 'MainController@index');
+
+        Route::group(['prefix' => 'modules'], function(){
+            Route::get('{module_alias}/settings', 'ModulesController@settings');
+        });
+
         Route::resource('modules', 'ModulesController');
         Route::post('logout','AuthController@getLogout')->name('admin.logout');
     });

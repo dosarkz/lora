@@ -28,4 +28,12 @@ class SuperUser extends Authenticatable
     ];
 
     public $timestamps = true;
+
+    public function isAdmin()
+    {
+//        foreach ($this->userRoles as $userRole) {
+//
+//        }
+
+    }
 }

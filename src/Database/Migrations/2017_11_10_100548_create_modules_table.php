@@ -18,7 +18,9 @@ class CreateModulesTable extends Migration
             $table->string('alias')->unique();
             $table->string('name_ru')->nullable();
             $table->string('name_en')->nullable();
-            $table->text('description')->nullable();
+            $table->boolean('menu_active')->default(false);
+            $table->text('description_ru')->nullable();
+            $table->text('description_en')->nullable();
             $table->float('version')->nullable();
             $table->string('repository_url')->nullable();
             $table->boolean('installed')->default(false);

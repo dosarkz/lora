@@ -6,6 +6,6 @@ Route::group([
     'namespace' => 'Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Controllers'], function () {
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
-        Route::resource('admin-users','SuperUserController');
+        Route::resource('superUser','SuperUserController');
     });
 });

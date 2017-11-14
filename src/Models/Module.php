@@ -1,13 +1,10 @@
 <?php
 namespace Dosarkz\LaravelAdmin\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
-
-class Module extends Model
+class Module extends I18nModel
 {
-    public $fillable =  ['alias','name_ru', 'name_en', 'description', 'version', 'repository_url', 'installed',
-        'tested','icon_id', 'status_id'
+    public $fillable =  ['alias','name_ru', 'name_en', 'description_ru', 'description_en','version', 'repository_url',
+        'installed', 'tested','icon_id', 'status_id', 'menu_active'
     ];
 
 }

@@ -7,5 +7,7 @@ return [
     'email'     => 'Email',
     'roles'     => 'Roles',
     'status'    => 'Статус',
-    'actions'   => 'Actions'
+    'actions'   => 'Actions',
+    'back'      => 'Назад',
+    'settings'  =>  'Настройки'
 ];
