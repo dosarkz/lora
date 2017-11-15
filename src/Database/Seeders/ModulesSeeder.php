@@ -48,5 +48,16 @@ class ModulesSeeder extends Seeder
             'status_id' => 1,
             'alias' => 'moduleImage',
         ]);
+
+        DB::table('modules')->insert([
+            'name_ru' => 'Модуль меню',
+            'name_en' => 'Menu module',
+            'menu_active' => true,
+            'description_ru' => 'Модуль для управления меню',
+            'description_en' => 'The module to manage Menu',
+            'version' =>  0.01,
+            'status_id' => 1,
+            'alias' => 'menu',
+        ]);
     }
 }

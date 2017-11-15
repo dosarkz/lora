@@ -30,8 +30,6 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerPublishes()
     {
-        $this->mergeConfigFrom( __DIR__ . '/../Config/admin.php', 'admin');
-
         $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
         $this->publishes([__DIR__ . '/../Resources/assets' => public_path('vendor/admin')], 'admin');
     }
@@ -91,12 +89,20 @@ class AdminServiceProvider extends ServiceProvider
     public function listModules()
     {
         $modules = [
+            'menu'    =>  Modules\Menu\Providers\MenuServiceProvider::class,
             'superUser' =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
             'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
             'moduleRole' => Modules\Role\Providers\RoleServiceProvider::class,
         ];
 
-        return array_merge(config('admin.modules.providers'), $modules);
+        if(is_null(config('admin.modules.providers')))
+        {
+            $config = [];
+        }else{
+            $config = config('admin.modules.providers');
+        }
+
+        return array_merge($config, $modules);
     }
 
     public function registerTranslations()
