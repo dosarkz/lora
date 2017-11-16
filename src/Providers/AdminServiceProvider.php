@@ -56,7 +56,7 @@ class AdminServiceProvider extends ServiceProvider
     public function registerPublishes()
     {
         $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
-        $this->publishes([__DIR__ . '/../Resources/assets' => public_path('vendor/admin')], 'admin');
+        $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
     }
 
     public function registerRoutes()
@@ -72,7 +72,7 @@ class AdminServiceProvider extends ServiceProvider
 
     public function loadViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'admin');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'admin');
     }
 
     public function registerCommands()
@@ -134,7 +134,7 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'admin');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'admin');
     }
 
 }
