@@ -25,6 +25,7 @@ class ModulesSeeder extends Seeder
             'version' =>  0.01,
             'status_id' => 1,
             'alias' => 'superUser',
+            'installed' => true,
         ]);
 
         DB::table('modules')->insert([
@@ -36,6 +37,7 @@ class ModulesSeeder extends Seeder
             'version' =>  0.01,
             'status_id' => 1,
             'alias' => 'moduleRole',
+            'installed' => true,
         ]);
 
         DB::table('modules')->insert([
@@ -47,6 +49,7 @@ class ModulesSeeder extends Seeder
             'version' =>  0.01,
             'status_id' => 1,
             'alias' => 'moduleImage',
+            'installed' => true,
         ]);
 
         DB::table('modules')->insert([
@@ -58,6 +61,7 @@ class ModulesSeeder extends Seeder
             'version' =>  0.01,
             'status_id' => 1,
             'alias' => 'menu',
+            'installed' => true,
         ]);
     }
 }

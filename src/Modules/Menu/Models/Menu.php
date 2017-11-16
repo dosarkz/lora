@@ -14,7 +14,7 @@ class Menu extends I18nModel
      * @var array
      */
     protected $fillable = [
-        'name', 'type_id', 'module_id', 'status_id', 'user_id'
+        'name', 'type_id', 'module_id', 'status_id', 'user_id', 'position'
     ];
 
     public $timestamps = true;
@@ -45,6 +45,20 @@ class Menu extends I18nModel
     public function menuParentItems()
     {
         return $this->hasMany(MenuItem::class, 'menu_id')->whereNull('parent_id');
+    }
+
+    public function scopeVisible($query)
+    {
+        return $query->whereHas('menuRoles', function($dubQuery){
+            $dubQuery->whereHas('superUserRoles',function($userQuery){
+                $userQuery->where('super_user_id', auth()->guard('admin')->user()->id);
+            });
+        });
+    }
+
+    public function menuRoles()
+    {
+        return $this->hasMany(MenuRole::class, 'menu_id');
     }
 
 }

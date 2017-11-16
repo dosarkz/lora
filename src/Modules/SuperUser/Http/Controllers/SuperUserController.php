@@ -3,8 +3,10 @@
 namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Controllers;
 
 use Dosarkz\LaravelAdmin\Controllers\ModuleController;
+use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
 use Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Requests\StoreSuperUserRequest;
 use Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Requests\UpdateSuperUserRequest;
+use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Contracts\Support\MessageProvider;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,7 +50,13 @@ class SuperUserController extends ModuleController
             'password' => bcrypt($request->input('password'))
         ]);
 
-        $this->getModel()->create($request->all());
+        $user  =  $this->getModel()->create($request->all());
+
+        SuperUserRole::firstOrCreate([
+            'super_user_id' => $user->id,
+            'role_id' => $request->input('role_id'),
+        ]);
+
         return redirect()->back()->with('success', 'success');
     }
 
@@ -83,6 +91,11 @@ class SuperUserController extends ModuleController
         $model = $this->getModel()->findOrFail($id);
         $request->merge([
             'password' => bcrypt($request->input('password'))
+        ]);
+
+        SuperUserRole::firstOrCreate([
+            'super_user_id' => $model->id,
+            'role_id' => $request->input('role_id'),
         ]);
 
         $model->update($request->all());

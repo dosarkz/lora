@@ -4,6 +4,7 @@ namespace Dosarkz\LaravelAdmin\Commands;
 
 use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser;
 use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
+use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -80,8 +81,15 @@ class AdminInstallCommand extends Command
         $data['name'] = $this->ask('Admin name', 'Admin');
         $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');
         $data['password'] = bcrypt($this->secret('Administrator password','123456'));
-        $data['role_id']  = Role::where('alias', 'admin')->first()->id;
-        SuperUser::create($data);
+        $role_admin = Role::where('alias', 'admin')->first();
+        $data['role_id']  = $role_admin->id;
+        $user = SuperUser::create($data);
+
+        SuperUserRole::create([
+            'super_user_id' => $user->id,
+            'role_id' => $role_admin->id,
+        ]);
+
         $this->info('Admin User has been created');
     }
 

@@ -1,13 +1,12 @@
-
     @foreach($lists as $list)
-@if($list->menu)
-        @foreach($list->menu->menuParentItems as $item)
+        @foreach($list->menuParentItems as $item)
             <li class="treeview {{active_link_sub($item->url)}}">
                 <a href="{{$item->url}}">
                     <i class="fa {{$item->icon}}"></i><span>{{$item->title}}</span>
-                    @if($item->subs)  <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>    @endif
+
+                    @if($item->subs->count())  <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>    @endif
                 </a>
-                @if($item->subs)
+                @if($item->subs->count())
                     <ul class="treeview-menu">
 
                         @foreach($item->subs as $sub_menu)
@@ -33,6 +32,5 @@
             </li>
             @endforeach
 
-        @endif
 
     @endforeach

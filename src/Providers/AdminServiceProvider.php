@@ -2,13 +2,13 @@
 namespace Dosarkz\LaravelAdmin\Providers;
 
 use Dosarkz\LaravelAdmin\Commands\AdminInstallCommand;
-use Dosarkz\LaravelAdmin\Commands\InstallCommand;
 use Dosarkz\LaravelAdmin\Commands\ModuleInstallCommand;
 use Dosarkz\LaravelAdmin\Models\Module;
 use Dosarkz\LaravelAdmin\Modules;
-use Dosarkz\LaravelAdmin\Repositories\Repository;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -21,10 +21,35 @@ class AdminServiceProvider extends ServiceProvider
         $this->registerPublishes();
         $this->registerRoutes();
         $this->registerMiddleware($router);
-        $this->registerCommands();
+
         $this->loadViews();
         $this->registerGuard();
         $this->registerTranslations();
+
+        foreach ($this->listModules() as $module_name => $listModule) {
+            if(Schema::hasTable('modules'))
+            {
+                $module = Module::where('alias', $module_name)->first();
+
+                if(!$module)
+                {
+                    Artisan::call('module:install', ['module' => $module_name]);
+                    Module::create([
+                        'name_ru' =>  $module_name,
+                        'name_en' => $module_name,
+                        'menu_active' => true,
+                        'description_ru' => $module_name,
+                        'description_en' => $module_name,
+                        'version' =>  0.01,
+                        'status_id' => 1,
+                        'alias' => $module_name,
+                        'installed' => true,
+                    ]);
+                }
+            }
+
+
+        }
     }
 
 
@@ -77,6 +102,8 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerCommands();
+
         foreach ($this->listModules() as $module_name => $baseModule) {
             $this->app->register($baseModule);
         }

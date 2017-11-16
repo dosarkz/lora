@@ -1,10 +1,10 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Role\Models;
+namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class SuperUserRole extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,9 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'alias', 'parent_role_id', 'status_id',
+        'super_user_id', 'role_id',
     ];
+
+    public $timestamps = true;
 
 }

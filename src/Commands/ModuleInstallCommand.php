@@ -2,6 +2,7 @@
 
 namespace Dosarkz\LaravelAdmin\Commands;
 
+use Dosarkz\LaravelAdmin\Models\Module;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -42,6 +43,7 @@ class ModuleInstallCommand extends Command
             DB::connection()->getPdo();
 
 
+
             $this->info("Installing {$this->argument('module')} module...");
 
             $this->info('1. Copy publish files');
@@ -72,12 +74,6 @@ class ModuleInstallCommand extends Command
     }
 
 
-    public function databaseSeeder()
-    {
-        $this->call('db:seed', [
-            '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Role\\Database\\Seeders\\RoleSeeder'
-        ]);
-    }
 
 
 }

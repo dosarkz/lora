@@ -11,6 +11,9 @@ Route::group([
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::get('/', 'MainController@index');
 
+        Route::get('/reset-password', 'MainController@getResetPassword');
+        Route::post('/reset-password', 'MainController@postResetPassword');
+
         Route::group(['prefix' => 'modules'], function(){
             Route::get('{module_alias}/settings', 'ModulesController@settings');
         });

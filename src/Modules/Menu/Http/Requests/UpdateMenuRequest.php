@@ -26,7 +26,6 @@ class UpdateMenuRequest extends FormRequest
         return [
             'name' => 'required',
             'type_id' => 'required',
-            'module_id' => 'required',
             'status_id' => 'required'
         ];
     }

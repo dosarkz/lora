@@ -5,6 +5,8 @@ namespace Dosarkz\LaravelAdmin\Modules\Menu\Http\Controllers;
 use Dosarkz\LaravelAdmin\Controllers\ModuleController;
 use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\StoreMenuRequest;
 use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
+use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuRole;
+use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -36,7 +38,8 @@ class MenuController extends ModuleController
     {
         $model = $this->getModel();
         $module = $this->getModule();
-        return view($this->getModule()->alias.'::create', compact('model', 'module'));
+        $roles = Role::all();
+        return view($this->getModule()->alias.'::create', compact('model', 'module', 'roles'));
     }
 
     /**
@@ -50,7 +53,19 @@ class MenuController extends ModuleController
             'user_id' => auth()->guard('admin')->user()->id
         ]);
 
-        $this->getModel()->create($request->all());
+        $model  = $this->getModel()->create($request->all());
+
+        if($request->has('menuRole'))
+        {
+            MenuRole::where('menu_id',$model->id)->delete();
+
+            foreach ($request->input('menuRole') as $role_id => $item) {
+                MenuRole::firstOrCreate([
+                    'menu_id' => $model->id,
+                    'role_id' => $role_id
+                ]);
+            }
+        }
         return redirect()->back()->with('success', 'success');
     }
 
@@ -72,7 +87,8 @@ class MenuController extends ModuleController
     {
         $model = $this->getModel()->findOrFail($id);
         $module = $this->getModule();
-        return view($this->getModule()->alias.'::edit', compact('model', 'module'));
+        $roles = Role::all();
+        return view($this->getModule()->alias.'::edit', compact('model', 'module', 'roles'));
     }
 
     /**
@@ -83,6 +99,18 @@ class MenuController extends ModuleController
     public function update(UpdateMenuRequest $request, $id)
     {
         $model = $this->getModel()->findOrFail($id);
+
+        if($request->has('menuRole'))
+        {
+            MenuRole::where('menu_id',$model->id)->delete();
+
+            foreach ($request->input('menuRole') as $role_id => $item) {
+                MenuRole::firstOrCreate([
+                    'menu_id' => $model->id,
+                    'role_id' => $role_id
+                ]);
+            }
+        }
 
         $model->update($request->all());
 

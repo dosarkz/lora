@@ -69,7 +69,7 @@
 
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/profile" class="btn btn-default btn-flat" style="margin-left: 0">Профиль</a>
+                                        <a href="/admin/reset-password" class="btn btn-default btn-flat">Смена пароля</a>
                                     </div>
                                     <div class="pull-right">
                                         @if (auth()->guard('admin')->guest())
@@ -130,6 +130,8 @@
     @endif
 
     <div class="content-wrapper">
+
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -141,6 +143,14 @@
 
         <!-- Main content -->
         <section class="content">
+            @if(Session::has('success'))
+                <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em> {!! session('success') !!}</em></div>
+            @endif
+
+            @if(Session::has('error'))
+                <div class="alert alert-warning"><span class="glyphicon glyphicon-error"></span><em> {!! session('error') !!}</em></div>
+            @endif
+
             @yield('content')
 
         </section>

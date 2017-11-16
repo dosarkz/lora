@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'create'    =>  'Create',
+    'create'    =>  'Создать',
     'id'        => 'Id',
-    'name'      => 'Name',
-    'email'     => 'Email',
-    'roles'     => 'Roles',
+    'name'      => 'Название',
+    'email'     => 'Почта',
+    'roles'     => 'Роли',
     'status'    => 'Статус',
-    'actions'   => 'Actions',
+    'actions'   => 'Действия',
     'back'      => 'Назад',
     'settings'  =>  'Настройки'
 ];

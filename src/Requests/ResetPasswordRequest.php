@@ -1,10 +1,11 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests;
+namespace Dosarkz\LaravelAdmin\Requests;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMenuRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +25,8 @@ class StoreMenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'type_id' => 'required',
-            'status_id' => 'required'
+            'old_password' => 'required',
+            'password' => 'required|confirmed'
         ];
     }
 }
