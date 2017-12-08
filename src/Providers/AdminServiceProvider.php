@@ -18,6 +18,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        Schema::defaultStringLength(191);
         $this->registerPublishes();
         $this->registerRoutes();
         $this->registerMiddleware($router);
