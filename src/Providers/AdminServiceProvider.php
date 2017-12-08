@@ -26,30 +26,30 @@ class AdminServiceProvider extends ServiceProvider
         $this->registerGuard();
         $this->registerTranslations();
 
-        foreach ($this->listModules() as $module_name => $listModule) {
-            if(Schema::hasTable('modules'))
-            {
-                $module = Module::where('alias', $module_name)->first();
-
-                if(!$module)
-                {
-                    Artisan::call('module:install', ['module' => $module_name]);
-                    Module::create([
-                        'name_ru' =>  $module_name,
-                        'name_en' => $module_name,
-                        'menu_active' => true,
-                        'description_ru' => $module_name,
-                        'description_en' => $module_name,
-                        'version' =>  0.01,
-                        'status_id' => 1,
-                        'alias' => $module_name,
-                        'installed' => true,
-                    ]);
-                }
-            }
-
-
-        }
+//        foreach ($this->listModules() as $module_name => $listModule) {
+//            if(Schema::hasTable('modules'))
+//            {
+//                $module = Module::where('alias', $module_name)->first();
+//
+//                if(!$module)
+//                {
+//                    Artisan::call('module:install', ['module' => $module_name]);
+//                    Module::create([
+//                        'name_ru' =>  $module_name,
+//                        'name_en' => $module_name,
+//                        'menu_active' => true,
+//                        'description_ru' => $module_name,
+//                        'description_en' => $module_name,
+//                        'version' =>  0.01,
+//                        'status_id' => 1,
+//                        'alias' => $module_name,
+//                        'installed' => true,
+//                    ]);
+//                }
+//            }
+//
+//
+//        }
     }
 
 

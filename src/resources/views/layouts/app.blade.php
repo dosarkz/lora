@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
 
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
