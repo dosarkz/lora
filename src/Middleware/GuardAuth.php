@@ -4,6 +4,7 @@ namespace Dosarkz\LaravelAdmin\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GuardAuth
 {
@@ -17,10 +18,17 @@ class GuardAuth
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!Auth::guard($guard)->check() && $request->getRequestUri() != '/admin/login') {
-            return redirect('/admin/login');
-        }
+        try
+        {
+            DB::connection()->getPdo();
 
+            if (!Auth::guard($guard)->check() && $request->getRequestUri() != '/admin/login') {
+                return redirect('/admin/login');
+            }
+
+        } catch (\Exception $e) {
+            return redirect('/');
+        }
         return $next($request);
     }
 }

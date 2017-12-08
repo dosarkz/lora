@@ -4,6 +4,7 @@ namespace Dosarkz\LaravelAdmin\Controllers;
 use App\Http\Controllers\Controller;
 use Dosarkz\LaravelAdmin\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser;
 
 class AuthController extends Controller
 {
@@ -17,6 +18,8 @@ class AuthController extends Controller
         $credentials = $request->only(['username', 'password']);
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            $user = SuperUser::where('username',$request->input('username'))->first();
+            Auth::guard('admin')->login($user);
             return redirect()->intended('admin');
         }
 
