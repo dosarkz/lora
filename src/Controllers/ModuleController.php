@@ -37,7 +37,7 @@ class ModuleController extends Controller
 
         if(!$module)
         {
-            return new ModuleNotFoundException($module_alias);
+            return app()->abort(400, 'Module with slug name [' . $module_alias . '] not found');
         }
 
         $this->module = $module;
