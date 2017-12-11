@@ -50,6 +50,23 @@ class ModuleInstallCommand extends Command
             $this->publishFiles($this->argument('module'));
             $this->info('2. Running migration');
             $this->call('migrate');
+
+            $module = Module::where('alias', $this->argument('module'))->first();
+
+            if(!$module)
+            {
+                Module::create([
+                    'name_ru' =>  $this->argument('module'),
+                    'name_en' => $this->argument('module'),
+                    'menu_active' => true,
+                    'description_ru' => $this->argument('module'),
+                    'description_en' => $this->argument('module'),
+                    'version' =>  0.01,
+                    'status_id' => 1,
+                    'alias' => $this->argument('module'),
+                    'installed' => true,
+                ]);
+            }
 //            $this->info('3. Running seeder');
 //            $this->databaseSeeder();
             $this->info('Installation was successful. Visit your_domain.com/admin to access admin panel');
