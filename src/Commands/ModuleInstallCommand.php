@@ -42,7 +42,10 @@ class ModuleInstallCommand extends Command
         try {
             DB::connection()->getPdo();
 
-
+            if(!is_dir(app_path('Modules/'.$this->argument('module'))))
+            {
+                return   $this->error('Module not found');
+            }
 
             $this->info("Installing {$this->argument('module')} module...");
 
@@ -51,7 +54,7 @@ class ModuleInstallCommand extends Command
             $this->info('2. Running migration');
             $this->call('migrate');
 
-            $module = Module::where('alias', $this->argument('module'))->first();
+            $module = Module::where('alias', strtolower($this->argument('module')))->first();
 
             if(!$module)
             {
@@ -63,7 +66,7 @@ class ModuleInstallCommand extends Command
                     'description_en' => $this->argument('module'),
                     'version' =>  0.01,
                     'status_id' => 1,
-                    'alias' => $this->argument('module'),
+                    'alias' => strtolower($this->argument('module')),
                     'installed' => true,
                 ]);
             }

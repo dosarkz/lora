@@ -31,7 +31,10 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerPublishes()
     {
-        $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
+        if(!config('admin'))
+        {
+            $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
+        }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
     }
 
