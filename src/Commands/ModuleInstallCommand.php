@@ -4,6 +4,7 @@ namespace Dosarkz\LaravelAdmin\Commands;
 
 use Dosarkz\LaravelAdmin\Models\Module;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class ModuleInstallCommand extends Command
@@ -70,9 +71,9 @@ class ModuleInstallCommand extends Command
                     'installed' => true,
                 ]);
             }
-//            $this->info('3. Running seeder');
-//            $this->databaseSeeder();
-            $this->info('Installation was successful. Visit your_domain.com/admin to access admin panel');
+            $this->info('3. Running seeder');
+            $this->databaseSeeder();
+            $this->info('Installation was successful');
             return true;
 
         } catch (\Exception $e) {
@@ -91,6 +92,16 @@ class ModuleInstallCommand extends Command
             '--force' => true
         ]);
         $this->info('Publish vendor was transferred successfully');
+    }
+
+    public function databaseSeeder()
+    {
+        if(file_exists(app_path('Modules/'.$this->argument('module').'/Database/Seeders/ModuleSeeder.php')))
+        {
+            Artisan::call('db:seed', [
+                '--class' => 'App\\Modules\\'.$this->argument('module').'\\Database\\Seeders\\ModuleSeeder'
+            ]);
+        }
     }
 
 
