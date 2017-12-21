@@ -20,8 +20,9 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins -->
 
     <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
-
     <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
+
+    @yield('css')
 
     <!-- Scripts -->
     <script>
