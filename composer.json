@@ -10,7 +10,7 @@
   "minimum-stability": "dev",
   "require": {
     "laravelcollective/html": "5.*",
-    "dosarkz/laravel-uploader": "dev-master"
+    "dosarkz/laravel-uploader": "0.2.3"
   },
   "autoload": {
     "classmap": [
