@@ -52,7 +52,9 @@ class AdminInstallCommand extends Command
             $this->call('migrate:refresh');
             $this->info('3. Running seeder');
             $this->databaseSeeder();
-            $this->info('3. Create super user');
+            $this->info('4. Installing modules...');
+            $this->installModules();
+            $this->info('5. Create super user');
             $this->createSuperUser();
             $this->info('Installation was successful. Visit your_domain.com/admin to access admin panel');
             return true;
@@ -105,6 +107,20 @@ class AdminInstallCommand extends Command
             '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
         ]);
 
+    }
+
+    public function installModules()
+    {
+        if(is_null(config('admin.modules.providers')))
+        {
+            $modules = [];
+        }else {
+            $modules = config('admin.modules.providers');
+        }
+
+        foreach ($modules as $module => $path) {
+            $this->call('module:install', ['module' => $module]);
+        }
     }
 
 
