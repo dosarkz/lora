@@ -43,8 +43,7 @@ class ModuleInstallCommand extends Command
         try {
             DB::connection()->getPdo();
 
-            if(!is_dir(app_path('Modules/'.$this->argument('module'))) ||
-                !is_dir(app_path('Modules/'.ucfirst($this->argument('module')))))
+            if(!is_dir(app_path('Modules/'.ucfirst($this->argument('module')))))
             {
                 return   $this->error('Module not found');
             }
