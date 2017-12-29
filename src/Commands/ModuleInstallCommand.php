@@ -96,10 +96,10 @@ class ModuleInstallCommand extends Command
 
     public function databaseSeeder()
     {
-        if(file_exists(app_path('Modules/'.$this->argument('module').'/Database/Seeders/ModuleSeeder.php')))
+        if(file_exists(app_path('Modules/'.ucfirst($this->argument('module')).'/Database/Seeders/ModuleSeeder.php')))
         {
             Artisan::call('db:seed', [
-                '--class' => 'App\\Modules\\'.$this->argument('module').'\\Database\\Seeders\\ModuleSeeder'
+                '--class' => 'App\\Modules\\'.ucfirst($this->argument('module')).'\\Database\\Seeders\\ModuleSeeder'
             ]);
         }
     }
