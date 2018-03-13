@@ -73,6 +73,7 @@ class ModuleMakeCommand extends Command
     private function generateModule($moduleName)
     {
         $generator = new ModuleGenerator($moduleName);
+        $generator->generate();
 
     }
 
