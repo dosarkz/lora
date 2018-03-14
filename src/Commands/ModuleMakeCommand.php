@@ -5,6 +5,7 @@ namespace Dosarkz\LaravelAdmin\Commands;
 use Dosarkz\LaravelAdmin\Generators\ModuleGenerator;
 use Dosarkz\LaravelAdmin\Models\Module;
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
@@ -48,7 +49,7 @@ class ModuleMakeCommand extends Command
 
             if(is_dir(app_path('Modules/'.$module_name)))
             {
-                return   $this->error('This module already created');
+              //  return   $this->error('This module already created');
             }
 
             $this->info("Creating {$module_name} module...");
@@ -72,7 +73,7 @@ class ModuleMakeCommand extends Command
 
     private function generateModule($moduleName)
     {
-        $generator = new ModuleGenerator($moduleName);
+        $generator = new ModuleGenerator($moduleName, new Filesystem(), $this);
         $generator->generate();
 
     }
