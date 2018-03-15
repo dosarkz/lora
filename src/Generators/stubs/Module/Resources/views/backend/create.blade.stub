@@ -1,0 +1,14 @@
+@extends('admin::layouts.app')
+@section('content')
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">This is default backend page create $module_name$ module</h3>
+            <p>You cat edit this page in {{request()->route()->getActionName()}}</p>
+        </div>
+
+        <div class="box-body">
+        </div>
+    </div>
+
+@endsection
+

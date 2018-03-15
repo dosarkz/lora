@@ -99,8 +99,22 @@ class ModuleGenerator
                             new Folder('en')
                         ]),
                         new Folder('views', '', [
-                            new Folder('frontend', ''),
-                            new Folder('backend', '')
+                            new Folder('frontend', 'Resources/views/frontend', [], [
+                                new File('index.blade.stub', 'index.blade.php', [
+                                    'module_name'       => ucfirst($this->name),
+                                ]),
+                            ]),
+                            new Folder('backend', 'Resources/views/backend', [], [
+                                new File('create.blade.stub', 'create.blade.php', [
+                                    'module_name'       => ucfirst($this->name),
+                                ]),
+                                new File('edit.blade.stub', 'edit.blade.php',[]),
+                                new File('form.blade.stub', 'form.blade.php',[]),
+                                new File('index.blade.stub', 'index.blade.php', [
+                                    'module_name'       => ucfirst($this->name),
+                                ]),
+
+                            ])
                         ])
                     ]),
                     new Folder('routes', 'Routes',[],[

@@ -11,11 +11,11 @@ use Illuminate\Http\Response;
 
 class BackendController extends ModuleController
 {
-    public function __construct()
-    {
-        $this->setModule('$lc_module_name$');
-        $this->setModel(new $module_name$());
-    }
+   // public function __construct()
+   // {
+  //      $this->setModule('$lc_module_name$');
+  //      $this->setModel(new $module_name$());
+ //   }
 
     /**
      * Display a listing of the resource.
@@ -23,9 +23,10 @@ class BackendController extends ModuleController
      */
     public function index()
     {
-        $model = $this->getModel()->paginate();
-        $module = $this->getModule();
-        return view($this->getModule()->alias . '::backend.index', compact('model', 'module'));
+     //   $model = $this->getModel()->paginate();
+      //  $module = $this->getModule();
+      //  return view($this->getModule()->alias . '::backend.index', compact('model', 'module'));
+      return view('$lc_module_name$::backend.index');
     }
 
     /**
@@ -34,9 +35,10 @@ class BackendController extends ModuleController
      */
     public function create()
     {
-        $model = $this->getModel();
-        $module = $this->getModule();
-        return view($this->getModule()->alias . '::backend.create', compact('model', 'module'));
+      //  $model = $this->getModel();
+      //  $module = $this->getModule();
+      //  return view($this->getModule()->alias . '::backend.create', compact('model', 'module'));
+      return view('$lc_module_name$::backend.create');
     }
 
     /**
@@ -46,9 +48,9 @@ class BackendController extends ModuleController
      */
     public function store(Store$module_name$Request $request)
     {
-        $model = $this->getModel()->create($request->all());
+     //   $model = $this->getModel()->create($request->all());
 
-        return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
+     //   return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
     }
 
     /**
@@ -57,7 +59,7 @@ class BackendController extends ModuleController
      */
     public function show()
     {
-        return view($this->getModule()->alias . '::show');
+      //  return view($this->getModule()->alias . '::show');
     }
 
     /**
@@ -67,9 +69,9 @@ class BackendController extends ModuleController
      */
     public function edit($id)
     {
-        $model = $this->getModel()->findOrFail($id);
-        $module = $this->getModule();
-        return view($this->getModule()->alias . '::backend.edit', compact('model', 'module'));
+     //   $model = $this->getModel()->findOrFail($id);
+     //   $module = $this->getModule();
+    //    return view($this->getModule()->alias . '::backend.edit', compact('model', 'module'));
     }
 
     /**
@@ -79,11 +81,11 @@ class BackendController extends ModuleController
      */
     public function update(Update$module_name$Request $request, $id)
     {
-        $model = $this->getModel()->findOrFail($id);
+      //  $model = $this->getModel()->findOrFail($id);
 
-        $model->update($request->all());
+      //  $model->update($request->all());
 
-        return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
+      //  return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
     }
 
     /**
@@ -92,8 +94,8 @@ class BackendController extends ModuleController
      */
     public function destroy($id)
     {
-        $model = $this->getModel()->findOrFail($id);
-        $model->delete();
-        return redirect()->back()->with('success', 'deleted');
+     //   $model = $this->getModel()->findOrFail($id);
+     //   $model->delete();
+     //   return redirect()->back()->with('success', 'deleted');
     }
 }

@@ -3,7 +3,6 @@
 namespace Dosarkz\LaravelAdmin\Commands;
 
 use Dosarkz\LaravelAdmin\Generators\ModuleGenerator;
-use Dosarkz\LaravelAdmin\Models\Module;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
@@ -60,8 +59,9 @@ class ModuleMakeCommand extends Command
                 'module'  => $module_name
             ]);
 
-
             $this->info('Installation was successful');
+            $this->info('Please include ServiceProvider for initial module to the config file, config/admin.php');
+            $this->info(" 'category' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class");
             return true;
 
         } catch (\Exception $e) {
