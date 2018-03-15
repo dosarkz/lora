@@ -16,7 +16,7 @@ class ModuleSeeder extends Seeder
      */
     public function run()
     {
-        if($menu = Menu::where('name', $module_name$)->first())
+        if($menu = Menu::where('name', '$module_name$')->first())
         {
             $menu->menuItems()->delete();
             $menu->menuRoles()->delete();
@@ -24,7 +24,7 @@ class ModuleSeeder extends Seeder
         }
 
         $menu =   Menu::create([
-            'name' => $module_name$,
+            'name' => '$module_name$',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
             'module_id' => null,
             'status_id' => 1,
@@ -32,8 +32,8 @@ class ModuleSeeder extends Seeder
         ]);
 
         $MenuItem =  MenuItem::create([
-            'title_ru' => $module_name$,
-            'url' => '/admin/$module_name$',
+            'title_ru' => '$module_name$',
+            'url' => '/admin/$module_url$',
             'icon' => 'fa-briefcase',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -42,7 +42,7 @@ class ModuleSeeder extends Seeder
 
         MenuItem::create([
             'title_ru' => 'Добавить',
-            'url' => '/admin/$module_name$/create',
+            'url' => '/admin/$module_url$/create',
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,
@@ -52,7 +52,7 @@ class ModuleSeeder extends Seeder
 
         MenuItem::create([
             'title_ru' => 'Список',
-            'url' => '/admin/$module_name$',
+            'url' => '/admin/$module_url$',
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,

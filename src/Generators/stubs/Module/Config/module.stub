@@ -2,6 +2,6 @@
 
 return [
     'module' => [
-        'alias' => $module_name$
+        'alias' => '$module_name$'
     ],
 ];

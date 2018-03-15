@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Modules\$module_name$\Http\Controllers;
+
+use App\Modules\Office\Models\$module_name$;
+use Dosarkz\LaravelAdmin\Controllers\ModuleController;
+
+class FrontendController extends ModuleController
+{
+    public function __construct()
+    {
+        $this->setModule('$lc_module_name$');
+        $this->setModel(new $module_name$());
+    }
+
+    public function index()
+    {
+        return view($this->getModule()->alias.'::frontend.index');
+    }
+}

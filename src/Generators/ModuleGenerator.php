@@ -43,7 +43,6 @@ class ModuleGenerator
     public function generate()
     {
         $this->generateFolders();
-
     }
 
     /**
@@ -54,20 +53,45 @@ class ModuleGenerator
         return [
             new Folder('Modules', app_path('/'), [
                 new Folder($this->name, '', [
-                    new Folder('Config', ''),
+                    new Folder('Config', 'Config',[],[
+                        new File('module.stub', lcfirst($this->name).'.php',
+                            ['module_name' => $this->name])
+                    ]),
                     new Folder('Console', ''),
                     new Folder('Database', '', [
                         new Folder('factories', ''),
                         new Folder('Migrations', ''),
-                        new Folder('Seeders', ''),
+                        new Folder('Seeders', 'Database/Seeders', [], [
+                            new File('ModuleSeeder.stub','ModuleSeeder.php', [
+                                'module_name'   =>  $this->name,
+                                'module_url'    => lcfirst($this->name)
+                            ])
+                        ]),
                     ]),
                     new Folder('Http', '', [
-                        new Folder('Controllers', ''),
+                        new Folder('Controllers', 'Http/Controllers', [], [
+                            new File('BackendController.stub', 'BackendController.php',
+                                [
+                                    'module_name'       => ucfirst($this->name),
+                                    'lc_module_name'    =>  lcfirst($this->name)
+                                ]),
+                            new File('FrontendController.stub', 'FrontendController.php',
+                                [
+                                    'module_name'       => ucfirst($this->name),
+                                    'lc_module_name'    =>  lcfirst($this->name)
+                                ])
+                        ]),
                         new Folder('Middleware', ''),
                         new Folder('Requests', '')
                     ]),
                     new Folder('Models', ''),
-                    new Folder('Providers', ''),
+                    new Folder('Providers', 'Providers', [] ,[
+                        new File('ServiceProvider.stub',ucfirst($this->name).'ServiceProvider.php',
+                            [
+                                'module_name'       => ucfirst($this->name),
+                                'lc_module_name'    =>  lcfirst($this->name)
+                            ])
+                    ]),
                     new Folder('Resources', '', [
                         new Folder('assets'),
                         new Folder('lang', '', [
@@ -79,12 +103,18 @@ class ModuleGenerator
                             new Folder('backend', '')
                         ])
                     ]),
-                    new Folder('routes'),
+                    new Folder('routes', 'Routes',[],[
+                        new File('web.stub', 'web.php', [
+                            'module_name'       => ucfirst($this->name),
+                            'lc_module_name'    =>  lcfirst($this->name)
+                        ])
+                    ]),
                     new Folder('Tests')
                 ])
             ])
         ];
     }
+
 
     /**
      * function generate folders from module
@@ -94,9 +124,26 @@ class ModuleGenerator
         foreach ($this->folders as $folder) {
             $this->makeDirectory($folder->path, $folder);
 
+            if($folder->files)
+            {
+                $this->generateFiles($folder->path, $folder);
+            }
+
             if ($folder->subs) {
                 $this->loopSubs($folder->subs, $folder->path . $folder->dir);
             }
+        }
+    }
+
+    /**
+     * @param $path
+     * @param $folder
+     */
+    public function generateFiles($path, $folder)
+    {
+        foreach ($folder->files as $file) {
+            $this->filesystem->put($path."/".$file->replacement_file_name,
+                $this->generateReplacementContent($folder, $file));
         }
     }
 
@@ -109,6 +156,12 @@ class ModuleGenerator
     {
         foreach ($subs as $sub) {
             $this->makeDirectory($path, $sub);
+            $this->generateGitKeep($path . '/' . $sub->dir);
+
+            if($sub->files)
+            {
+                $this->generateFiles($path .'/'. $sub->dir, $sub);
+            }
 
             if ($sub->subs) {
                 $this->loopSubs($sub->subs, $path . '/' . $sub->dir);
@@ -136,6 +189,21 @@ class ModuleGenerator
     private function generateGitKeep($path)
     {
         $this->filesystem->put($path . '/.gitkeep', '');
+    }
+
+    /**
+     * @param $folder
+     * @param $file
+     * @return string
+     */
+    private function generateReplacementContent($folder, $file)
+    {
+        $this->command->info('generate file '. $file->stub_name);
+        return (new Stub(
+            $folder->path .'/'. $file->stub_name,
+            $file->replacement_params
+        )
+        )->render();
     }
 
 }

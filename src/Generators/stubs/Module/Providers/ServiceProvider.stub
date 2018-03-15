@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Office\Providers;
+namespace App\Modules\$module_name$\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class OfficeServiceProvider extends ServiceProvider
+class $module_name$ServiceProvider extends ServiceProvider
 {
     /**
      * Boot the application events.
@@ -46,8 +46,8 @@ class OfficeServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/office.php' => config_path('office.php'),
-        ], 'office');
+            __DIR__ . '/../Config/$lc_module_name$.php' => config_path('$lc_module_name$.php'),
+        ], '$lc_module_name$');
     }
 
     /**
@@ -57,7 +57,7 @@ class OfficeServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'office');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', '$lc_module_name$');
     }
 
     /**
@@ -67,7 +67,7 @@ class OfficeServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'office');
+        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', '$lc_module_name$');
     }
 
     /**

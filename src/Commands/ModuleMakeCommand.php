@@ -49,23 +49,22 @@ class ModuleMakeCommand extends Command
 
             if(is_dir(app_path('Modules/'.$module_name)))
             {
-              //  return   $this->error('This module already created');
+               return  $this->error('This module already created');
             }
 
             $this->info("Creating {$module_name} module...");
 
             $this->generateModule($module_name);
 
-//            if (!$this->filesystem->isDirectory($dir = dirname($path))) {
-//                $this->filesystem->makeDirectory($dir, 0775, true);
-//            }
+            $this->call('module:install',[
+                'module'  => $module_name
+            ]);
 
 
             $this->info('Installation was successful');
             return true;
 
         } catch (\Exception $e) {
-            print $e;
             die("Could not connect to the database.  Please check your configuration.");
         }
     }

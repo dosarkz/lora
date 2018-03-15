@@ -1,0 +1,24 @@
+<?php
+
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => [ 'web'],
+    'namespace' => 'App\Modules\$module_name$\Http\Controllers'], function () {
+
+    Route::group(['middleware' => 'guardAuth:admin'], function() {
+        Route::resource('$lc_module_name$','BackendController');
+    });
+});
+
+Route::group([
+    'middleware' => [ 'web'],
+    'namespace' => 'App\Modules\$module_name$\Http\Controllers'], function () {
+    Route::group([
+        'prefix' => '$lc_module_name$',
+    ], function () {
+        Route::get('/','FrontendController@index');
+    });
+
+
+
+});
