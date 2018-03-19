@@ -5,6 +5,9 @@ use Dosarkz\LaravelAdmin\Modules\Menu\Models\Menu;
 
 class Module extends I18nModel
 {
+    const STATUS_DEFAULT = 1;
+    const STATUS_NEW = 2;
+
     public $fillable =  [
         'alias','name_ru', 'name_en', 'description_ru', 'description_en','version', 'repository_url',
         'installed', 'tested','icon_id', 'status_id', 'menu_active'
