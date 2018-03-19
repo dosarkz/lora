@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-
+    <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -20,7 +20,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins -->
 
     <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
-    <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
+
 
     @yield('css')
 
@@ -40,8 +40,8 @@
 
 
         <a href="/admin" class="logo">
-            <span class="logo-mini"><b>A</b>LV</span>
-            <span class="logo-lg"><b>Admin</b>Laravel</span>
+            <span class="logo-mini">DCMS</span>
+            <span class="logo-lg"><b>Dosmin</b>cms</span>
         </a>
 
 
