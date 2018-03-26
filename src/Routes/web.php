@@ -11,6 +11,11 @@ Route::group([
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::get('/', 'MainController@index');
 
+        Route::get('settings','MainController@settings');
+        Route::post('settings', 'MainController@postSettings');
+
+        Route::delete('settings/remove-image', 'MainController@removeImage');
+
         Route::get('/reset-password', 'MainController@getResetPassword');
         Route::post('/reset-password', 'MainController@postResetPassword');
 

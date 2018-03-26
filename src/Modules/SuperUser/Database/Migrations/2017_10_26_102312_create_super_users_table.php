@@ -21,7 +21,7 @@ class CreateSuperUsersTable extends Migration
             $table->string('name');
             $table->integer('role_id');
             $table->integer('user_id')->nullable();
-            $table->string('avatar')->nullable();
+            $table->integer('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });;

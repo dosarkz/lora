@@ -56,13 +56,22 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                @if(auth()->guard('admin')->user()->avatar)
+                                    <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="user-image" alt="User Image">
+                                @else
+                                    <img src="/vendor/admin/adminlte/img/sheldon_cooper.png" class="user-image" alt="User Image">
+                                @endif
                                 <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                    @if(auth()->guard('admin')->user()->avatar)
+                                        <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="img-circle" alt="User Image">
+                                    @else
+                                    <img src="/vendor/admin/adminlte/img/sheldon_cooper.png" class="img-circle" alt="User Image">
+                                    @endif
                                     <p>
                                         <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                                     </p>
@@ -70,7 +79,7 @@
 
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/admin/reset-password" class="btn btn-default btn-flat">Смена пароля</a>
+                                        <a href="/admin/settings" class="btn btn-default btn-flat">Настройки</a>
                                     </div>
                                     <div class="pull-right">
                                         @if (auth()->guard('admin')->guest())
@@ -102,27 +111,6 @@
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="/vendor/admin/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>{{auth()->guard('admin')->user()->name}}</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Онлайн</a>
-                    </div>
-                </div>
-                <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Поиск...">
-                        <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                    </div>
-                </form>
-                <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 @include('admin::menu.left_menu')
             </section>

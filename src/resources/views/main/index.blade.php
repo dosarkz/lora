@@ -13,7 +13,7 @@
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Супер пользователей</span>
+                        <a href="/admin/superUser" class="info-box-text">Супер пользователей</a>
                         <span class="info-box-number">{{$countSuperUsers}}</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -26,7 +26,7 @@
                     <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Настройки</span>
+                        <a href="/admin/settings" class="info-box-text">Настройки</a>
                     </div>
                     <!-- /.info-box-content -->
                 </div>

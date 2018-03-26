@@ -2,6 +2,7 @@
 
 namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Models;
 
+use Dosarkz\LaravelAdmin\Modules\Image\Models\Image;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -31,9 +32,12 @@ class SuperUser extends Authenticatable
 
     public function isAdmin()
     {
-//        foreach ($this->userRoles as $userRole) {
-//
-//        }
-
     }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class, 'avatar');
+    }
+
+
 }
