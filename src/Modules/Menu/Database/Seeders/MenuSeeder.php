@@ -111,5 +111,52 @@ class MenuSeeder extends Seeder
             'menu_id'   => $main->id,
         ]);
 
+        $menu =   Menu::create([
+            'name' => 'Role',
+            'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
+            'module_id' => null,
+            'status_id' => 1,
+            'position'  => 2,
+        ]);
+
+        $MenuItem =  MenuItem::create([
+            'title_ru' => 'Роли',
+            'url' => '/admin/role',
+            'icon' => 'fa-briefcase',
+            'position' => 1,
+            'menu_id' => $menu->id,
+            'status_id' => 1
+        ]);
+
+        MenuItem::create([
+            'title_ru' => 'Добавить',
+            'url' => '/admin/role/create',
+            'icon' => 'fa-plus-circle',
+            'menu_id' => $menu->id,
+            'parent_id' => $MenuItem->id,
+            'position' => 1,
+            'status_id' => 1
+        ]);
+
+        MenuItem::create([
+            'title_ru' => 'Список',
+            'url' => '/admin/role',
+            'icon' => 'fa-list-ul',
+            'menu_id' => $menu->id,
+            'parent_id' => $MenuItem->id,
+            'position' => 1,
+            'status_id' => 1
+        ]);
+
+        MenuRole::create([
+            'role_id' => Role::where('alias', 'admin')->first()->id,
+            'menu_id'   => $menu->id,
+        ]);
+
+        MenuRole::create([
+            'role_id' => Role::where('alias', 'manager')->first()->id,
+            'menu_id'   => $menu->id,
+        ]);
+
     }
 }

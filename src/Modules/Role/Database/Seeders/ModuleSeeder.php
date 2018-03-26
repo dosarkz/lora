@@ -4,7 +4,7 @@ namespace Dosarkz\LaravelAdmin\Modules\Role\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RoleSeeder extends Seeder
+class ModuleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,5 +34,6 @@ class RoleSeeder extends Seeder
             'alias' => 'user',
             'status_id' => 1
         ]);
+
     }
 }

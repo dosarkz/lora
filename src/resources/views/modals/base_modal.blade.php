@@ -13,7 +13,7 @@
                 {{ Form::hidden('_method', 'DELETE') }}
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Нет, я случайно</button>
-                <button type="submit" class="btn btn-primary">Удалить</button>
+                <button type="submit" id="remove-btn" class="btn btn-primary">Удалить</button>
                 {{ Form::close() }}
             </div>
         </div>

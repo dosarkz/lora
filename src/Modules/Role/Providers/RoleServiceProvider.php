@@ -8,20 +8,14 @@ use Illuminate\Database\Eloquent\Factory;
 class RoleServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Boot the application events.
      *
      * @return void
      */
     public function boot()
     {
-        // $this->registerTranslations();
+        $this->registerTranslations();
+        $this->registerRoutes();
         $this->registerConfig();
         $this->registerViews();
         // $this->registerFactories();
@@ -35,7 +29,13 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+    }
+
+
+    public function registerRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
     }
 
     /**
@@ -46,11 +46,8 @@ class RoleServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/moduleRole.php' => config_path('moduleRole.php'),
-        ], 'moduleRole');
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/moduleRole.php', 'moduleRole'
-        );
+            __DIR__ . '/../Config/role.php' => config_path('role.php'),
+        ], 'role');
     }
 
     /**
@@ -60,7 +57,28 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'moduleRole');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'role');
+    }
+
+    /**
+     * Register translations.
+     *
+     * @return void
+     */
+    public function registerTranslations()
+    {
+        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'role');
+    }
+
+    /**
+     * Register an additional directory of factories.
+     * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
+     */
+    public function registerFactories()
+    {
+        if (! app()->environment('production')) {
+            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+        }
     }
 
     /**

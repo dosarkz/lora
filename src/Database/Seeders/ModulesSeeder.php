@@ -36,7 +36,7 @@ class ModulesSeeder extends Seeder
             'description_en' => 'The module to manage Roles',
             'version' =>  0.01,
             'status_id' => 1,
-            'alias' => 'moduleRole',
+            'alias' => 'role',
             'installed' => true,
         ]);
 

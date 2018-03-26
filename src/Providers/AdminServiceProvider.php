@@ -99,7 +99,7 @@ class AdminServiceProvider extends ServiceProvider
             'menu'    =>  Modules\Menu\Providers\MenuServiceProvider::class,
             'superUser' =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
             'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
-            'moduleRole' => Modules\Role\Providers\RoleServiceProvider::class,
+            'role' => Modules\Role\Providers\RoleServiceProvider::class,
         ];
 
         if(is_null(config('admin.modules.providers')))

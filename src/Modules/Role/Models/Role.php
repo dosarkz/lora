@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    const STATUS_DEFAULT = 1;
     /**
      * The attributes that are mass assignable.
      *
@@ -14,5 +15,7 @@ class Role extends Model
     protected $fillable = [
         'name', 'alias', 'parent_role_id', 'status_id',
     ];
+
+    public $timestamps = false;
 
 }
