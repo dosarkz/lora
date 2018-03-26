@@ -110,9 +110,9 @@ class SuperUserController extends ModuleController
     public function destroy($id)
     {
         $model = $this->getModel()->findOrFail($id);
-        if($model->isAdmin())
+        if($model->currentUser($id))
         {
-            return redirect()->back()->with('error', 'You cannot delete admin account');
+            return redirect()->back()->with('error', 'You cannot delete current admin account');
         }
 
         $model->delete();

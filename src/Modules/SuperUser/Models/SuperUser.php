@@ -39,5 +39,10 @@ class SuperUser extends Authenticatable
         return $this->belongsTo(Image::class, 'avatar');
     }
 
+    public function currentUser($id)
+    {
+        return auth()->guard('admin')->user()->id == $id;
+    }
+
 
 }
