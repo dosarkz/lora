@@ -61,10 +61,14 @@ class ModuleMakeCommand extends Command
 
             $this->info('Installation was successful');
             $this->info('Please include ServiceProvider for initial module to the config file, config/admin.php');
-            $this->info(" '".lcfirst($module_name)."' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class");
+            $this->info("'".lcfirst($module_name)."' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class");
+
+
+
             return true;
 
         } catch (\Exception $e) {
+            var_dump($e->getMessage());
             die("Could not connect to the database.  Please check your configuration.");
         }
     }
@@ -100,6 +104,11 @@ class ModuleMakeCommand extends Command
     }
 
 
-
+    function replace_string_in_file($filename, $string_to_replace, $replace_with){
+        $content=file_get_contents($filename);
+        $content_chunks=explode($string_to_replace, $content);
+        $content=implode($replace_with, $content_chunks);
+        file_put_contents($filename, $content);
+    }
 
 }

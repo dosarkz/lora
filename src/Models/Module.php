@@ -18,5 +18,10 @@ class Module extends I18nModel
         return $this->belongsTo(Menu::class, 'id', 'module_id');
     }
 
+    public function menuItems()
+    {
+
+    }
+
 
 }

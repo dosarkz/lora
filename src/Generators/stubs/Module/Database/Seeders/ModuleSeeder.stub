@@ -1,6 +1,7 @@
 <?php
 namespace App\Modules\$module_name$\Database\Seeders;
 
+use Dosarkz\LaravelAdmin\Models\Module;
 use Dosarkz\LaravelAdmin\Modules\Menu\Models\Menu;
 use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuItem;
 use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuRole;
@@ -23,10 +24,21 @@ class ModuleSeeder extends Seeder
             $menu->delete();
         }
 
+        $module =   Module::firstOrCreate([
+                    'name_ru' =>  '$module_name$',
+                    'name_en' => '$module_name$',
+                    'menu_active' => true,
+                    'description_ru' => '$module_name$',
+                    'description_en' => '$module_name$',
+                    'version' =>  0.01,
+                    'status_id' => Module::STATUS_NEW,
+                    'alias' => strtolower('$module_name$'),
+                ]);
+
         $menu =   Menu::create([
             'name' => '$module_name$',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
-            'module_id' => null,
+            'module_id' => $module->id,
             'status_id' => 1,
             'position'  => 2,
         ]);

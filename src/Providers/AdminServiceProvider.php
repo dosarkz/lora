@@ -33,6 +33,7 @@ class AdminServiceProvider extends ServiceProvider
         if(!config('admin'))
         {
             $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
+            chmod(config_path('admin.php'), 777);
         }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
     }

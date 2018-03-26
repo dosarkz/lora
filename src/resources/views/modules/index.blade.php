@@ -10,14 +10,14 @@
 
                     @if($module->status_id == $module::STATUS_NEW)
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"
-                                data-target="modal"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-module-id="{{$module->id}}"
+                                data-target="#confirm"  data-toggle="modal"><i class="fa fa-times"></i></button>
                     </div>
                     @endif
                 </div>
 
                 <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="fa fa-th-large"></i></span>
+                    <span    class="info-box-icon bg-aqua"><i class="fa fa-th-large"></i></span>
 
                     <div class="info-box-content">
                         <a href="/admin/{{$module->alias}}" class="info-box-text">{{$module->name}}</a>
@@ -33,4 +33,21 @@
         @endforeach
 
     </div>
+
+
+    @include('admin::modals.base_modal')
+@endsection
+
+
+@section('js-append')
+
+    <script>
+
+        $('#confirm').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+
+            modal.find('#removeForm').attr('action','/admin/modules/' + button.data('module-id'))
+        })
+    </script>
 @endsection
