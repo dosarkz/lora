@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Facade;
+namespace Dosarkz\Dosmin\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

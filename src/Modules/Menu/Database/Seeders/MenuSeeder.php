@@ -1,11 +1,11 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Database\Seeders;
+namespace Dosarkz\Dosmin\Modules\Menu\Database\Seeders;
 
-use Dosarkz\LaravelAdmin\Models\Module;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\Menu;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuItem;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuRole;
-use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
+use Dosarkz\Dosmin\Models\Module;
+use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
+use Dosarkz\Dosmin\Modules\Menu\Models\MenuItem;
+use Dosarkz\Dosmin\Modules\Menu\Models\MenuRole;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

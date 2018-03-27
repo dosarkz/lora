@@ -1,12 +1,12 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Http\Controllers;
+namespace Dosarkz\Dosmin\Modules\Menu\Http\Controllers;
 
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\StoreMenuRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuRole;
-use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
+use Dosarkz\Dosmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuRequest;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
+use Dosarkz\Dosmin\Modules\Menu\Models\MenuRole;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

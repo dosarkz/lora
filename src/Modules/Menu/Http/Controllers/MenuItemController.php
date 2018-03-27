@@ -1,14 +1,14 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Http\Controllers;
+namespace Dosarkz\Dosmin\Modules\Menu\Http\Controllers;
 
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\StoreMenuItemRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\StoreMenuRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\UpdateMenuItemRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\Menu;
-use Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuItem;
+use Dosarkz\Dosmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuItemRequest;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuRequest;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuItemRequest;
+use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
+use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
+use Dosarkz\Dosmin\Modules\Menu\Models\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

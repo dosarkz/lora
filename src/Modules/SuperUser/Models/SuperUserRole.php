@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Models;
+namespace Dosarkz\Dosmin\Modules\SuperUser\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

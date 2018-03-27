@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Exceptions;
+namespace Dosarkz\Dosmin\Exceptions;
 
 class ModuleNotFoundException extends \Exception {
     /**

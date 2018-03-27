@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Requests;
+namespace Dosarkz\Dosmin\Requests;
 
 
 use Illuminate\Foundation\Http\FormRequest;

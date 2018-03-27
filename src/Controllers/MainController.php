@@ -1,10 +1,10 @@
-<?php namespace Dosarkz\LaravelAdmin\Controllers;
+<?php namespace Dosarkz\Dosmin\Controllers;
 
-use Dosarkz\LaravelAdmin\Models\Module;
-use Dosarkz\LaravelAdmin\Modules\Image\Models\Image;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser;
-use Dosarkz\LaravelAdmin\Requests\PostSettingRequest;
-use Dosarkz\LaravelAdmin\Requests\ResetPasswordRequest;
+use Dosarkz\Dosmin\Models\Module;
+use Dosarkz\Dosmin\Modules\Image\Models\Image;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
+use Dosarkz\Dosmin\Requests\PostSettingRequest;
+use Dosarkz\Dosmin\Requests\ResetPasswordRequest;
 use Dosarkz\LaravelUploader\BaseUploader;
 use Illuminate\Support\Facades\Hash;
 

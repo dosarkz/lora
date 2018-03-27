@@ -20,7 +20,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => \Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser::class,
+                'model'  => \Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser::class,
             ],
             'users' => [
                 'driver' => 'eloquent',

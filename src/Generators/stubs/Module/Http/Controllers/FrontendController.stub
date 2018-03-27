@@ -3,7 +3,7 @@
 namespace App\Modules\$module_name$\Http\Controllers;
 
 use App\Modules\Office\Models\$module_name$;
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Controllers\ModuleController;
 
 class FrontendController extends ModuleController
 {

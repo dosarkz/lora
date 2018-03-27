@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Commands;
+namespace Dosarkz\Dosmin\Commands;
 
-use Dosarkz\LaravelAdmin\Models\Module;
+use Dosarkz\Dosmin\Models\Module;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;

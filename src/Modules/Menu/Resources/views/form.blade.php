@@ -109,7 +109,7 @@
                     <div class="row">
                         <label for="role-{{$role->alias}}" class="col-md-4 control-label">{{$role->name}}</label>
                         <div class="col-md-6">
-                            @if(\Dosarkz\LaravelAdmin\Modules\Menu\Models\MenuRole::where('menu_id', $model->id)
+                            @if(\Dosarkz\Dosmin\Modules\Menu\Models\MenuRole::where('menu_id', $model->id)
                             ->where('role_id', $role->id)->first())
                                 {{Form::checkbox('menuRole['.$role->id.']', true, true, ['id' => 'role-'.$role->alias])}}
                             @else

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Middleware;
+namespace Dosarkz\Dosmin\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

@@ -1,8 +1,8 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Generators;
+namespace Dosarkz\Dosmin\Generators;
 /**
  * Class Folder
- * @package Dosarkz\LaravelAdmin\Generators
+ * @package Dosarkz\Dosmin\Generators
  */
 class Folder
 {

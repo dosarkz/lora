@@ -1,13 +1,13 @@
-<?php namespace Dosarkz\LaravelAdmin\Controllers;
+<?php namespace Dosarkz\Dosmin\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dosarkz\LaravelAdmin\Models\Module;
+use Dosarkz\Dosmin\Models\Module;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 /**
  * Class ModulesController
- * @package Dosarkz\LaravelAdmin\Controllers
+ * @package Dosarkz\Dosmin\Controllers
  */
 class ModulesController extends Controller
 {

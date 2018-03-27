@@ -3,7 +3,7 @@
 Route::group([
     'prefix' => 'admin',
     'middleware' => [ 'web'],
-    'namespace' => 'Dosarkz\LaravelAdmin\Controllers'], function () {
+    'namespace' => 'Dosarkz\Dosmin\Controllers'], function () {
 
     Route::get('login','AuthController@showLoginForm')->name('admin.getLogin');
     Route::post('login','AuthController@postLogin')->name('admin.postLogin');

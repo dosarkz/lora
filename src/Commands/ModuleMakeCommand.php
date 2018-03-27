@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Commands;
+namespace Dosarkz\Dosmin\Commands;
 
-use Dosarkz\LaravelAdmin\Generators\ModuleGenerator;
+use Dosarkz\Dosmin\Generators\ModuleGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;

@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Providers;
+namespace Dosarkz\Dosmin\Providers;
 
 
 use Illuminate\Filesystem\Filesystem;

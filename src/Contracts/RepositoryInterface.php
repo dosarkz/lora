@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Contracts;
+namespace Dosarkz\Dosmin\Contracts;
 
 interface RepositoryInterface
 {

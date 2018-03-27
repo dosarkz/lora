@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Models;
+namespace Dosarkz\Dosmin\Modules\Menu\Models;
 
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUserRole;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Database\Eloquent\Model;
 
 class MenuRole extends Model

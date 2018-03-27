@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Models;
+namespace Dosarkz\Dosmin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

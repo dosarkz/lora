@@ -1,9 +1,9 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Models;
+namespace Dosarkz\Dosmin\Modules\Menu\Models;
 
-use Dosarkz\LaravelAdmin\Models\I18nModel;
-use Dosarkz\LaravelAdmin\Models\Module;
+use Dosarkz\Dosmin\Models\I18nModel;
+use Dosarkz\Dosmin\Models\Module;
 
 class Menu extends I18nModel
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Commands;
+namespace Dosarkz\Dosmin\Commands;
 
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser;
-use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUserRole;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -98,13 +98,13 @@ class AdminInstallCommand extends Command
     public function databaseSeeder()
     {
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
+            '--class' => 'Dosarkz\\Dosmin\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
         ]);
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\LaravelAdmin\\Database\\Seeders\\ModulesSeeder'
+            '--class' => 'Dosarkz\\Dosmin\\Database\\Seeders\\ModulesSeeder'
         ]);
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\LaravelAdmin\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
+            '--class' => 'Dosarkz\\Dosmin\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
         ]);
 
     }

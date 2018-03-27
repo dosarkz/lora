@@ -1,12 +1,12 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Controllers;
+namespace Dosarkz\Dosmin\Modules\SuperUser\Http\Controllers;
 
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
-use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Requests\StoreSuperUserRequest;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Http\Requests\UpdateSuperUserRequest;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUserRole;
+use Dosarkz\Dosmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use Dosarkz\Dosmin\Modules\SuperUser\Http\Requests\StoreSuperUserRequest;
+use Dosarkz\Dosmin\Modules\SuperUser\Http\Requests\UpdateSuperUserRequest;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Contracts\Support\MessageProvider;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

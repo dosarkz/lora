@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Controllers;
+namespace Dosarkz\Dosmin\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

@@ -5,6 +5,6 @@ return [
         'alias' => 'menu'
     ],
     'admin' => [
-        'model' => \Dosarkz\LaravelAdmin\Modules\Menu\Models\Menu::class,
+        'model' => \Dosarkz\Dosmin\Modules\Menu\Models\Menu::class,
     ]
 ];

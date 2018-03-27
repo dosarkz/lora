@@ -1,10 +1,10 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Providers;
+namespace Dosarkz\Dosmin\Providers;
 
-use Dosarkz\LaravelAdmin\Commands\AdminInstallCommand;
-use Dosarkz\LaravelAdmin\Commands\ModuleInstallCommand;
-use Dosarkz\LaravelAdmin\Commands\ModuleMakeCommand;
-use Dosarkz\LaravelAdmin\Modules;
+use Dosarkz\Dosmin\Commands\AdminInstallCommand;
+use Dosarkz\Dosmin\Commands\ModuleInstallCommand;
+use Dosarkz\Dosmin\Commands\ModuleMakeCommand;
+use Dosarkz\Dosmin\Modules;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
@@ -46,7 +46,7 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerMiddleware($router)
     {
-        $router->aliasMiddleware('guardAuth', 'Dosarkz\LaravelAdmin\Middleware\GuardAuth');
+        $router->aliasMiddleware('guardAuth', 'Dosarkz\Dosmin\Middleware\GuardAuth');
     }
 
     public function loadViews()

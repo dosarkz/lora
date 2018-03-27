@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Menu\Models;
+namespace Dosarkz\Dosmin\Modules\Menu\Models;
 
-use Dosarkz\LaravelAdmin\Models\I18nModel;
+use Dosarkz\Dosmin\Models\I18nModel;
 
 class MenuItem extends I18nModel
 {

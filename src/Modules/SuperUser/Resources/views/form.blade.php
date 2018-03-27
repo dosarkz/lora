@@ -54,7 +54,7 @@
                         <label for="name" class="col-md-4 control-label">Role</label>
 
                         <div class="col-md-6">
-                            {{Form::select('role_id', \Dosarkz\LaravelAdmin\Modules\Role\Models\Role::pluck('name','id'), $model->role_id,
+                            {{Form::select('role_id', \Dosarkz\Dosmin\Modules\Role\Models\Role::pluck('name','id'), $model->role_id,
                             ['class' => 'form-control', 'placeholder' => 'Select role'])}}
 
                             @if ($errors->has('username'))

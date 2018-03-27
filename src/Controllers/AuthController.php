@@ -1,10 +1,10 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Controllers;
+namespace Dosarkz\Dosmin\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dosarkz\LaravelAdmin\Requests\LoginRequest;
+use Dosarkz\Dosmin\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser;
+use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
 
 class AuthController extends Controller
 {

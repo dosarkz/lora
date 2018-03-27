@@ -1,14 +1,14 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Repositories;
+namespace Dosarkz\Dosmin\Repositories;
 
 use Countable;
-use Dosarkz\LaravelAdmin\Models\Module;
+use Dosarkz\Dosmin\Models\Module;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Dosarkz\LaravelAdmin\Contracts\RepositoryInterface;
-use Dosarkz\LaravelAdmin\Exceptions\ModuleNotFoundException;
+use Dosarkz\Dosmin\Contracts\RepositoryInterface;
+use Dosarkz\Dosmin\Exceptions\ModuleNotFoundException;
 
 class Repository implements RepositoryInterface, Countable
 {

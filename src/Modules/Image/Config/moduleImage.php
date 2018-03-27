@@ -5,6 +5,6 @@ return [
         'alias' => 'moduleImage'
     ],
     'admin' => [
-        'model' => \Dosarkz\LaravelAdmin\Modules\Image\Models\Image::class,
+        'model' => \Dosarkz\Dosmin\Modules\Image\Models\Image::class,
     ]
 ];

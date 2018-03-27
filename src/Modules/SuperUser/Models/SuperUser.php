@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\SuperUser\Models;
+namespace Dosarkz\Dosmin\Modules\SuperUser\Models;
 
-use Dosarkz\LaravelAdmin\Modules\Image\Models\Image;
+use Dosarkz\Dosmin\Modules\Image\Models\Image;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

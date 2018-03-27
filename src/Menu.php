@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin;
+namespace Dosarkz\Dosmin;
 
 class Menu {
 

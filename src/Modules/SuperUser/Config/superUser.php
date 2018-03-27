@@ -5,6 +5,6 @@ return [
         'alias' => 'superUser'
     ],
     'admin' => [
-        'model' => \Dosarkz\LaravelAdmin\Modules\SuperUser\Models\SuperUser::class,
+        'model' => \Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser::class,
     ]
 ];

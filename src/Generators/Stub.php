@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Generators;
+namespace Dosarkz\Dosmin\Generators;
 /**
  * Created by PhpStorm.
  * User: yerzhan

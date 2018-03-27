@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Database\Seeders;
+namespace Dosarkz\Dosmin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

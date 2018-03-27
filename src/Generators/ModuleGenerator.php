@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\LaravelAdmin\Generators;
+namespace Dosarkz\Dosmin\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

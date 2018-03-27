@@ -1,6 +1,6 @@
 {
-  "name": "dosarkz/laravel-admin",
-  "description": "Laravel framework admin panel",
+  "name": "dosarkz/dosmin",
+  "description": "Dosmin CMS - package backend module system for Laravel Framework",
   "authors": [
     {
       "name": "Yerzhan Ashenov",
@@ -22,16 +22,16 @@
       "src/Exceptions"
     ],
     "psr-4": {
-      "Dosarkz\\LaravelAdmin\\": "src/"
+      "Dosarkz\\Dosmin\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Dosarkz\\LaravelAdmin\\Providers\\AdminServiceProvider"
+        "Dosarkz\\Dosmin\\Providers\\AdminServiceProvider"
       ],
       "aliases": {
-        "Admin": "Dosarkz\\LaravelAdmin\\Facade\\AdminFacade"
+        "Admin": "Dosarkz\\Dosmin\\Facade\\AdminFacade"
       }
     }
   }

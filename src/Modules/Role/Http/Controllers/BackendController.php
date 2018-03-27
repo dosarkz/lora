@@ -1,11 +1,11 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Role\Http\Controllers;
+namespace Dosarkz\Dosmin\Modules\Role\Http\Controllers;
 
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
-use Dosarkz\LaravelAdmin\Modules\Role\Http\Requests\StoreRoleRequest;
-use Dosarkz\LaravelAdmin\Modules\Role\Http\Requests\UpdateRoleRequest;
-use Dosarkz\LaravelAdmin\Modules\Role\Models\Role;
+use Dosarkz\Dosmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Modules\Role\Http\Requests\StoreRoleRequest;
+use Dosarkz\Dosmin\Modules\Role\Http\Requests\UpdateRoleRequest;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

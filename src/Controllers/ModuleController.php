@@ -1,12 +1,12 @@
-<?php namespace Dosarkz\LaravelAdmin\Controllers;
+<?php namespace Dosarkz\Dosmin\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dosarkz\LaravelAdmin\Exceptions\ModuleNotFoundException;
-use Dosarkz\LaravelAdmin\Models\Module;
+use Dosarkz\Dosmin\Exceptions\ModuleNotFoundException;
+use Dosarkz\Dosmin\Models\Module;
 
 /**
  * Class ModuleController
- * @package Dosarkz\LaravelAdmin\Controllers
+ * @package Dosarkz\Dosmin\Controllers
  */
 class ModuleController extends Controller
 {

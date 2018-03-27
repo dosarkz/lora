@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\LaravelAdmin\Modules\Image\Http\Controllers;
+namespace Dosarkz\Dosmin\Modules\Image\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

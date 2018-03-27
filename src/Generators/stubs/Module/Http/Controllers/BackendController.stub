@@ -5,7 +5,7 @@ namespace App\Modules\$module_name$\Http\Controllers;
 use App\Modules\$module_name$\Http\Requests\Store$module_name$Request;
 use App\Modules\$module_name$\Http\Requests\Update$module_name$Request;
 use App\Modules\$module_name$\Models\$module_name$;
-use Dosarkz\LaravelAdmin\Controllers\ModuleController;
+use Dosarkz\Dosmin\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
