@@ -27,6 +27,10 @@ Features:
 - After making add new provider to config/admin.php
 - Visit new module on admin menu
 ## Module install 
+
+`php artisan module:install {module name}`
+
+This command consist of:
 - Make publish files
 - Run migrations and seeder 
-`php artisan module:install {module name}`
+
