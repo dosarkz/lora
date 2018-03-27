@@ -26,3 +26,7 @@ Features:
 - New modules created in app/Modules folder.
 - After making add new provider to config/admin.php
 - Visit new module on admin menu
+## Module install 
+- Make publish files
+- Run migrations and seeder 
+`php artisan module:install {module name}`
