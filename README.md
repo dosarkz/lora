@@ -8,5 +8,5 @@ Features:
 - Upload image files with resize
 - Visible modules for role
 
-##Installation
+## Installation
 `composer require dosarkz/dosmin`
