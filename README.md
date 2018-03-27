@@ -9,4 +9,20 @@ Features:
 - Visible modules for role
 
 ## Installation
+
+- Install laravel 5.6
+- Configure db
+- Install admin package
 `composer require dosarkz/dosmin`
+- Make dosmin system
+`php artisan admin:install`
+- Go through all the necessary steps
+- Visit `your_project/admin`
+- and Be Happy!
+
+
+## Make new module with command
+`php artisan module:make {module name}`
+- New modules created in app/Modules folder.
+- After making add new provider to config/admin.php
+- Visit new module on admin menu
