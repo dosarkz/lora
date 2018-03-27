@@ -33,7 +33,7 @@ class AdminServiceProvider extends ServiceProvider
         if(!config('admin'))
         {
             $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
-            chmod(config_path('admin.php'), 777);
+           // chmod(config_path('admin.php'), 777);
         }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
     }
@@ -97,10 +97,11 @@ class AdminServiceProvider extends ServiceProvider
     public function listModules()
     {
         $modules = [
-            'menu'    =>  Modules\Menu\Providers\MenuServiceProvider::class,
-            'superUser' =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
-            'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
-            'role' => Modules\Role\Providers\RoleServiceProvider::class,
+            'menu'          =>  Modules\Menu\Providers\MenuServiceProvider::class,
+            'superUser'     =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
+            'moduleImage'   => Modules\Image\Providers\ImageServiceProvider::class,
+            'role'          => Modules\Role\Providers\RoleServiceProvider::class,
+            'article'       => Modules\Article\Providers\ArticleServiceProvider::class,
         ];
 
         if(is_null(config('admin.modules.providers')))

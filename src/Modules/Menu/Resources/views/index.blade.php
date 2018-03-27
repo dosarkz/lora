@@ -35,11 +35,13 @@
                                             <td>{{ $item->name }}</td>
                                             <td><a href="/admin/{{$module->alias}}/{{$item->id}}/items">{{$item->menuItems->count()}}</a></td>
                                             <td>{{ $item->status }}</td>
-                                            <td><a class="btn btn-primary" href="/admin/{{$module->alias}}/{{$item->id}}/edit">Редактировать</a>
-                                                {{ Form::open(array('url' => '/admin/'.$module->alias.'/' . $item->id, 'class' => 'pull-right')) }}
+                                            <td>
+                                                <a class="btn btn-xs btn-primary"  href="/admin/{{$module->alias}}/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                {{ Form::open(array('url' => '/admin/'.$module->alias.'/' . $item->id, 'style' => 'display:inline;')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                {{ Form::button('удалить', array('class' => 'btn btn-warning',
-                                                'data-target' => '#confirm', 'data-toggle' => 'modal', 'data-action' => '/admin/'.$module->alias.'/' . $item->id)) }}
+                                                <button class="btn btn-xs btn-danger delete" data-target="#confirm"
+                                                        data-toggle="modal" data-action="/admin/{{$module->alias}}/{{$item->id}}"
+                                                        type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                                                 {{ Form::close() }}
                                             </td>
 

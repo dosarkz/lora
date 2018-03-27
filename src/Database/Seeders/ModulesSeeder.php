@@ -63,5 +63,16 @@ class ModulesSeeder extends Seeder
             'alias' => 'menu',
             'installed' => true,
         ]);
+
+        DB::table('modules')->insert([
+            'name_ru' =>  'Модуль Страницы',
+            'name_en' => 'Article Module',
+            'menu_active' => true,
+            'description_ru' => 'Article',
+            'description_en' => 'Article',
+            'version' =>  0.01,
+            'status_id' => 1,
+            'alias' => 'article',
+        ]);
     }
 }

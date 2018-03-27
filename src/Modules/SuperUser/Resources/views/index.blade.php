@@ -37,11 +37,17 @@
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->roles }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td><a class="btn btn-primary" href="/admin/superUser/{{$item->id}}/edit">Редактировать</a>
-                                                {{ Form::open(array('url' => '/admin/superUser/' . $item->id, 'class' => 'pull-right')) }}
+                                            <td>
+
+                                                <a class="btn btn-xs btn-primary" href="/admin/superUser/{{$item->id}}/edit">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+                                                {{ Form::open(array('url' => '/admin/superUser/' . $item->id, 'style' => 'display:inline;')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                {{ Form::button('удалить', array('class' => 'btn btn-warning',
-                                                'data-target' => '#confirm', 'data-toggle' => 'modal', 'data-user_id' => $item->id)) }}
+
+                                                <button class="btn btn-xs btn-danger delete" type="button"
+                                                        data-target="#confirm"  data-toggle="modal" data-user_id="{{$item->id}}"><i class="fa fa-times" aria-hidden="true"></i></button>
+
                                                 {{ Form::close() }}
                                             </td>
 

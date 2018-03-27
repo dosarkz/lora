@@ -33,13 +33,13 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->alias }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td><a class="btn btn-primary" href="/admin/{{$module->alias}}/{{$item->id}}/edit">Редактировать</a>
+                                            <td>
+                                                <a class="btn btn-xs btn-primary" href="/admin/{{$module->alias}}/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                 @if($item->status_id != $item::STATUS_DEFAULT)
 
-                                                    {{ Form::button('удалить', array('class' => 'btn btn-warning',
-                                                    'data-target' => '#confirm', 'data-toggle' => 'modal', 'data-action' =>
-                                                    "/admin/$module->alias/$item->id")) }}
-
+                                                    <button class="btn btn-xs btn-danger delete"
+                                                            type="button" data-target="#confirm" data-toggle="modal"
+                                                            data-action="/admin/{{$module->alias}}/{{$item->id}}"><i class="fa fa-times" aria-hidden="true"></i></button>
 
                                                  @endif
                                             </td>
