@@ -63,9 +63,9 @@ class ModulesController extends Controller
         $module_name = ucfirst($model->alias);
         $providerStr = "'".$model->alias."' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class";
 
-        $this->replace_string_in_file(config_path('admin.php'),
-            $providerStr,
-            '');
+//        $this->replace_string_in_file(config_path('admin.php'),
+//            $providerStr,
+//            '');
 
         if(is_dir(app_path('Modules/'.$module_name)))
         {
