@@ -55,7 +55,7 @@ class ModuleInstallCommand extends Command
             $this->info('2. Running migration');
             $this->call('migrate');
 
-            $module = Module::where('alias', ucfirst($this->argument('module')))->first();
+            $module = Module::where('alias', lcfirst($this->argument('module')))->first();
 
             if(!$module)
             {
@@ -67,7 +67,7 @@ class ModuleInstallCommand extends Command
                     'description_en' => $this->argument('module'),
                     'version' =>  0.01,
                     'status_id' => Module::STATUS_NEW,
-                    'alias' => strtolower($this->argument('module')),
+                    'alias' => lcfirst($this->argument('module')),
                     'installed' => true,
                 ]);
             }
