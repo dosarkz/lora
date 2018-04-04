@@ -55,7 +55,7 @@ class ModuleInstallCommand extends Command
             $this->info('2. Running migration');
             $this->call('migrate');
 
-            $module = Module::where('alias', strtolower($this->argument('module')))->first();
+            $module = Module::where('alias', ucfirst($this->argument('module')))->first();
 
             if(!$module)
             {
