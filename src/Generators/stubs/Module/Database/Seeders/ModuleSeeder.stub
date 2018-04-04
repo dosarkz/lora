@@ -32,7 +32,7 @@ class ModuleSeeder extends Seeder
                     'description_en' => '$module_name$',
                     'version' =>  0.01,
                     'status_id' => Module::STATUS_NEW,
-                    'alias' => strtolower('$module_name$'),
+                    'alias' => lcfirst('$module_name$'),
                 ]);
 
         $menu =   Menu::create([
