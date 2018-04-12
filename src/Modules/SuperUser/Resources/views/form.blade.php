@@ -18,7 +18,7 @@
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="name" class="col-md-4 control-label">Name</label>
+                    <label for="name" class="col-md-4 control-label">Имя</label>
 
                     <div class="col-md-6">
                         {{Form::text('name', $model->name, ['class' => 'form-control', 'placeholder' => 'name'])}}
@@ -34,7 +34,7 @@
 
                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">Username</label>
+                        <label for="name" class="col-md-4 control-label">Логин</label>
 
                         <div class="col-md-6">
                             {{Form::text('username', $model->username, ['class' => 'form-control', 'placeholder' => 'username'])}}
@@ -51,7 +51,7 @@
 
                 <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">Role</label>
+                        <label for="name" class="col-md-4 control-label">Роль</label>
 
                         <div class="col-md-6">
                             {{Form::select('role_id', \Dosarkz\Dosmin\Modules\Role\Models\Role::pluck('name','id'), $model->role_id,
@@ -68,7 +68,7 @@
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    <label for="email" class="col-md-4 control-label">Почта</label>
                     <div class="col-md-6">
                         {{Form::text('email', $model->email, ['class' => 'form-control', 'type'=>'email',
                           'placeholder' => 'email'])}}
@@ -85,7 +85,7 @@
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="password" class="col-md-4 control-label">Password</label>
+                    <label for="password" class="col-md-4 control-label">Пароль</label>
 
                     <div class="col-md-6">
                         {{Form::password('password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => 'password'])}}
@@ -102,7 +102,7 @@
             <div class="form-group">
 
                <div class="row">
-                   <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                   <label for="password-confirm" class="col-md-4 control-label">Подтвержение пароля</label>
 
                    <div class="col-md-6">
                        {{Form::password('password_confirmation', ['class' => 'form-control', 'type'=>'password', 'placeholder' => 'password confirmation'])}}

@@ -3,6 +3,7 @@
 namespace Dosarkz\Dosmin\Modules\SuperUser\Models;
 
 use Dosarkz\Dosmin\Modules\Image\Models\Image;
+use Dosarkz\Dosmin\Modules\Role\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -30,8 +31,9 @@ class SuperUser extends Authenticatable
 
     public $timestamps = true;
 
-    public function isAdmin()
+    public function role()
     {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function image()
