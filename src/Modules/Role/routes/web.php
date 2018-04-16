@@ -5,7 +5,7 @@ Route::group([
     'middleware' => [ 'web'],
     'namespace' => 'Dosarkz\Dosmin\Modules\Role\Http\Controllers'], function () {
 
-    Route::group(['middleware' => 'guardAuth:admin'], function() {
+    Route::group(['middleware' => ['guardAuth:admin', 'role:admin']], function() {
         Route::resource('role','BackendController');
     });
 });

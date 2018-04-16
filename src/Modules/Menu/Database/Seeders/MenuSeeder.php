@@ -153,10 +153,7 @@ class MenuSeeder extends Seeder
             'menu_id'   => $menu->id,
         ]);
 
-        MenuRole::create([
-            'role_id' => Role::where('alias', 'manager')->first()->id,
-            'menu_id'   => $menu->id,
-        ]);
+
 
         $menu =   Menu::create([
             'name' => 'Article',
@@ -200,10 +197,7 @@ class MenuSeeder extends Seeder
             'menu_id'   => $menu->id,
         ]);
 
-        MenuRole::create([
-            'role_id' => Role::where('alias', 'manager')->first()->id,
-            'menu_id'   => $menu->id,
-        ]);
+
 
     }
 }

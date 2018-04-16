@@ -47,6 +47,7 @@ class AdminServiceProvider extends ServiceProvider
     public function registerMiddleware($router)
     {
         $router->aliasMiddleware('guardAuth', 'Dosarkz\Dosmin\Middleware\GuardAuth');
+        $router->aliasMiddleware('role', 'Dosarkz\Dosmin\Middleware\Role');
     }
 
     public function loadViews()

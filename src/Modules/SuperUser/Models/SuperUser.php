@@ -46,5 +46,14 @@ class SuperUser extends Authenticatable
         return auth()->guard('admin')->user()->id == $id;
     }
 
+    public function hasRole($role)
+    {
+        return SuperUser::whereHas('role', function($query) use($role)
+        {
+            $query->where('id', auth()->guard('admin')->user()->role_id)
+            ->where('alias', $role);
+        })->first();
+    }
+
 
 }
