@@ -25,7 +25,16 @@ Features:
 `php artisan module:make {module name}`
 - New modules created in app/Modules folder.
 - After making add new provider to config/admin.php
+`
+ 'providers' => [
+            'user' =>  \App\Modules\User\Providers\UserServiceProvider::class,
+            ...
+        ]
+`
 - Visit new module on admin menu
+
+
+
 ## Module install 
 
 `php artisan module:install {module name}`
