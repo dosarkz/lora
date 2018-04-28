@@ -17,7 +17,7 @@
 
                 <div class="form-group{{ $errors->has('menu_active') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="menu_active" class="col-md-4 control-label">Отображать меню</label>
+                        <label for="menu_active" class="col-md-4 control-label">{{trans('admin::base.show_in_menu')}}</label>
 
                         <div class="col-md-6">
                             {{Form::checkbox('menu_active',null, $model->menu_active, ['id' => 'menu_active'])}}

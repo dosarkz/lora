@@ -14,7 +14,7 @@ class Menu extends I18nModel
      * @var array
      */
     protected $fillable = [
-        'name', 'type_id', 'module_id', 'status_id', 'user_id', 'position'
+        'name_ru', 'name_en','alias', 'type_id', 'module_id', 'status_id', 'user_id', 'position'
     ];
 
     public $timestamps = true;
@@ -22,19 +22,24 @@ class Menu extends I18nModel
 
     public function getTypesAttribute()
     {
-        return [self::TYPE_LEFT_SIDE_MENU => 'Левое меню'];
+        return [self::TYPE_LEFT_SIDE_MENU => trans('admin::base.left_menu')];
     }
 
     public function getModulesAttribute()
     {
-        return Module::pluck('name_ru','id');
+        return Module::pluck('name_'.app()->getLocale(),'id');
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->statuses[$this->status_id];
     }
 
     public function getStatusesAttribute()
     {
         return [
-            0 => 'Не активен',
-            1 => 'Активен'
+            0 => trans('admin::base.deactivate'),
+            1 => trans('admin::base.active')
         ];
     }
     public function menuItems()

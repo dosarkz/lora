@@ -14,7 +14,7 @@
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <a href="/admin/superUser" class="info-box-text">Супер пользователей</a>
+                            <a href="/admin/superUser" class="info-box-text">{{trans('admin::base.count_of_superusers')}}</a>
                             <span class="info-box-number">{{$countSuperUsers}}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -28,7 +28,7 @@
                     <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
                     <div class="info-box-content">
-                        <a href="/admin/settings" class="info-box-text">Настройки</a>
+                        <a href="/admin/settings" class="info-box-text">{{trans('admin::base.settings')}}</a>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -41,7 +41,7 @@
                         <span class="info-box-icon bg-red"><i class="fa fa-th-large"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Модули</span>
+                            <span class="info-box-text">{{trans('admin::base.modules')}}</span>
                             <span class="info-box-number">{{$count_modules}}</span>
                         </div>
                         <!-- /.info-box-content -->

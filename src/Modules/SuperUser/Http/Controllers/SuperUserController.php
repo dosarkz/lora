@@ -17,6 +17,7 @@ class SuperUserController extends ModuleController
     {
         $model = config('superUser.admin.model');
         $this->setModel(new $model);
+        $this->setModule('superUser');
     }
 
     /**
@@ -26,7 +27,9 @@ class SuperUserController extends ModuleController
     public function index()
     {
         $model = $this->getModel()->paginate();
-        return view('superUser::index', compact('model'));
+        $module = $this->getModule();
+
+        return view('superUser::index', compact('model', 'module'));
     }
 
     /**
@@ -36,7 +39,9 @@ class SuperUserController extends ModuleController
     public function create()
     {
         $model = $this->getModel();
-        return view('superUser::create', compact('model'));
+        $module = $this->getModule();
+
+        return view('superUser::create', compact('model', 'module'));
     }
 
     /**
@@ -57,7 +62,7 @@ class SuperUserController extends ModuleController
             'role_id' => $request->input('role_id'),
         ]);
 
-        return redirect()->back()->with('success', 'success');
+        return redirect()->back()->with('success', trans('admin::base.resource_created'));
     }
 
     /**
@@ -77,7 +82,9 @@ class SuperUserController extends ModuleController
     public function edit($id)
     {
         $model = $this->getModel()->findOrFail($id);
-        return view('superUser::edit', compact('model'));
+        $module = $this->getModule();
+
+        return view('superUser::edit', compact('model', 'module'));
     }
 
     /**
@@ -100,7 +107,7 @@ class SuperUserController extends ModuleController
 
         $model->update($request->all());
 
-        return redirect()->back()->with('success', 'success');
+        return redirect()->back()->with('success', trans('admin::base.resource_updated'));
     }
 
     /**
@@ -116,6 +123,6 @@ class SuperUserController extends ModuleController
         }
 
         $model->delete();
-        return redirect()->back()->with('success', 'deleted');
+        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
     }
 }

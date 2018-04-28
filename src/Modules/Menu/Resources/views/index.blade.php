@@ -4,7 +4,7 @@
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Меню</a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('admin::base.menu')}}</a></li>
             <li class="pull-right"><a href="/admin/modules/{{$module->alias}}/settings" class="text-muted"><i class="fa fa-gear"></i></a></li>
         </ul>
         <div class="tab-content">
@@ -22,7 +22,7 @@
                                 <tr>
                                     <th>{{trans('admin::base.id')}}</th>
                                     <th>{{trans('admin::base.name')}}</th>
-                                    <th>{{trans('menu::module.menu_items')}}</th>
+                                    <th>{{trans('admin::base.items')}}</th>
                                     <th>{{trans('admin::base.status')}}</th>
                                     <th>{{trans('admin::base.actions')}}</th>
                                 </tr>

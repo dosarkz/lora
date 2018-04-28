@@ -2,7 +2,7 @@
 
 Route::group([
     'prefix' => 'admin',
-    'middleware' => [ 'web'],
+    'middleware' => [ 'web', 'language'],
     'namespace' => 'App\Modules\$module_name$\Http\Controllers'], function () {
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {

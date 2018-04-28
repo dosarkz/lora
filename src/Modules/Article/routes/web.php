@@ -2,7 +2,7 @@
 
 Route::group([
     'prefix' => 'admin',
-    'middleware' => [ 'web'],
+    'middleware' => [ 'web', 'language'],
     'namespace' => 'Dosarkz\Dosmin\Modules\Article\Http\Controllers'], function () {
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {

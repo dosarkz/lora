@@ -55,5 +55,28 @@ class SuperUser extends Authenticatable
         })->first();
     }
 
+    public function getRolesAttribute()
+    {
+        return Role::pluck('name_'.app()->getLocale(), 'id');
+    }
+
+    public function userRoles()
+    {
+        return $this->hasMany(SuperUserRole::class, 'super_user_id');
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->status_id ? $this->statuses[$this->status_id] : trans('admin::base.none');
+    }
+
+    public function getStatusesAttribute()
+    {
+        return [
+            0 => trans('admin::base.deactivate'),
+            1 => trans('admin::base.active')
+        ];
+    }
+
 
 }

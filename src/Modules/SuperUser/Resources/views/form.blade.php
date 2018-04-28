@@ -18,10 +18,10 @@
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="name" class="col-md-4 control-label">Имя</label>
+                    <label for="name" class="col-md-4 control-label">{{trans('admin::base.name')}}</label>
 
                     <div class="col-md-6">
-                        {{Form::text('name', $model->name, ['class' => 'form-control', 'placeholder' => 'name'])}}
+                        {{Form::text('name', $model->name, ['class' => 'form-control', 'placeholder' => trans('admin::base.name')])}}
 
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -34,10 +34,10 @@
 
                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">Логин</label>
+                        <label for="name" class="col-md-4 control-label">{{trans('admin::base.login')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::text('username', $model->username, ['class' => 'form-control', 'placeholder' => 'username'])}}
+                            {{Form::text('username', $model->username, ['class' => 'form-control', 'placeholder' => trans('admin::base.login')])}}
 
                             @if ($errors->has('username'))
                                 <span class="help-block">
@@ -51,15 +51,15 @@
 
                 <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">Роль</label>
+                        <label for="name" class="col-md-4 control-label">{{trans('admin::base.role')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::select('role_id', \Dosarkz\Dosmin\Modules\Role\Models\Role::pluck('name','id'), $model->role_id,
-                            ['class' => 'form-control', 'placeholder' => 'Select role'])}}
+                            {{Form::select('role_id', $model->roles, $model->role_id,
+                            ['class' => 'form-control', 'placeholder' => trans('admin::base.choose')])}}
 
-                            @if ($errors->has('username'))
+                            @if ($errors->has('role_id'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                        <strong>{{ $errors->first('role_id') }}</strong>
                                     </span>
                             @endif
                         </div>
@@ -68,10 +68,10 @@
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="email" class="col-md-4 control-label">Почта</label>
+                    <label for="email" class="col-md-4 control-label">{{trans('admin::base.email')}}</label>
                     <div class="col-md-6">
                         {{Form::text('email', $model->email, ['class' => 'form-control', 'type'=>'email',
-                          'placeholder' => 'email'])}}
+                          'placeholder' => trans('admin::base.email')])}}
 
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -85,7 +85,7 @@
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <div class="row">
-                    <label for="password" class="col-md-4 control-label">Пароль</label>
+                    <label for="password" class="col-md-4 control-label">{{trans('admin::base.password')}}</label>
 
                     <div class="col-md-6">
                         {{Form::password('password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => 'password'])}}
@@ -102,10 +102,10 @@
             <div class="form-group">
 
                <div class="row">
-                   <label for="password-confirm" class="col-md-4 control-label">Подтвержение пароля</label>
+                   <label for="password-confirm" class="col-md-4 control-label">{{trans('admin::base.password_again')}}</label>
 
                    <div class="col-md-6">
-                       {{Form::password('password_confirmation', ['class' => 'form-control', 'type'=>'password', 'placeholder' => 'password confirmation'])}}
+                       {{Form::password('password_confirmation', ['class' => 'form-control', 'type'=>'password', 'placeholder' => trans('admin::base.password_again')])}}
                    </div>
                </div>
 
@@ -113,9 +113,9 @@
 
             <br>
             @if($model->exists)
-                {{ Form::submit('Обновить', ['class' => 'btn btn-primary']) }}
+                {{ Form::submit(trans('admin::base.update'), ['class' => 'btn btn-primary']) }}
             @else
-                {{ Form::submit('Добавить', ['class' => 'btn btn-primary']) }}
+                {{ Form::submit(trans('admin::base.create'), ['class' => 'btn btn-primary']) }}
             @endif
 
                 <a class="btn btn-info" href="{{url()->previous()}}">{{trans('admin::base.back')}}</a>

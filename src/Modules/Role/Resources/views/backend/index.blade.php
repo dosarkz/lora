@@ -3,7 +3,7 @@
 @section('content')
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Роли</a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{$module->name}}</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>{{trans('admin::base.id')}}</th>
                                     <th>{{trans('admin::base.name')}}</th>
-                                    <th>Alias</th>
+                                    <th>{{trans('admin::base.alias')}}</th>
                                     <th>{{trans('admin::base.status')}}</th>
                                     <th>{{trans('admin::base.actions')}}</th>
                                 </tr>

@@ -17,20 +17,23 @@ class ModuleSeeder extends Seeder
         DB::table('roles')->delete();
 
         DB::table('roles')->insert([
-            'name' => 'Администратор',
+            'name_ru' => 'Администратор',
+            'name_en'   =>  'Admin',
             'alias' => 'admin',
             'status_id' => 1
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Менеджер',
+            'name_ru' => 'Менеджер',
+            'name_en'   =>  'Manager',
             'alias' => 'manager',
             'status_id' => 1
         ]);
 
 
         DB::table('roles')->insert([
-            'name' => 'Пользователь',
+            'name_ru' => 'Пользователь',
+            'name_en'   =>  'User',
             'alias' => 'user',
             'status_id' => 1
         ]);

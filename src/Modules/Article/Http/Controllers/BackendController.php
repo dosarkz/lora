@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class BackendController extends CrudController
 {
-
     protected $storeValidationRules = [
         'title' => 'required',
         'short_description'  => 'required',
@@ -24,6 +23,7 @@ class BackendController extends CrudController
         $this->setModel(new Article());
         $this->setViewPath('article::backend');
         $this->setFormUrl('admin/article');
+        $this->setModule('article');
     }
 
     protected function beforeValidate(Request $request)
@@ -49,8 +49,6 @@ class BackendController extends CrudController
             $data['image_id'] = $image->id;
         }
     }
-
-
 
     public function show($alias)
     {
@@ -98,6 +96,6 @@ class BackendController extends CrudController
         $article->image_id = Null;
         $article->save();
 
-        return redirect()->back()->with('success', 'Фото удалено');
+        return redirect()->back()->with('success', trans('admin::base.photo_deleted'));
     }
 }

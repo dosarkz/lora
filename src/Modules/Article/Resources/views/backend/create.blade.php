@@ -2,7 +2,7 @@
 @section('content')
     <div class="box box-body">
         <div class="box-header with-border">
-            <h3 class="box-title">Добавить страницу</h3>
+            <h3 class="box-title">{{trans('admin::base.add')}} {{ucfirst($module->name)}}</h3>
         </div>
 
         @include("{$viewPath}.form")
@@ -24,7 +24,7 @@
             $('#datepicker').datepicker({
                 isRTL: false,
                 format: 'yyyy-mm-dd',
-                language: 'ru',
+                language: '{{app()->getLocale()}}',
                 autoclose: true
             });
         });

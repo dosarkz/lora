@@ -3,7 +3,7 @@
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Список страниц</h3>
+            <h3 class="box-title">{{trans('admin::base.list')}} {{$module->name}}</h3>
         </div>
         @include('admin::modals.modal')
         <div class="row">
@@ -11,11 +11,11 @@
                 <table class="table">
                     <thead class="thead-inverse">
                     <tr>
-                        <th>ID</th>
-                        <th>Название</th>
-                        <th>Публичная ссылка</th>
-                        <th>Статус</th>
-                        <th>Действия</th>
+                        <th>{{trans('admin::base.id')}}</th>
+                        <th>{{trans('admin::base.title')}}</th>
+                        <th>{{{trans('admin::base.url')}}}</th>
+                        <th>{{trans('admin::base.status')}}</th>
+                        <th>{{trans('admin::base.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -2,7 +2,7 @@
 
 Route::group([
     'prefix' => 'admin',
-    'middleware' => [ 'web'],
+    'middleware' => [ 'web', 'language'],
     'namespace' => 'Dosarkz\Dosmin\Controllers'], function () {
 
     Route::get('login','AuthController@showLoginForm')->name('admin.getLogin');

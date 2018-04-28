@@ -48,7 +48,7 @@ class MainController
             auth()->guard('admin')->user()->password = bcrypt($request->input('password'));
             auth()->guard('admin')->user()->save();
 
-            return redirect()->back()->with('success','Пароль успешно обновлен');
+            return redirect()->back()->with('success',trans('admin::base.password_updated'));
         }
 
         if($request->has('image'))
@@ -81,7 +81,13 @@ class MainController
             ]);
         }
 
-        return redirect()->back()->with('success','Настройки успешно обновлены');
+        if($request->has('locale'))
+        {
+            app()->setLocale($request->input('locale'));
+            session()->put('locale', $request->input('locale'));
+        }
+
+        return redirect()->back()->with('success', trans('admin::base.settings_updated'));
     }
 
     public function removeImage()

@@ -1,6 +1,7 @@
 <?php
 namespace Dosarkz\Dosmin\Controllers;
 
+use Dosarkz\Dosmin\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -160,6 +161,34 @@ class CrudController extends Controller
     }
 
     /**
+     * @var
+     */
+    private $module;
+
+    /**
+     * @return mixed
+     */
+    public function getModule()
+    {
+        return $this->module;
+    }
+
+    /**
+     * @param $module_alias
+     */
+    public function setModule($module_alias)
+    {
+        $module =  Module::where('alias', $module_alias)->first();
+
+        if(!$module)
+        {
+            return app()->abort(400, 'Module with slug name [' . $module_alias . '] not found');
+        }
+
+        $this->module = $module;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -170,6 +199,7 @@ class CrudController extends Controller
         $this->modelCondition($model);
         $this->setIndexParams([
             'models' => $model->orderBy('id', 'DESC')->paginate(15),
+            'module'    =>  $this->module,
             'url' => $this->getFormUrl()
         ]);
         return view(sprintf('%s.index', $this->getViewPath()),$this->getIndexParams());
@@ -187,6 +217,7 @@ class CrudController extends Controller
         $this->setIndexParams([
             'model' => $model,
             'url' => $this->getFormUrl(),
+            'module'    =>  $this->module,
             'viewPath' => $this->getViewPath()
         ]);
         return view(sprintf('%s.create', $this->getViewPath()),$this->getIndexParams());
@@ -249,6 +280,7 @@ class CrudController extends Controller
         $this->setShowParams([
             'model' => $model,
             'url' => $this->getFormUrl(),
+            'module'    =>  $this->module,
             'viewPath' => $this->getViewPath()
         ]);
         return view(sprintf('%s.show', $this->getViewPath()),$this->getShowParams());
@@ -270,6 +302,7 @@ class CrudController extends Controller
         $this->setIndexParams([
             'model' => $model,
             'url' => $this->getFormUrl(),
+            'module'    =>  $this->module,
             'viewPath' => $this->getViewPath()
         ]);
         return view(sprintf('%s.edit', $this->getViewPath()),$this->getIndexParams());

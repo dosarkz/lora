@@ -4,7 +4,7 @@
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Пользователи</a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('admin::base.users')}}</a></li>
             <li class="pull-right"><a href="/admin/modules/superUser/settings" class="text-muted"><i class="fa fa-gear"></i></a></li>
         </ul>
         <div class="tab-content">
@@ -23,7 +23,6 @@
                                     <th>{{trans('admin::base.id')}}</th>
                                     <th>{{trans('admin::base.name')}}</th>
                                     <th>{{trans('admin::base.email')}}</th>
-                                    <th>{{trans('admin::base.roles')}}</th>
                                     <th>{{trans('admin::base.status')}}</th>
                                     <th>{{trans('admin::base.actions')}}</th>
                                 </tr>
@@ -35,7 +34,6 @@
                                             <td>{{$item->id}}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>{{ $item->roles }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
 

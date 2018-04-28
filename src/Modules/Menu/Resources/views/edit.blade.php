@@ -2,9 +2,11 @@
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Редактировать menu</h3>
+            <h3 class="box-title">{{trans('admin::base.edit')}} {{ucfirst($module->name)}}</h3>
         </div>
-        @include($module->alias.'::form',compact('model'))
+        <div class="box-body">
+            @include($module->alias.'::form',compact('model'))
+        </div>
     </div>
 @endsection
 

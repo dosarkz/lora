@@ -17,7 +17,9 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->integer('type_id');
             $table->integer('user_id')->nullable();
-            $table->string('name');
+            $table->string('name_ru')->nullable();
+            $table->string('name_en');
+            $table->string('alias')->unique();
             $table->integer('position')->default(0);
             $table->integer('module_id')->nullable();
             $table->integer('status_id');

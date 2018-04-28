@@ -48,7 +48,8 @@ class BackendController extends ModuleController
     {
         $model = $this->getModel()->create($request->all());
 
-        return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
+        return redirect('/admin/' . $this->getModule()->alias)
+            ->with('success', trans('admin::base.resource_created'));
     }
 
     /**
@@ -74,6 +75,7 @@ class BackendController extends ModuleController
 
     /**
      * Update the specified resource in storage.
+     * @param UpdateRoleRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -81,9 +83,9 @@ class BackendController extends ModuleController
     {
         $model = $this->getModel()->findOrFail($id);
 
-        $model->update($request->only('name'));
+        $model->update($request->only('name', 'status_id'));
 
-        return redirect('/admin/' . $this->getModule()->alias)->with('success', 'success');
+        return redirect('/admin/' . $this->getModule()->alias)->with('success', trans('admin::base.resource_updated'));
     }
 
     /**
@@ -94,6 +96,6 @@ class BackendController extends ModuleController
     {
         $model = $this->getModel()->findOrFail($id);
         $model->delete();
-        return redirect()->back()->with('success', 'deleted');
+        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
     }
 }

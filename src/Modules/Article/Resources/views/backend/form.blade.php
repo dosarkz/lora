@@ -12,35 +12,35 @@
         @endif
 
         @if($model->exists)
-            {{ Form::open(array('url' => sprintf('/%s/%s',$url, $model->id),'method'=> 'PUT', 'name'=>'update-vacancy', 'files' => true))}}
+            {{ Form::open(array('url' => sprintf('/%s/%s',$url, $model->id),'method'=> 'PUT', 'name'=>'update-article', 'files' => true))}}
         @else
-            {{ Form::open(array('url' => sprintf('/%s',$url),'method'=> 'POST', 'name'=>'create-vacancy', 'files' => true))}}
+            {{ Form::open(array('url' => sprintf('/%s',$url),'method'=> 'POST', 'name'=>'create-article', 'files' => true))}}
         @endif
 
 
         <div class="box-body">
             <div class="form-group">
-                <label class="control-label" for="title">Название</label>
+                <label class="control-label" for="title">{{trans('admin::base.title')}}</label>
                 {{Form::text('title',$model->title, ['class' => 'form-control','onKeyUp' => 'translit()', 'id'  => 'title']) }}
             </div>
 
 
             <div class="form-group">
-                <label class="control-label" for="title">Дата</label>
+                <label class="control-label" for="title">{{trans('admin::base.date')}}</label>
                 {{Form::text('created_at',$model->created_at, ['id' => 'datepicker','class' => 'form-control']) }}
             </div>
 
             <div class="form-group">
-                <label class="control-label" for="title">Короткое описание</label>
+                <label class="control-label" for="title">{{trans('admin::base.short_description')}}</label>
                 {{Form::textarea('short_description',$model->short_description, ['class' => 'form-control']) }}
             </div>
 
             <div class="form-group">
-                <label class="control-label" for="title">Описание</label>
+                <label class="control-label" for="title">{{trans('admin::base.description')}}</label>
                 {{Form::textarea('description',$model->description, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                <label class="control-label" for="preview">Фото превью</label>
+                <label class="control-label" for="preview">{{trans('admin::base.photo')}}</label>
                 <input type="file" id="image_id" name="image_id">
             </div>
 
@@ -51,28 +51,28 @@
                     <button type="button" class="btn btn-warning remove-image"
                             data-page-id="{{$model->id}}"
                             data-toggle="modal" data-target="#remove-image">
-                        <span  class="glyphicon glyphicon-remove"></span> удалить
+                        <span  class="glyphicon glyphicon-remove"></span> {{trans('admin::base.delete')}}
                     </button>
                 @endif
             @endif
 
             <div class="form-group">
-                <label class="control-label" for="view_path">Представление</label>
+                <label class="control-label" for="view_path">{{trans('admin::base.view')}}</label>
                 {{Form::text('view_path',$model->view_path, ['class' => 'form-control', 'id'  => 'view_path']) }}
             </div>
 
             <div class="form-group">
-                <label class="control-label" for="title">Статус</label>
-                {{Form::select('status_id', [1=> 'Активен', 0 => 'Не активен'],$model->status_id,
-                ['class'   => 'form-control'])}}
+                <label class="control-label" for="title">{{trans('admin::base.status')}}</label>
+                {{Form::select('status_id', $model->statuses,$model->status_id,
+                ['class'   => 'form-control' ,'placeholder' =>  trans('admin::base.choose')])}}
             </div>
             <br>
 
             <div class="form-group">
                 @if($model->exists)
-                    {{ Form::submit('Обновить', ['class' => 'btn btn-primary']) }}
+                    {{ Form::submit(trans('admin::base.update'), ['class' => 'btn btn-primary']) }}
                 @else
-                    {{ Form::submit('Создать', ['class' => 'btn btn-primary']) }}
+                    {{ Form::submit(trans('admin::base.create'), ['class' => 'btn btn-primary']) }}
                 @endif
             </div>
 

@@ -2,9 +2,9 @@
 
 namespace Dosarkz\Dosmin\Modules\Role\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Dosarkz\Dosmin\Models\I18nModel;
 
-class Role extends Model
+class Role extends I18nModel
 {
     const STATUS_DEFAULT = 1;
     /**
@@ -13,9 +13,24 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'alias', 'parent_role_id', 'status_id',
+        'name_ru', 'name_en', 'alias', 'parent_role_id', 'status_id',
     ];
 
     public $timestamps = false;
+
+
+    public function getStatusAttribute()
+    {
+        return array_key_exists($this->status_id, $this->statuses) ? $this->statuses[$this->status_id] : 'none';
+    }
+
+    public function getStatusesAttribute()
+    {
+        return [
+            1   =>  trans('admin::base.default'),
+            2 => trans('admin::base.active'),
+            3   =>  trans('admin::base.deactivate')
+        ];
+    }
 
 }

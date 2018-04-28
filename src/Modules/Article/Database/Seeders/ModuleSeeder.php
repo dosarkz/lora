@@ -36,7 +36,9 @@ class ModuleSeeder extends Seeder
                 ]);
 
         $menu =   Menu::create([
-            'name' => 'Article',
+            'name_ru' => 'Страницы',
+            'name_en'   => 'Articles',
+            'alias' =>  'article',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
             'module_id' => $module->id,
             'status_id' => 1,
@@ -45,6 +47,7 @@ class ModuleSeeder extends Seeder
 
         $MenuItem =  MenuItem::create([
             'title_ru' => 'Страницы',
+            'title_en'  =>  'Articles',
             'url' => '/admin/article',
             'icon' => 'fa-briefcase',
             'position' => 1,
@@ -54,6 +57,7 @@ class ModuleSeeder extends Seeder
 
         MenuItem::create([
             'title_ru' => 'Добавить',
+            'title_en'  =>  'Add',
             'url' => '/admin/article/create',
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
@@ -64,6 +68,7 @@ class ModuleSeeder extends Seeder
 
         MenuItem::create([
             'title_ru' => 'Список',
+            'title_en'  =>  'List',
             'url' => '/admin/article',
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,

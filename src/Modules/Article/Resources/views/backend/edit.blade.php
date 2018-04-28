@@ -2,7 +2,7 @@
 @section('content')
     <div class="box box-body">
         <div class="box-header with-border">
-            <h3 class="box-title">Редактировать страницу</h3>
+            <h3 class="box-title">{{trans('admin::base.edit')}} {{ucfirst($module->name)}}</h3>
         </div>
 
         @include("{$viewPath}.form")

@@ -79,14 +79,14 @@
 
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/admin/settings" class="btn btn-default btn-flat">Настройки</a>
+                                        <a href="/admin/settings" class="btn btn-default btn-flat">{{trans('admin::base.settings')}}</a>
                                     </div>
                                     <div class="pull-right">
                                         @if (auth()->guard('admin')->guest())
-                                            <a class="btn btn-default btn-flat" href="{{ route('admin.getLogin') }}">Войти</a>
+                                            <a class="btn btn-default btn-flat" href="{{ route('admin.getLogin') }}">{{trans('admin::base.sign_in')}}</a>
                                         @else
                                             <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Выйти</a>
+                                        document.getElementById('logout-form').submit();">{{trans('admin::base.log_out')}}</a>
 
                                             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}

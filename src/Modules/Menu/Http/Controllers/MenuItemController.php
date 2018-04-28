@@ -57,7 +57,7 @@ class MenuItemController extends ModuleController
         ]);
 
         $this->getModel()->create($request->all());
-        return redirect()->back()->with('success', 'success');
+        return redirect()->back()->with('success', trans('admin::base.resource_created'));
     }
 
     /**
@@ -97,7 +97,7 @@ class MenuItemController extends ModuleController
 
         $model->update($request->all());
 
-        return redirect()->back()->with('success', 'success');
+        return redirect()->back()->with('success', trans('admin::base.resource_updated'));
     }
 
     /**
@@ -109,6 +109,6 @@ class MenuItemController extends ModuleController
         $model = $this->getModel()->findOrFail($id);
 
         $model->delete();
-        return redirect()->back()->with('success', 'deleted');
+        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
     }
 }
