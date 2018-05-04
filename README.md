@@ -7,6 +7,7 @@ Features:
 - AdminLte template
 - Upload image files with resize
 - Visible modules for role
+- Language support: English, Russian
 
 ## Installation
 
