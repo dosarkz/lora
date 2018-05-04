@@ -36,6 +36,7 @@ class AdminServiceProvider extends ServiceProvider
            // chmod(config_path('admin.php'), 777);
         }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
+        $this->publishes([__DIR__ . '/../resources/views' => public_path('vendor/admin/views')], 'admin');
     }
 
     public function registerRoutes()
@@ -53,7 +54,7 @@ class AdminServiceProvider extends ServiceProvider
 
     public function loadViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'admin');
+        $this->loadViewsFrom(public_path('vendor/admin/views'), 'admin');
     }
 
     public function registerCommands()
