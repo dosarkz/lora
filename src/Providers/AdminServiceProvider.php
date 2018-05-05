@@ -1,4 +1,5 @@
 <?php
+
 namespace Dosarkz\Dosmin\Providers;
 
 use Dosarkz\Dosmin\Commands\AdminInstallCommand;
@@ -30,10 +31,8 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerPublishes()
     {
-        if(!config('admin'))
-        {
-            $this->publishes([ __DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
-           // chmod(config_path('admin.php'), 777);
+        if (!config('admin')) {
+            $this->publishes([__DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
         }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
         $this->publishes([__DIR__ . '/../resources/views' => public_path('vendor/admin/views')], 'admin');
@@ -54,7 +53,14 @@ class AdminServiceProvider extends ServiceProvider
 
     public function loadViews()
     {
-        $this->loadViewsFrom(public_path('vendor/admin/views'), 'admin');
+        if (file_exists(public_path('vendor/admin/views'))) {
+            $path = public_path('vendor/admin/views');
+        } else {
+            // load default layout of repository
+            $path = __DIR__ . '/../resources/views/';
+        }
+
+        $this->loadViewsFrom($path, 'admin');
     }
 
     public function registerCommands()
@@ -100,17 +106,16 @@ class AdminServiceProvider extends ServiceProvider
     public function listModules()
     {
         $modules = [
-            'menu'          =>  Modules\Menu\Providers\MenuServiceProvider::class,
-            'superUser'     =>  Modules\SuperUser\Providers\SuperUserServiceProvider::class,
-            'moduleImage'   => Modules\Image\Providers\ImageServiceProvider::class,
-            'role'          => Modules\Role\Providers\RoleServiceProvider::class,
-            'article'       => Modules\Article\Providers\ArticleServiceProvider::class,
+            'menu' => Modules\Menu\Providers\MenuServiceProvider::class,
+            'superUser' => Modules\SuperUser\Providers\SuperUserServiceProvider::class,
+            'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
+            'role' => Modules\Role\Providers\RoleServiceProvider::class,
+            'article' => Modules\Article\Providers\ArticleServiceProvider::class,
         ];
 
-        if(is_null(config('admin.modules.providers')))
-        {
+        if (is_null(config('admin.modules.providers'))) {
             $config = [];
-        }else{
+        } else {
             $config = config('admin.modules.providers');
         }
 
