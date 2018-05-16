@@ -105,4 +105,20 @@ if ( ! function_exists('trans_url'))
 
         return $result;
     }
+
+    if ( ! function_exists('purify_phone_number'))
+    {
+        function purify_phone_number($dirtyPhone)
+        {
+            $dirtyPhone = preg_replace('/[^0-9]/', '', $dirtyPhone);
+            switch (strlen($dirtyPhone)) {
+                case 11:
+                    return sprintf('7%s', substr($dirtyPhone, -10));
+                case 10:
+                    return sprintf('7%s', $dirtyPhone);
+                default:
+                    return $dirtyPhone;
+            }
+        }
+    }
 }
