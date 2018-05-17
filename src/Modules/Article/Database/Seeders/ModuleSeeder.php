@@ -2,10 +2,10 @@
 namespace App\Modules\Article\Database\Seeders;
 
 use Dosarkz\Dosmin\Models\Module;
-use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuItem;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuRole;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use App\Modules\Menu\Models\Menu;
+use App\Modules\Menu\Models\MenuItem;
+use App\Modules\Menu\Models\MenuRole;
+use App\Modules\Role\Models\Role;
 use Illuminate\Database\Seeder;
 
 class ModuleSeeder extends Seeder

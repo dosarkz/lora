@@ -1,11 +1,11 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Role\Http\Controllers;
+namespace App\Modules\Role\Http\Controllers;
 
 use Dosarkz\Dosmin\Controllers\ModuleController;
-use Dosarkz\Dosmin\Modules\Role\Http\Requests\StoreRoleRequest;
-use Dosarkz\Dosmin\Modules\Role\Http\Requests\UpdateRoleRequest;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use App\Modules\Role\Http\Requests\StoreRoleRequest;
+use App\Modules\Role\Http\Requests\UpdateRoleRequest;
+use App\Modules\Role\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

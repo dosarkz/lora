@@ -1,7 +1,7 @@
 <?php
 namespace Dosarkz\Dosmin\Models;
 
-use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
+use App\Modules\Menu\Models\Menu;
 
 class Module extends I18nModel
 {

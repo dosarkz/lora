@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Http\Requests;
+namespace App\Modules\Menu\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

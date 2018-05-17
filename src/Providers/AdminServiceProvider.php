@@ -5,7 +5,6 @@ namespace Dosarkz\Dosmin\Providers;
 use Dosarkz\Dosmin\Commands\AdminInstallCommand;
 use Dosarkz\Dosmin\Commands\ModuleInstallCommand;
 use Dosarkz\Dosmin\Commands\ModuleMakeCommand;
-use Dosarkz\Dosmin\Modules;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
@@ -36,6 +35,7 @@ class AdminServiceProvider extends ServiceProvider
         }
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
         $this->publishes([__DIR__ . '/../resources/views' => public_path('vendor/admin/views')], 'admin');
+        $this->publishes([__DIR__ . '/../Modules' => app_path('Modules')], 'admin');
     }
 
     public function registerRoutes()
@@ -105,21 +105,13 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function listModules()
     {
-        $modules = [
-            'menu' => Modules\Menu\Providers\MenuServiceProvider::class,
-            'superUser' => Modules\SuperUser\Providers\SuperUserServiceProvider::class,
-            'moduleImage' => Modules\Image\Providers\ImageServiceProvider::class,
-            'role' => Modules\Role\Providers\RoleServiceProvider::class,
-            'article' => Modules\Article\Providers\ArticleServiceProvider::class,
-        ];
-
         if (is_null(config('admin.modules.providers'))) {
             $config = [];
         } else {
             $config = config('admin.modules.providers');
         }
 
-        return array_merge($config, $modules);
+        return $config;
     }
 
     public function registerTranslations()

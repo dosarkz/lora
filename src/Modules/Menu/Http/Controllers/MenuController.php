@@ -1,12 +1,12 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Http\Controllers;
+namespace App\Modules\Menu\Http\Controllers;
 
 use Dosarkz\Dosmin\Controllers\ModuleController;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuRequest;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuRole;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use App\Modules\Menu\Http\Requests\StoreMenuRequest;
+use App\Modules\Menu\Http\Requests\UpdateMenuRequest;
+use App\Modules\Menu\Models\MenuRole;
+use App\Modules\Role\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

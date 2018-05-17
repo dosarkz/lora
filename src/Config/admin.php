@@ -20,7 +20,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => \Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser::class,
+                'model'  => App\Modules\SuperUser\Models\SuperUser::class,
             ],
             'users' => [
                 'driver' => 'eloquent',
@@ -36,7 +36,11 @@ return [
             'lifetime' => 60,
         ],
         'providers' => [
-
+            'menu' => App\Modules\Menu\Providers\MenuServiceProvider::class,
+            'superUser' => App\Modules\SuperUser\Providers\SuperUserServiceProvider::class,
+            'moduleImage' => App\Modules\Image\Providers\ImageServiceProvider::class,
+            'role' => App\Modules\Role\Providers\RoleServiceProvider::class,
+            'article' => App\Modules\Article\Providers\ArticleServiceProvider::class,
         ]
     ]
 

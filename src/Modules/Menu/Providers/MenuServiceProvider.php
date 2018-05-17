@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Providers;
+namespace App\Modules\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;

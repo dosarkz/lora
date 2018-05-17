@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Models;
+namespace App\Modules\Menu\Models;
 
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
+use App\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Database\Eloquent\Model;
 
 class MenuRole extends Model

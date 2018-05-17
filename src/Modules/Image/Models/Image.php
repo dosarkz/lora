@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Image\Models;
+namespace App\Modules\Image\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

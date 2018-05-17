@@ -1,9 +1,9 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Article\Http\Controllers;
+namespace App\Modules\Article\Http\Controllers;
 
 use Dosarkz\Dosmin\Controllers\ModuleController;
-use Dosarkz\Dosmin\Modules\Article\Models\Article;
+use App\Modules\Article\Models\Article;
 
 class FrontendController extends ModuleController
 {

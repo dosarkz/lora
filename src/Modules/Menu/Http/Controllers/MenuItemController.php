@@ -1,14 +1,14 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Http\Controllers;
+namespace App\Modules\Menu\Http\Controllers;
 
 use Dosarkz\Dosmin\Controllers\ModuleController;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuItemRequest;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\StoreMenuRequest;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuItemRequest;
-use Dosarkz\Dosmin\Modules\Menu\Http\Requests\UpdateMenuRequest;
-use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuItem;
+use App\Modules\Menu\Http\Requests\StoreMenuItemRequest;
+use App\Modules\Menu\Http\Requests\StoreMenuRequest;
+use App\Modules\Menu\Http\Requests\UpdateMenuItemRequest;
+use App\Modules\Menu\Http\Requests\UpdateMenuRequest;
+use App\Modules\Menu\Models\Menu;
+use App\Modules\Menu\Models\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

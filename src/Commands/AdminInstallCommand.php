@@ -2,9 +2,9 @@
 
 namespace Dosarkz\Dosmin\Commands;
 
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
+use App\Modules\SuperUser\Models\SuperUser;
+use App\Modules\Role\Models\Role;
+use App\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -98,13 +98,13 @@ class AdminInstallCommand extends Command
     public function databaseSeeder()
     {
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\Dosmin\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
+            '--class' => 'App\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
         ]);
         $this->call('db:seed', [
             '--class' => 'Dosarkz\\Dosmin\\Database\\Seeders\\ModulesSeeder'
         ]);
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\Dosmin\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
+            '--class' => 'App\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
         ]);
 
     }

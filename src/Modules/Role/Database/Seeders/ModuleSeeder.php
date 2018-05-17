@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Modules\Role\Database\Seeders;
+namespace App\Modules\Role\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

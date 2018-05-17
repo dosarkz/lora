@@ -1,9 +1,9 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Article\Models;
+namespace App\Modules\Article\Models;
 
 use Dosarkz\Dosmin\Models\I18nModel;
-use Dosarkz\Dosmin\Modules\Image\Models\Image;
+use App\Modules\Image\Models\Image;
 
 class Article extends I18nModel
 {

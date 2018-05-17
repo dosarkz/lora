@@ -1,10 +1,10 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Article\Http\Controllers;
+namespace App\Modules\Article\Http\Controllers;
 
 use Dosarkz\Dosmin\Controllers\CrudController;
-use Dosarkz\Dosmin\Modules\Article\Models\Article;
-use Dosarkz\Dosmin\Modules\Image\Models\Image;
+use App\Modules\Article\Models\Article;
+use App\Modules\Image\Models\Image;
 use Dosarkz\LaravelUploader\BaseUploader;
 use Illuminate\Http\Request;
 

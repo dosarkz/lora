@@ -1,8 +1,8 @@
 <?php namespace Dosarkz\Dosmin\Controllers;
 
 use Dosarkz\Dosmin\Models\Module;
-use Dosarkz\Dosmin\Modules\Image\Models\Image;
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
+use App\Modules\Image\Models\Image;
+use App\Modules\SuperUser\Models\SuperUser;
 use Dosarkz\Dosmin\Requests\PostSettingRequest;
 use Dosarkz\Dosmin\Requests\ResetPasswordRequest;
 use Dosarkz\LaravelUploader\BaseUploader;

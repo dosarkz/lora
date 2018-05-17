@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Role\Models;
+namespace App\Modules\Role\Models;
 
 use Dosarkz\Dosmin\Models\I18nModel;
 
@@ -28,7 +28,7 @@ class Role extends I18nModel
     {
         return [
             1   =>  trans('admin::base.default'),
-            2 => trans('admin::base.active'),
+            2   => trans('admin::base.active'),
             3   =>  trans('admin::base.deactivate')
         ];
     }

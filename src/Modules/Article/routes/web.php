@@ -3,7 +3,7 @@
 Route::group([
     'prefix' => 'admin',
     'middleware' => [ 'web', 'language'],
-    'namespace' => 'Dosarkz\Dosmin\Modules\Article\Http\Controllers'], function () {
+    'namespace' => 'App\Modules\Article\Http\Controllers'], function () {
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::resource('article','BackendController');
@@ -13,7 +13,7 @@ Route::group([
 
 Route::group([
     'middleware' => [ 'web'],
-    'namespace' => 'Dosarkz\Dosmin\Modules\Article\Http\Controllers'], function () {
+    'namespace' => 'App\Modules\Article\Http\Controllers'], function () {
     Route::group([
         'prefix' => 'article',
     ], function () {

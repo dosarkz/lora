@@ -4,7 +4,7 @@ namespace Dosarkz\Dosmin\Controllers;
 use App\Http\Controllers\Controller;
 use Dosarkz\Dosmin\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
+use App\Modules\SuperUser\Models\SuperUser;
 
 class AuthController extends Controller
 {

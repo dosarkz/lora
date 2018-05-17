@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\SuperUser\Models;
+namespace App\Modules\SuperUser\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

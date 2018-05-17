@@ -1,9 +1,9 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\SuperUser\Models;
+namespace App\Modules\SuperUser\Models;
 
-use Dosarkz\Dosmin\Modules\Image\Models\Image;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use App\Modules\Image\Models\Image;
+use App\Modules\Role\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

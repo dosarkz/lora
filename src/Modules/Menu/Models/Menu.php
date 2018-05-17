@@ -1,6 +1,6 @@
 <?php
 
-namespace Dosarkz\Dosmin\Modules\Menu\Models;
+namespace App\Modules\Menu\Models;
 
 use Dosarkz\Dosmin\Models\I18nModel;
 use Dosarkz\Dosmin\Models\Module;
