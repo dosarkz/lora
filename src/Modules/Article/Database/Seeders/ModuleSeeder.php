@@ -17,7 +17,7 @@ class ModuleSeeder extends Seeder
      */
     public function run()
     {
-        if($menu = Menu::where('name', 'Article')->first())
+        if($menu = Menu::where('alias', 'article')->first())
         {
             $menu->menuItems()->delete();
             $menu->menuRoles()->delete();
@@ -31,7 +31,7 @@ class ModuleSeeder extends Seeder
                     'description_ru' => 'Article',
                     'description_en' => 'Article',
                     'version' =>  0.01,
-                    'status_id' => Module::STATUS_NEW,
+                    'status_id' => Module::STATUS_ACTIVE,
                     'alias' => strtolower('Article'),
                 ]);
 

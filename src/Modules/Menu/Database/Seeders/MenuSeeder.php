@@ -71,6 +71,7 @@ class MenuSeeder extends Seeder
             'name_en'   =>  'Modules',
             'alias' =>  'modules',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
+            'module_id' =>  1,
             'status_id' => 1,
             'position'  => 3,
         ]);
@@ -93,6 +94,7 @@ class MenuSeeder extends Seeder
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
             'status_id' => 1,
             'position'  => 1,
+            'module_id' =>  1,
         ]);
 
 

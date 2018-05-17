@@ -58,7 +58,18 @@ class Menu extends I18nModel
             $dubQuery->whereHas('superUserRoles',function($userQuery){
                 $userQuery->where('super_user_id', auth()->guard('admin')->user()->id);
             });
+        })->whereHas('module', function($moduleQuery)
+        {
+            $moduleQuery->where(function($query)
+            {
+                $query->where('status_id', Module::STATUS_ACTIVE);
+            });
         });
+    }
+
+    public function module()
+    {
+        return $this->belongsTo(Module::class, 'module_id');
     }
 
     public function menuRoles()

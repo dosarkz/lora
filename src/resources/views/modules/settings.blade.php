@@ -1,5 +1,4 @@
 @extends('admin::layouts.app')
-@section('title_page')Modules @endsection
 @section('content')
     <div class="col-md-12">
         <div class="box box-primary">
@@ -15,21 +14,24 @@
                     {{ Form::open(array('url' => '/admin/modules','method'=> 'POST', 'name'=>'post-modules','files' => true))}}
                 @endif
 
-                <div class="form-group{{ $errors->has('menu_active') ? ' has-error' : '' }}">
-                    <div class="row">
-                        <label for="menu_active" class="col-md-4 control-label">{{trans('admin::base.show_in_menu')}}</label>
+                @if($model->isNotDefault)
+                        <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
+                            <div class="row">
+                                <label for="menu_active" class="col-md-4 control-label">{{trans('admin::base.status')}}</label>
 
-                        <div class="col-md-6">
-                            {{Form::checkbox('menu_active',null, $model->menu_active, ['id' => 'menu_active'])}}
+                                <div class="col-md-6">
+                                    {{Form::select('status_id',$model->statuses, $model->status_id, ['id' => 'status_id',
+                                    'placeholder' => trans('admin::base.choose')])}}
 
-                            @if ($errors->has('menu_active'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('menu_active') }}</strong>
-                                    </span>
-                            @endif
+                                    @if ($errors->has('status_id'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('status_id') }}</strong>
+                                </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                @endif
 
                 <br>
                 @if($model->exists)
