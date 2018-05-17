@@ -2,7 +2,10 @@
 
 namespace App\Modules\Role\Models;
 
+use App\Modules\Menu\Models\Menu;
 use Dosarkz\Dosmin\Models\I18nModel;
+use Dosarkz\Dosmin\Models\Module;
+use Illuminate\Database\Eloquent\Collection;
 
 class Role extends I18nModel
 {
@@ -31,6 +34,16 @@ class Role extends I18nModel
             2   => trans('admin::base.active'),
             3   =>  trans('admin::base.deactivate')
         ];
+    }
+
+    public function getMenusAttribute() : Collection
+    {
+        return Menu::where('status_id', Menu::STATUS_ACTIVE)->get();
+    }
+
+    public function getModulesAttribute(): Collection
+    {
+        return Module::where('status_id', Module::STATUS_ACTIVE)->get();
     }
 
 }

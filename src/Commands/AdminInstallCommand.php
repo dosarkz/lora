@@ -79,6 +79,9 @@ class AdminInstallCommand extends Command
 
     public function createSuperUser()
     {
+        DB::table('super_users')->truncate();
+        DB::table('super_users')->delete();
+
         $data['username']     = $this->ask('Administrator login', 'admin');
         $data['name'] = $this->ask('Admin name', 'Admin');
         $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');

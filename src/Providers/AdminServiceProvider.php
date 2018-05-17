@@ -99,6 +99,10 @@ class AdminServiceProvider extends ServiceProvider
         $this->registerCommands();
 
         foreach ($this->listModules() as $module_name => $baseModule) {
+            if(!file_exists(base_path($baseModule.".php")))
+            {
+                continue;
+            }
             $this->app->register($baseModule);
         }
         $this->app->register(HelperServiceProvider::class);

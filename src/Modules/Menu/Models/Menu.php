@@ -8,6 +8,8 @@ use Dosarkz\Dosmin\Models\Module;
 class Menu extends I18nModel
 {
     const TYPE_LEFT_SIDE_MENU = 1;
+    const STATUS_ACTIVE = 1;
+    const STATUS_DISABLE = 0;
     /**
      * The attributes that are mass assignable.
      *
@@ -38,8 +40,8 @@ class Menu extends I18nModel
     public function getStatusesAttribute()
     {
         return [
-            0 => trans('admin::base.deactivate'),
-            1 => trans('admin::base.active')
+            self::STATUS_DISABLE => trans('admin::base.deactivate'),
+            self::STATUS_ACTIVE => trans('admin::base.active')
         ];
     }
     public function menuItems()
@@ -57,12 +59,6 @@ class Menu extends I18nModel
         return $query->whereHas('menuRoles', function($dubQuery){
             $dubQuery->whereHas('superUserRoles',function($userQuery){
                 $userQuery->where('super_user_id', auth()->guard('admin')->user()->id);
-            });
-        })->whereHas('module', function($moduleQuery)
-        {
-            $moduleQuery->where(function($query)
-            {
-                $query->where('status_id', Module::STATUS_ACTIVE);
             });
         });
     }

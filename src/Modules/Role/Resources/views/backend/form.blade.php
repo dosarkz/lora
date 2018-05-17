@@ -82,6 +82,56 @@
             </div>
         </div>
 
+        <h3>Права доступа</h3>
+        <div class="form-group well">
+            <div class="row">
+                <fieldset class="col-md-12">
+                    <legend>Меню</legend>
+
+                    @foreach($model->menus as $menu)
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="menu-{{$menu->alias}}" class="col-md-4 control-label">{{$menu->name}}</label>
+                                <div class="col-md-6">
+                                    @if($menu->usedByRole)
+                                        {{Form::checkbox('menus['.$menu->id.']', true, true, ['id' => 'menu-'.$menu->alias])}}
+                                    @else
+                                        {{Form::checkbox('menus['.$menu->id.']', false, false, ['id' => 'menu-'.$menu->alias])}}
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </fieldset>
+
+                <fieldset class="col-md-12">
+                    <legend>Модули</legend>
+
+                    @foreach($model->modules as $item)
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="module-{{$item->alias}}" class="col-md-4 control-label">{{$item->name}}</label>
+                                <div class="col-md-6">
+                                    @if($item->usedByRole)
+                                        {{Form::checkbox('modules['.$item->id.']', true, true, ['id' => 'module-'.$item->alias])}}
+                                    @else
+                                        {{Form::checkbox('modules['.$item->id.']', false, false, ['id' => 'module-'.$item->alias])}}
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </fieldset>
+
+
+            </div>
+        </div>
+
+
         <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
             <div class="row">
                 <label for="name" class="col-md-4 control-label">{{trans('admin::base.status')}}</label>

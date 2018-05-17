@@ -17,8 +17,8 @@ class ModulesSeeder extends Seeder
         DB::table('modules')->delete();
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль супер пользователя',
-            'name_en' => 'Super User module',
+            'name_ru' => 'Суперпользователи',
+            'name_en' => 'Super User',
             'menu_active' => true,
             'description_ru' => 'Модуль для управления админами',
             'description_en' => 'The module to manage Super users',
@@ -29,8 +29,8 @@ class ModulesSeeder extends Seeder
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль ролей',
-            'name_en' => 'Roles module',
+            'name_ru' => 'Роли',
+            'name_en' => 'Roles',
             'menu_active' => true,
             'description_ru' => 'Модуль для управления ролями',
             'description_en' => 'The module to manage Roles',
@@ -41,8 +41,8 @@ class ModulesSeeder extends Seeder
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль изображении',
-            'name_en' => 'Image module',
+            'name_ru' => 'Фото',
+            'name_en' => 'Image',
             'menu_active' => true,
             'description_ru' => 'Модуль для управления изображениями',
             'description_en' => 'The module to manage Image',
@@ -53,8 +53,8 @@ class ModulesSeeder extends Seeder
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль меню',
-            'name_en' => 'Menu module',
+            'name_ru' => 'Меню',
+            'name_en' => 'Menu',
             'menu_active' => true,
             'description_ru' => 'Модуль для управления меню',
             'description_en' => 'The module to manage Menu',
@@ -65,8 +65,8 @@ class ModulesSeeder extends Seeder
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' =>  'Модуль Страницы',
-            'name_en' => 'Article Module',
+            'name_ru' =>  'Страницы',
+            'name_en' => 'Article',
             'menu_active' => true,
             'description_ru' => 'Article',
             'description_en' => 'Article',

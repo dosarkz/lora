@@ -8,7 +8,7 @@ class Module extends I18nModel
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLE = 2;
 
-    private  function listDefaultModules()
+    private function listDefaultModules()
     {
         return ['superUser','menu', 'role'];
     }

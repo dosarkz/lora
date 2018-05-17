@@ -24,23 +24,12 @@ class ModuleSeeder extends Seeder
             $menu->delete();
         }
 
-        $module =   Module::firstOrCreate([
-                    'name_ru' =>  'Страницы',
-                    'name_en' => 'Article',
-                    'menu_active' => true,
-                    'description_ru' => 'Article',
-                    'description_en' => 'Article',
-                    'version' =>  0.01,
-                    'status_id' => Module::STATUS_ACTIVE,
-                    'alias' => strtolower('Article'),
-                ]);
-
         $menu =   Menu::create([
-            'name_ru' => 'Страницы',
-            'name_en'   => 'Articles',
-            'alias' =>  'article',
+            'name_ru'   =>  'Страницы',
+            'name_en' => 'Articles',
+            'alias' =>  'articles',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
-            'module_id' => $module->id,
+            'module_id' => Module::where('alias', 'article')->first()->id ?? null,
             'status_id' => 1,
             'position'  => 2,
         ]);
@@ -49,7 +38,7 @@ class ModuleSeeder extends Seeder
             'title_ru' => 'Страницы',
             'title_en'  =>  'Articles',
             'url' => '/admin/article',
-            'icon' => 'fa-briefcase',
+            'icon' => 'fa-file-text-o',
             'position' => 1,
             'menu_id' => $menu->id,
             'status_id' => 1
@@ -81,11 +70,5 @@ class ModuleSeeder extends Seeder
             'role_id' => Role::where('alias', 'admin')->first()->id,
             'menu_id'   => $menu->id,
         ]);
-
-        MenuRole::create([
-            'role_id' => Role::where('alias', 'manager')->first()->id,
-            'menu_id'   => $menu->id,
-        ]);
-
     }
 }
