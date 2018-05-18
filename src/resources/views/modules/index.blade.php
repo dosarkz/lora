@@ -20,8 +20,6 @@
                     <span class="info-box-icon bg-aqua"><i class="fa fa-th-large"></i></span>
 
                     <div class="info-box-content">
-                        <a href="/admin/modules/{{$module->alias}}/settings">{{__('admin::base.settings')}}</a>
-                        <span class="info-box-number"></span>
                     </div>
                     <!-- /.info-box-content -->
 

@@ -46,10 +46,10 @@ class ImageServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/moduleImage.php' => config_path('moduleImage.php'),
-        ], 'moduleImage');
+            __DIR__.'/../Config/image.php' => config_path('image.php'),
+        ], 'image');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/moduleImage.php', 'moduleImage'
+            __DIR__.'/../Config/image.php', 'image'
         );
     }
 
@@ -60,7 +60,7 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'moduleImage');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views/', 'image');
     }
 
     /**
@@ -70,7 +70,7 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'moduleImage');
+        $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'image');
     }
 
     /**

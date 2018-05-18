@@ -2,13 +2,14 @@
 namespace Dosarkz\Dosmin\Models;
 
 use App\Modules\Menu\Models\Menu;
+use App\Modules\Role\Models\RoleModule;
 
 class Module extends I18nModel
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLE = 2;
 
-    private function listDefaultModules()
+    private  function listDefaultModules()
     {
         return ['superUser','menu', 'role'];
     }
@@ -34,6 +35,11 @@ class Module extends I18nModel
     public function getIsNotDefaultAttribute()
     {
         return !in_array($this->alias, $this->listDefaultModules());
+    }
+
+    public function hasRoleModule($role_id)
+    {
+        return RoleModule::where('role_id', $role_id)->where('module_id', $this->id)->first();
     }
 
 

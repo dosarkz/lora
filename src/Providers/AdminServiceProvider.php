@@ -34,12 +34,14 @@ class AdminServiceProvider extends ServiceProvider
 
     public function registerPublishes()
     {
-        if (!config('admin')) {
-            $this->publishes([__DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'admin');
-        }
+        $this->publishes([__DIR__ . '/../Config/admin.php' => config_path('admin.php')], 'config_admin_file');
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('vendor/admin')], 'admin');
         $this->publishes([__DIR__ . '/../resources/views' => public_path('vendor/admin/views')], 'admin');
-        $this->publishes([__DIR__ . '/../Modules' => app_path('Modules')], 'admin');
+        $this->publishes([__DIR__ . '/../Modules/SuperUser' => app_path('Modules/SuperUser')], 'super_user_module');
+        $this->publishes([__DIR__ . '/../Modules/Role' => app_path('Modules/Role')], 'role_module');
+        $this->publishes([__DIR__ . '/../Modules/Menu' => app_path('Modules/Menu')], 'menu_module');
+        $this->publishes([__DIR__ . '/../Modules/Image' => app_path('Modules/Image')], 'image_module');
+        $this->publishes([__DIR__ . '/../Modules/Article' => app_path('Modules/Article')], 'article_module');
     }
 
     public function registerRoutes()
@@ -97,9 +99,9 @@ class AdminServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerCommands();
-
         foreach ($this->listModules() as $module_name => $baseModule) {
-            if(!file_exists(base_path($baseModule.".php")))
+
+            if(!file_exists(app_path('Modules/'.ucfirst($module_name))))
             {
                 continue;
             }

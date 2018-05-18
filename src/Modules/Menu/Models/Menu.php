@@ -2,6 +2,7 @@
 
 namespace App\Modules\Menu\Models;
 
+use App\Modules\Role\Models\Role;
 use Dosarkz\Dosmin\Models\I18nModel;
 use Dosarkz\Dosmin\Models\Module;
 
@@ -71,6 +72,11 @@ class Menu extends I18nModel
     public function menuRoles()
     {
         return $this->hasMany(MenuRole::class, 'menu_id');
+    }
+
+    public function menuRole($role_id)
+    {
+        return MenuRole::where('role_id', $role_id)->where('menu_id', $this->id)->first();
     }
 
 }

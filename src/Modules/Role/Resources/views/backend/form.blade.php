@@ -93,12 +93,8 @@
                             <div class="row">
                                 <label for="menu-{{$menu->alias}}" class="col-md-4 control-label">{{$menu->name}}</label>
                                 <div class="col-md-6">
-                                    @if($menu->usedByRole)
-                                        {{Form::checkbox('menus['.$menu->id.']', true, true, ['id' => 'menu-'.$menu->alias])}}
-                                    @else
-                                        {{Form::checkbox('menus['.$menu->id.']', false, false, ['id' => 'menu-'.$menu->alias])}}
-                                    @endif
-
+                                    {{Form::checkbox('menuRole[]', $menu->id,
+                                    $menu->menuRole($model->id) ? true: false, ['id' => 'menu-'.$menu->alias])}}
                                 </div>
                             </div>
                         </div>
@@ -114,11 +110,8 @@
                             <div class="row">
                                 <label for="module-{{$item->alias}}" class="col-md-4 control-label">{{$item->name}}</label>
                                 <div class="col-md-6">
-                                    @if($item->usedByRole)
-                                        {{Form::checkbox('modules['.$item->id.']', true, true, ['id' => 'module-'.$item->alias])}}
-                                    @else
-                                        {{Form::checkbox('modules['.$item->id.']', false, false, ['id' => 'module-'.$item->alias])}}
-                                    @endif
+                                    {{Form::checkbox('roleModules[]', $item->id,
+                                      $item->hasRoleModule($model->id) ? true: false, ['id' => 'module-'.$item->alias])}}
 
                                 </div>
                             </div>

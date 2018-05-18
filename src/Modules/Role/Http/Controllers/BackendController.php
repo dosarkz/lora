@@ -2,6 +2,8 @@
 
 namespace App\Modules\Role\Http\Controllers;
 
+use App\Modules\Menu\Models\MenuRole;
+use App\Modules\Role\Models\RoleModule;
 use Dosarkz\Dosmin\Controllers\ModuleController;
 use App\Modules\Role\Http\Requests\StoreRoleRequest;
 use App\Modules\Role\Http\Requests\UpdateRoleRequest;
@@ -48,6 +50,41 @@ class BackendController extends ModuleController
     {
         $model = $this->getModel()->create($request->all());
 
+        if($request->has('menuRole'))
+        {
+            foreach ($request->input('menuRole') as  $item) {
+                MenuRole::firstOrCreate([
+                    'menu_id' => $item,
+                    'role_id' => $model->id
+                ]);
+            }
+
+            foreach ($model->roleMenus as $roleMenu) {
+                if (!in_array($roleMenu->menu_id, request()->input('menuRole'))) {
+                    $roleMenu->delete();
+                }
+            }
+        }
+
+        if($request->has('roleModules'))
+        {
+            foreach ($request->input('roleModules') as  $item) {
+                RoleModule::firstOrCreate([
+                    'module_id' => $item,
+                    'role_id' => $model->id
+                ]);
+            }
+
+            foreach ($model->roleModules as $roleModule) {
+                if (!in_array($roleModule->module_id, request()->input('roleModules'))) {
+                    $roleModule->delete();
+                }
+            }
+        }
+
+
+
+
         return redirect('/admin/' . $this->getModule()->alias)
             ->with('success', trans('admin::base.resource_created'));
     }
@@ -82,6 +119,39 @@ class BackendController extends ModuleController
     public function update(UpdateRoleRequest $request, $id)
     {
         $model = $this->getModel()->findOrFail($id);
+
+        if($request->has('menuRole'))
+        {
+            foreach ($request->input('menuRole') as  $item) {
+                MenuRole::firstOrCreate([
+                    'menu_id' => $item,
+                    'role_id' => $model->id
+                ]);
+            }
+
+            foreach ($model->roleMenus as $roleMenu) {
+                if (!in_array($roleMenu->menu_id, request()->input('menuRole'))) {
+                    $roleMenu->delete();
+                }
+            }
+        }
+
+        if($request->has('roleModules'))
+        {
+            foreach ($request->input('roleModules') as  $item) {
+                RoleModule::firstOrCreate([
+                    'module_id' => $item,
+                    'role_id' => $model->id,
+                    'status_id' => RoleModule::STATUS_ACTIVE,
+                ]);
+            }
+
+            foreach ($model->roleModules as $roleModule) {
+                if (!in_array($roleModule->module_id, request()->input('roleModules'))) {
+                    $roleModule->delete();
+                }
+            }
+        }
 
         $model->update($request->only('name', 'status_id'));
 

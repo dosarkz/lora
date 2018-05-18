@@ -48,7 +48,7 @@ class ModulesSeeder extends Seeder
             'description_en' => 'The module to manage Image',
             'version' =>  0.01,
             'status_id' => 1,
-            'alias' => 'moduleImage',
+            'alias' => 'image',
             'installed' => true,
         ]);
 

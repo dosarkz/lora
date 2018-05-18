@@ -2,9 +2,13 @@
 
 namespace Dosarkz\Dosmin\Commands;
 
+use App\Modules\Article\Providers\ArticleServiceProvider;
+use App\Modules\Menu\Providers\MenuServiceProvider;
+use App\Modules\Role\Providers\RoleServiceProvider;
 use App\Modules\SuperUser\Models\SuperUser;
 use App\Modules\Role\Models\Role;
 use App\Modules\SuperUser\Models\SuperUserRole;
+use App\Modules\SuperUser\Providers\SuperUserServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -70,10 +74,90 @@ class AdminInstallCommand extends Command
      */
     public function publishFiles()
     {
-        $this->callSilent('vendor:publish', [
-            '--tag'   => ['admin'],
-            '--force' => true
-        ]);
+        $tags = [];
+
+        if (!config('admin')) {
+            $tags[] = 'config_admin_file';
+        }else{
+            $this->info("Config admin file already installed");
+            if($this->confirm('Do you need update a file?'))
+            {
+                $tags[] = 'config_admin_file';
+            }
+        }
+
+        if(is_dir(public_path('vendor/admin')))
+        {
+            $this->info("Admin assets already installed");
+            if($this->confirm('Do you need update assets of admin plugins?'))
+            {
+                $tags[] = 'admin';
+            }
+        }
+
+        if(is_dir(app_path('Modules/SuperUser')))
+        {
+            $this->info("Super User module already installed");
+            if($this->confirm('Do you need install again Super User?'))
+            {
+                $tags[] = 'super_user_module';
+            }
+        }else{
+            $tags[] = 'super_user_module';
+        }
+
+        if(is_dir(app_path('Modules/Menu')))
+        {
+            $this->info("Menu module already installed");
+            if($this->confirm('Do you need install again Menu?'))
+            {
+                $tags[] = 'menu_module';
+            }
+        }else{
+            $tags[] = 'menu_module';
+        }
+
+        if(is_dir(app_path('Modules/Role')))
+        {
+            $this->info("Role module already installed");
+            if($this->confirm('Do you need install again Role?'))
+            {
+                $tags[] = 'role_module';
+            }
+        }else{
+            $tags[] = 'role_module';
+        }
+
+        if(is_dir(app_path('Modules/Article')))
+        {
+            $this->info("Article module already installed");
+            if($this->confirm('Do you need install again Article?'))
+            {
+                $tags[] = 'article_module';
+            }
+        }else{
+            $tags[] = 'article_module';
+        }
+
+        if(is_dir(app_path('Modules/Image')))
+        {
+            $this->info("Image module already installed");
+            if($this->confirm('Do you need install again Image?'))
+            {
+                $tags[] = 'image_module';
+            }
+        }else{
+            $tags[] = 'image_module';
+        }
+
+        if(count($tags) > 0)
+        {
+            $this->call('vendor:publish', [
+                '--tag'   => $tags,
+                '--force' => true
+            ]);
+        }
+
         $this->info('Publish vendor was transferred successfully');
     }
 

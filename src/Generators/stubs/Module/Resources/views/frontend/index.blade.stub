@@ -2,5 +2,5 @@
 
 @section('content')
     <h3>This is default frontend page index $module_name$ module</h3>
-    <p>You cat edit this page in {{request()->route()->getActionName()}}</p>
+    <p>You can edit this page in {{request()->route()->getActionName()}}</p>
 @endsection

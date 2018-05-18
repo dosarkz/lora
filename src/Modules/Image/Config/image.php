@@ -2,7 +2,7 @@
 
 return [
     'module' => [
-        'alias' => 'moduleImage'
+        'alias' => 'image'
     ],
     'admin' => [
         'model' => \App\Modules\Image\Models\Image::class,

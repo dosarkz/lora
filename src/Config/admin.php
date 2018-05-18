@@ -38,7 +38,7 @@ return [
         'providers' => [
             'menu' => App\Modules\Menu\Providers\MenuServiceProvider::class,
             'superUser' => App\Modules\SuperUser\Providers\SuperUserServiceProvider::class,
-            'moduleImage' => App\Modules\Image\Providers\ImageServiceProvider::class,
+            'image' => App\Modules\Image\Providers\ImageServiceProvider::class,
             'role' => App\Modules\Role\Providers\RoleServiceProvider::class,
             'article' => App\Modules\Article\Providers\ArticleServiceProvider::class,
         ]

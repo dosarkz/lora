@@ -25,15 +25,18 @@ class ModuleSeeder extends Seeder
         }
 
         $module =   Module::firstOrCreate([
-                    'name_ru' =>  '$module_name$',
-                    'name_en' => '$module_name$',
-                    'menu_active' => true,
-                    'description_ru' => '$module_name$',
-                    'description_en' => '$module_name$',
-                    'version' =>  0.01,
-                    'status_id' => Module::STATUS_NEW,
-                    'alias' => lcfirst('$module_name$'),
-                ]);
+            'alias' => lcfirst('$module_name$'),
+        ]);
+
+        $module->update([
+            'name_ru' =>  '$module_name$',
+            'name_en' => '$module_name$',
+            'menu_active' => true,
+            'description_ru' => '$module_name$',
+            'description_en' => '$module_name$',
+            'version' =>  0.01,
+            'status_id' => Module::STATUS_ACTIVE,
+         ]);
 
         $menu =   Menu::create([
             'name_ru' => '$module_name$',

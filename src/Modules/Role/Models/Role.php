@@ -3,6 +3,7 @@
 namespace App\Modules\Role\Models;
 
 use App\Modules\Menu\Models\Menu;
+use App\Modules\Menu\Models\MenuRole;
 use Dosarkz\Dosmin\Models\I18nModel;
 use Dosarkz\Dosmin\Models\Module;
 use Illuminate\Database\Eloquent\Collection;
@@ -44,6 +45,16 @@ class Role extends I18nModel
     public function getModulesAttribute(): Collection
     {
         return Module::where('status_id', Module::STATUS_ACTIVE)->get();
+    }
+
+    public function roleMenus()
+    {
+        return $this->hasMany(MenuRole::class, 'role_id');
+    }
+
+    public function roleModules()
+    {
+        return $this->hasMany(RoleModule::class, 'role_id');
     }
 
 }

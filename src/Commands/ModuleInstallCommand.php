@@ -66,7 +66,7 @@ class ModuleInstallCommand extends Command
                     'description_ru' => $this->argument('module'),
                     'description_en' => $this->argument('module'),
                     'version' =>  0.01,
-                    'status_id' => Module::STATUS_NEW,
+                    'status_id' => Module::STATUS_ACTIVE,
                     'alias' => lcfirst($this->argument('module')),
                     'installed' => true,
                 ]);
