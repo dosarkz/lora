@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'name' => 'Admin panel',
+    'debug' =>  false,
+    'name' => 'Dosmin',
     'auth' => [
         'guards' => [
             'web' => [

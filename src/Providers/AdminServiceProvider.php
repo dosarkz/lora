@@ -13,10 +13,6 @@ use Illuminate\Support\ServiceProvider;
 class AdminServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
-     */
-    private $debug = true;
-    /**
      * @param Router $router
      */
     public function boot(Router $router)
@@ -59,7 +55,7 @@ class AdminServiceProvider extends ServiceProvider
 
     public function loadViews()
     {
-        if (file_exists(public_path('vendor/admin/views')) && !$this->debug) {
+        if (file_exists(public_path('vendor/admin/views'))) {
             $path = public_path('vendor/admin/views');
         } else {
             // load default layout of repository
