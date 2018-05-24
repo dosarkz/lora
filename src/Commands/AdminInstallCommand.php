@@ -93,6 +93,8 @@ class AdminInstallCommand extends Command
             {
                 $tags[] = 'admin';
             }
+        }else{
+            $tags[] = 'admin';
         }
 
         if(is_dir(app_path('Modules/SuperUser')))
