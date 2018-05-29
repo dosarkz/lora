@@ -117,7 +117,7 @@ class ModuleGenerator
                             ])
                         ])
                     ]),
-                    new Folder('routes', 'Routes',[],[
+                    new Folder('routes', 'routes',[],[
                         new File('web.stub', 'web.php', [
                             'module_name'       => ucfirst($this->name),
                             'lc_module_name'    =>  lcfirst($this->name)
