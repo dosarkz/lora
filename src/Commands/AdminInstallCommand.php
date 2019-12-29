@@ -1,10 +1,10 @@
 <?php
 
-namespace Dosarkz\Dosmin\Commands;
+namespace Dosarkz\Lora\Commands;
 
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
-use Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUserRole;
+use Dosarkz\Lora\Modules\SuperUser\Models\SuperUser;
+use Dosarkz\Lora\Modules\Role\Models\Role;
+use Dosarkz\Lora\Modules\SuperUser\Models\SuperUserRole;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -98,13 +98,13 @@ class AdminInstallCommand extends Command
     public function databaseSeeder()
     {
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\Dosmin\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
+            '--class' => 'Dosarkz\\Lora\\Modules\\Role\\Database\\Seeders\\ModuleSeeder'
         ]);
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\Dosmin\\Database\\Seeders\\ModulesSeeder'
+            '--class' => 'Dosarkz\\Lora\\Database\\Seeders\\ModulesSeeder'
         ]);
         $this->call('db:seed', [
-            '--class' => 'Dosarkz\\Dosmin\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
+            '--class' => 'Dosarkz\\Lora\\Modules\\Menu\\Database\\Seeders\\MenuSeeder'
         ]);
 
     }

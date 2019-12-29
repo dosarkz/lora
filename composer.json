@@ -1,6 +1,6 @@
 {
-  "name": "dosarkz/dosmin",
-  "description": "Dosmin CMS - package backend module system for Laravel Framework",
+  "name": "dosarkz/lora",
+  "description": "Lora - package backend system for Laravel",
   "authors": [
     {
       "name": "Yerzhan Ashenov",
@@ -9,7 +9,6 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "laravelcollective/html": "5.*",
     "dosarkz/laravel-uploader": "0.2.4"
   },
   "autoload": {
@@ -22,16 +21,16 @@
       "src/Exceptions"
     ],
     "psr-4": {
-      "Dosarkz\\Dosmin\\": "src/"
+      "Dosarkz\\Lora\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Dosarkz\\Dosmin\\Providers\\AdminServiceProvider"
+        "Dosarkz\\Lora\\Providers\\AdminServiceProvider"
       ],
       "aliases": {
-        "Admin": "Dosarkz\\Dosmin\\Facade\\AdminFacade"
+        "Admin": "Dosarkz\\Lora\\Facade\\AdminFacade"
       }
     }
   }

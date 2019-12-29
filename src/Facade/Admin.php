@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Facade;
+namespace Dosarkz\Lora\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

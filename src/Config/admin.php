@@ -20,7 +20,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => \Dosarkz\Dosmin\Modules\SuperUser\Models\SuperUser::class,
+                'model'  => \Dosarkz\Lora\Modules\SuperUser\Models\SuperUser::class,
             ],
             'users' => [
                 'driver' => 'eloquent',
@@ -30,11 +30,6 @@ return [
     ],
 
     'modules' => [
-        'cache' => [
-            'enabled' => false,
-            'key' => 'laravel-modules',
-            'lifetime' => 60,
-        ],
         'providers' => [
 
         ]

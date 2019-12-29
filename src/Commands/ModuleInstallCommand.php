@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\Dosmin\Commands;
+namespace Dosarkz\Lora\Commands;
 
-use Dosarkz\Dosmin\Models\Module;
+use Dosarkz\Lora\Models\Module;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;

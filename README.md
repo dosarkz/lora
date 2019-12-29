@@ -1,4 +1,4 @@
-# Dosmin backend module system for Laravel Framework 5.6
+# Lora backend module system for Laravel Framework 5.6
 Features:
 - Module System
 - Module Generator with command
@@ -14,8 +14,8 @@ Features:
 - Install laravel 5.6
 - Configure db
 - Install admin package
-`composer require dosarkz/dosmin`
-- Make dosmin system
+`composer require dosarkz/Lora`
+- Make Lora system
 `php artisan admin:install`
 - Go through all the necessary steps
 - Visit `your_project/admin`

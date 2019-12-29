@@ -1,11 +1,11 @@
 <?php
 namespace App\Modules\$module_name$\Database\Seeders;
 
-use Dosarkz\Dosmin\Models\Module;
-use Dosarkz\Dosmin\Modules\Menu\Models\Menu;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuItem;
-use Dosarkz\Dosmin\Modules\Menu\Models\MenuRole;
-use Dosarkz\Dosmin\Modules\Role\Models\Role;
+use Dosarkz\Lora\Models\Module;
+use Dosarkz\Lora\Modules\Menu\Models\Menu;
+use Dosarkz\Lora\Modules\Menu\Models\MenuItem;
+use Dosarkz\Lora\Modules\Menu\Models\MenuRole;
+use Dosarkz\Lora\Modules\Role\Models\Role;
 use Illuminate\Database\Seeder;
 
 class ModuleSeeder extends Seeder

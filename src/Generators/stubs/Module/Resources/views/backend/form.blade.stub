@@ -10,43 +10,23 @@
             </div>
         @endif
         @if($model->exists)
-            {{ Form::open(array('url' => '/admin/'.$module->alias.'/'.$model->id,'method'=> 'PUT', 'name'=>'update-office', 'files' => true))}}
+            <form action="/admin/{{$module->alias}}/{{$model->id}}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
         @else
-            {{ Form::open(array('url' => '/admin/'.$module->alias,'method'=> 'POST', 'name'=>'post-office','files' => true))}}
+            <form action="/admin/{{$module->alias}}" method="POST" enctype="multipart/form-data">
         @endif
-
-     
-
-
-        <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
-            <div class="row">
-                <label for="name" class="col-md-4 control-label">Статус</label>
-
-                <div class="col-md-6">
-                    {{Form::select('status_id', $model->statuses, $model->status_id, ['class' => 'form-control',
-                     'placeholder' => 'Выберите статус'])}}
-
-                    @if ($errors->has('status_id'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('status_id') }}</strong>
-                                    </span>
-                    @endif
-                </div>
-            </div>
-        </div>
+        @csrf
 
         <br>
 
         <div class="form-group">
             @if($model->exists)
-                {{ Form::submit('Обновить', ['class' => 'btn btn-primary']) }}
+             <button type="submit" class="btn btn-primary">{{trans('admin::base.edit')}}</button>
             @else
-                {{ Form::submit('Добавить', ['class' => 'btn btn-primary']) }}
+              <button type="submit" class="btn btn-primary">{{trans('admin::base.add')}}</button>
             @endif
         </div>
 
-
-
-        {{ Form::close() }}
+        </form>
     </div>
 </div>

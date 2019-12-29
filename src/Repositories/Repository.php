@@ -1,16 +1,16 @@
 <?php
-namespace Dosarkz\Dosmin\Repositories;
+namespace Dosarkz\Lora\Repositories;
 
 use Countable;
-use Dosarkz\Dosmin\Models\Module;
+use Dosarkz\Lora\Models\Module;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Dosarkz\Dosmin\Contracts\RepositoryInterface;
-use Dosarkz\Dosmin\Exceptions\ModuleNotFoundException;
+use Dosarkz\Lora\Contracts\RepositoryInterface;
+use Dosarkz\Lora\Exceptions\ModuleNotFoundException;
 
-class Repository implements RepositoryInterface, Countable
+class Repository implements RepositoryInterface
 {
     use Macroable;
 
@@ -170,117 +170,6 @@ class Repository implements RepositoryInterface, Countable
     }
 
     /**
-     * Get cached modules.
-     *
-     * @return array
-     */
-    public function getCached()
-    {
-        return $this->app['cache']->remember($this->config('cache.key'),
-            $this->config('cache.lifetime'), function () {
-            return $this->toCollection()->toArray();
-        });
-    }
-
-    /**
-     * Get all modules as collection instance.
-     *
-     * @return Collection
-     */
-    public function toCollection() : Collection
-    {
-        return new Collection($this->scan());
-    }
-
-    /**
-     * Get modules by status.
-     *
-     * @param $status
-     *
-     * @return array
-     */
-    public function getByStatus($status) : array
-    {
-        $modules = [];
-
-        foreach ($this->all() as $name => $module) {
-            if ($module->isStatus($status)) {
-                $modules[$name] = $module;
-            }
-        }
-
-        return $modules;
-    }
-
-    /**
-     * Determine whether the given module exist.
-     *
-     * @param $name
-     *
-     * @return bool
-     */
-    public function has($name) : bool
-    {
-        return array_key_exists($name, $this->all());
-    }
-
-    /**
-     * Get list of enabled modules.
-     *
-     * @return array
-     */
-    public function enabled() : array
-    {
-        return $this->getByStatus(1);
-    }
-
-    /**
-     * Get list of disabled modules.
-     *
-     * @return array
-     */
-    public function disabled() : array
-    {
-        return $this->getByStatus(0);
-    }
-
-    /**
-     * Get count from all modules.
-     *
-     * @return int
-     */
-    public function count() : int
-    {
-        return count($this->all());
-    }
-
-    /**
-     * Get all ordered modules.
-     *
-     * @param string $direction
-     *
-     * @return array
-     */
-    public function getOrdered($direction = 'asc') : array
-    {
-        $modules = $this->enabled();
-
-        uasort($modules, function (Module $a, Module $b) use ($direction) {
-            if ($a->order == $b->order) {
-                return 0;
-            }
-
-            if ($direction == 'desc') {
-                return $a->order < $b->order ? 1 : -1;
-            }
-
-            return $a->order > $b->order ? 1 : -1;
-        });
-
-        return $modules;
-    }
-
-    /**
      * Get a module path.
      *
      * @return string
@@ -342,25 +231,6 @@ class Repository implements RepositoryInterface, Countable
         return;
     }
 
-    /**
-     * Find all modules that are required by a module. If the module cannot be found, throw an exception.
-     *
-     * @param $name
-     * @return array
-     * @throws ModuleNotFoundException
-     */
-    public function findRequirements($name)
-    {
-        $requirements = [];
-
-        $module = $this->findOrFail($name);
-
-        foreach ($module->getRequires() as $requirementName) {
-            $requirements[] = $this->findByAlias($requirementName);
-        }
-
-        return $requirements;
-    }
 
     /**
      * Alternative for "find" method.
@@ -393,17 +263,6 @@ class Repository implements RepositoryInterface, Countable
         throw new ModuleNotFoundException("Module [{$name}] does not exist!");
     }
 
-    /**
-     * Get all modules as laravel collection instance.
-     *
-     * @param $status
-     *
-     * @return Collection
-     */
-    public function collections($status = 1) : Collection
-    {
-        return new Collection($this->getByStatus($status));
-    }
 
     /**
      * Get module path for a specific module.
@@ -444,197 +303,5 @@ class Repository implements RepositoryInterface, Countable
     public function config($key, $default = null)
     {
         return $this->app['config']->get('modules.' . $key, $default);
-    }
-
-    /**
-     * Get storage path for module used.
-     *
-     * @return string
-     */
-    public function getUsedStoragePath() : string
-    {
-        $directory = storage_path('app/modules');
-        if ($this->app['files']->exists($directory) === false) {
-            $this->app['files']->makeDirectory($directory, 0777, true);
-        }
-
-        $path = storage_path('app/modules/modules.used');
-        if (!$this->app['files']->exists($path)) {
-            $this->app['files']->put($path, '');
-        }
-
-        return $path;
-    }
-
-    /**
-     * Set module used for cli session.
-     *
-     * @param $name
-     *
-     * @throws ModuleNotFoundException
-     */
-    public function setUsed($name)
-    {
-        $module = $this->findOrFail($name);
-
-        $this->app['files']->put($this->getUsedStoragePath(), $module);
-    }
-
-    /**
-     * Forget the module used for cli session.
-     */
-    public function forgetUsed()
-    {
-        if ($this->app['files']->exists($this->getUsedStoragePath())) {
-            $this->app['files']->delete($this->getUsedStoragePath());
-        }
-    }
-
-    /**
-     * Get module used for cli session.
-     * @return string
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
-     */
-    public function getUsedNow() : string
-    {
-        return $this->findOrFail($this->app['files']->get($this->getUsedStoragePath()));
-    }
-
-    /**
-     * Get used now.
-     *
-     * @return string
-     * @deprecated
-     */
-    public function getUsed()
-    {
-        return $this->getUsedNow();
-    }
-
-    /**
-     * Get laravel filesystem instance.
-     *
-     * @return \Illuminate\Filesystem\Filesystem
-     */
-    public function getFiles()
-    {
-        return $this->app['files'];
-    }
-
-
-    /**
-     * Determine whether the given module is activated.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function active($name) : bool
-    {
-        return $this->findOrFail($name)->active();
-    }
-
-    /**
-     * Determine whether the given module is not activated.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function notActive($name) : bool
-    {
-        return !$this->active($name);
-    }
-
-    /**
-     * Enabling a specific module.
-     * @param string $name
-     * @return void
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
-     */
-    public function enable($name)
-    {
-        $this->findOrFail($name)->enable();
-    }
-
-    /**
-     * Disabling a specific module.
-     * @param string $name
-     * @return void
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
-     */
-    public function disable($name)
-    {
-        $this->findOrFail($name)->disable();
-    }
-
-    /**
-     * Delete a specific module.
-     * @param string $name
-     * @return bool
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
-     */
-    public function delete($name) : bool
-    {
-        return $this->findOrFail($name)->delete();
-    }
-
-    /**
-     * Update dependencies for the specified module.
-     *
-     * @param string $module
-     */
-    public function update($module)
-    {
-        with(new Updater($this))->update($module);
-    }
-
-    /**
-     * Install the specified module.
-     *
-     * @param string $name
-     * @param string $version
-     * @param string $type
-     * @param bool   $subtree
-     *
-     * @return \Symfony\Component\Process\Process
-     */
-    public function install($name, $version = 'dev-master', $type = 'composer', $subtree = false)
-    {
-        $installer = new Installer($name, $version, $type, $subtree);
-
-        return $installer->run();
-    }
-
-    /**
-     * Get stub path.
-     *
-     * @return string|null
-     */
-    public function getStubPath()
-    {
-        if ($this->stubPath !== null) {
-            return $this->stubPath;
-        }
-
-        if ($this->config('stubs.enabled') === true) {
-            return $this->config('stubs.path');
-        }
-
-        return $this->stubPath;
-    }
-
-    /**
-     * Set stub path.
-     *
-     * @param string $stubPath
-     *
-     * @return $this
-     */
-    public function setStubPath($stubPath)
-    {
-        $this->stubPath = $stubPath;
-
-        return $this;
     }
 }

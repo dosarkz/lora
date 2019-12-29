@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Generators;
+namespace Dosarkz\Lora\Generators;
 /**
  * Created by PhpStorm.
  * User: yerzhan

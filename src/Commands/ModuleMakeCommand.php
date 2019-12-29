@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\Dosmin\Commands;
+namespace Dosarkz\Lora\Commands;
 
-use Dosarkz\Dosmin\Generators\ModuleGenerator;
+use Dosarkz\Lora\Generators\ModuleGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;

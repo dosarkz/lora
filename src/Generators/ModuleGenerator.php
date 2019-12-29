@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Generators;
+namespace Dosarkz\Lora\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -70,7 +70,7 @@ class ModuleGenerator
                     ]),
                     new Folder('Http', '', [
                         new Folder('Controllers', 'Http/Controllers', [], [
-                            new File('BackendController.stub', 'BackendController.php',
+                            new File('LoraRoleController.stub', 'LoraRoleController.phpphp',
                                 [
                                     'module_name'       => ucfirst($this->name),
                                     'lc_module_name'    =>  lcfirst($this->name)
