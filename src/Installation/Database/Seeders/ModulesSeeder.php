@@ -17,62 +17,40 @@ class ModulesSeeder extends Seeder
         DB::table('modules')->delete();
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль супер пользователя',
-            'name_en' => 'Super User module',
+            'name_ru' => 'Модуль пользователя',
+            'name_en' => 'Account module',
             'menu_active' => true,
-            'description_ru' => 'Модуль для управления админами',
-            'description_en' => 'The module to manage Super users',
+            'description_ru' => 'Модуль для управления пользователями, ролями',
+            'description_en' => 'The module to manage users, roles, permissions',
             'version' =>  0.01,
             'status_id' => 1,
-            'alias' => 'superUser',
+            'alias' => 'account',
             'installed' => true,
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль ролей',
-            'name_en' => 'Roles module',
+            'name_ru' => 'Модуль представления',
+            'name_en' => 'Template module',
             'menu_active' => true,
-            'description_ru' => 'Модуль для управления ролями',
-            'description_en' => 'The module to manage Roles',
+            'description_ru' => 'Модуль для управления шаблонами, боковым меню',
+            'description_en' => 'The module to manage users, roles, permissions',
             'version' =>  0.01,
             'status_id' => 1,
-            'alias' => 'role',
+            'alias' => 'settings',
             'installed' => true,
         ]);
 
         DB::table('modules')->insert([
-            'name_ru' => 'Модуль изображении',
-            'name_en' => 'Image module',
+            'name_ru' => 'Модуль менеджера файлов',
+            'name_en' => 'File manager module',
             'menu_active' => true,
-            'description_ru' => 'Модуль для управления изображениями',
-            'description_en' => 'The module to manage Image',
+            'description_ru' => 'Модуль для управления файлами и изображениями',
+            'description_en' => 'The module to manage files and images',
             'version' =>  0.01,
             'status_id' => 1,
-            'alias' => 'moduleImage',
+            'alias' => 'manager',
             'installed' => true,
         ]);
 
-        DB::table('modules')->insert([
-            'name_ru' => 'Модуль меню',
-            'name_en' => 'Menu module',
-            'menu_active' => true,
-            'description_ru' => 'Модуль для управления меню',
-            'description_en' => 'The module to manage Menu',
-            'version' =>  0.01,
-            'status_id' => 1,
-            'alias' => 'menu',
-            'installed' => true,
-        ]);
-
-        DB::table('modules')->insert([
-            'name_ru' =>  'Модуль Страницы',
-            'name_en' => 'Article Module',
-            'menu_active' => true,
-            'description_ru' => 'Article',
-            'description_en' => 'Article',
-            'version' =>  0.01,
-            'status_id' => 1,
-            'alias' => 'article',
-        ]);
     }
 }
