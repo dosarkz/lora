@@ -44,7 +44,7 @@ class AdminInstallCommand extends Command
         try {
             DB::connection()->getPdo();
 
-            $this->info('Installing Laravel Admin...');
+            $this->info('Installing Laravel AdminFacade...');
 
             $this->info('1. Copy publish files');
             $this->publishFiles();
@@ -80,7 +80,7 @@ class AdminInstallCommand extends Command
     public function createSuperUser()
     {
         $data['username']     = $this->ask('Administrator login', 'admin');
-        $data['name'] = $this->ask('Admin name', 'Admin');
+        $data['name'] = $this->ask('AdminFacade name', 'AdminFacade');
         $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');
         $data['password'] = bcrypt($this->secret('Administrator password','123456'));
         $role_admin = Role::where('alias', 'admin')->first();
@@ -92,7 +92,7 @@ class AdminInstallCommand extends Command
             'role_id' => $role_admin->id,
         ]);
 
-        $this->info('Admin User has been created');
+        $this->info('AdminFacade User has been created');
     }
 
     public function databaseSeeder()

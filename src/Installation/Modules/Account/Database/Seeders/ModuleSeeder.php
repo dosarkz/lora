@@ -18,7 +18,7 @@ class ModuleSeeder extends Seeder
 
         DB::table('roles')->insert([
             'name_ru' => 'Администратор',
-            'name_en'   =>  'Admin',
+            'name_en'   =>  'AdminFacade',
             'alias' => 'admin',
             'status_id' => 1
         ]);

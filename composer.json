@@ -27,7 +27,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Dosarkz\\Lora\\Providers\\AdminServiceProvider"
+        "Dosarkz\\Lora\\Providers\\LoraServiceProvider"
       ],
       "aliases": {
         "Admin": "Dosarkz\\Lora\\Facade\\AdminFacade"

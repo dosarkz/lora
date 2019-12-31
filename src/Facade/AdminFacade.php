@@ -3,7 +3,7 @@ namespace Dosarkz\Lora\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
-class Admin extends Facade {
+class AdminFacade extends Facade {
     /**
      * Get the registered name of the component.
      *

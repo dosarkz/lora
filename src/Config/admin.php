@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Admin panel',
+    'name' => 'AdminFacade panel',
     'auth' => [
         'guards' => [
             'web' => [
