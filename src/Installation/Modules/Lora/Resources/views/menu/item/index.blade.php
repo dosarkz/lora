@@ -1,15 +1,11 @@
-@extends('admin::layouts.app')
-
+@extends('lora::layouts.app')
 @section('content')
-
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Пункты меню</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
-
-
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10">

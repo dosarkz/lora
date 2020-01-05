@@ -5,11 +5,13 @@ namespace Dosarkz\Lora\Providers;
 use Dosarkz\Lora\Commands\LoraInstallCommand;
 use Dosarkz\Lora\Commands\ModuleInstallCommand;
 use Dosarkz\Lora\Commands\ModuleMakeCommand;
+use Dosarkz\Lora\Installation\Utilities\Composers\LayoutComposer;
 use Dosarkz\Lora\Installation\Utilities\Providers\HelperServiceProvider;
-use Dosarkz\Lora\Modules;
+use Dosarkz\Lora\LoraRepository;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class LoraServiceProvider extends ServiceProvider
@@ -20,6 +22,7 @@ class LoraServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         Schema::defaultStringLength(191);
+
         $this->registerPublishes();
         $this->registerMigrations();
         $this->registerViews();
@@ -27,6 +30,8 @@ class LoraServiceProvider extends ServiceProvider
         $this->registerMiddleware($router);
         $this->registerGuard();
         $this->registerTranslations();
+
+        View::composer('*', LayoutComposer::class);
     }
 
 
@@ -71,7 +76,7 @@ class LoraServiceProvider extends ServiceProvider
 
     public function registerMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../Installation/Modules/Lora/Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Installation/Modules/Lora/Database/Migrations');
     }
 
     /**
@@ -87,6 +92,10 @@ class LoraServiceProvider extends ServiceProvider
             $this->app->register($baseModule);
         }
         $this->app->register(HelperServiceProvider::class);
+
+        $this->app->singleton('lora', function ($app) {
+            return new LoraRepository();
+        });
     }
 
     /**
@@ -124,13 +133,12 @@ class LoraServiceProvider extends ServiceProvider
 //            $path = __DIR__ . '/../Resources/views/';
 //        }
 
-        $this->loadViewsFrom(__DIR__ . '/../Installation/Modules/Lora/Resources/views/', 'lora');
-
+        $this->loadViewsFrom(__DIR__ . '/../Installation/Modules/Lora/Resources/views', 'lora');
     }
 
     public function registerRoutes()
     {
-        $this->loadRoutesFrom(__DIR__.'/../Installation/Modules/Lora/Routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Installation/Modules/Lora/Routes/web.php');
     }
 
 }

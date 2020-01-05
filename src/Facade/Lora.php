@@ -2,8 +2,12 @@
 namespace Dosarkz\Lora\Facade;
 
 use Illuminate\Support\Facades\Facade;
-
-class AdminFacade extends Facade {
+/**
+ * @method static  renderView(string $route)
+ *
+ * @see \Dosarkz\Lora\LoraRepository
+ */
+class Lora extends Facade {
     /**
      * Get the registered name of the component.
      *
@@ -11,6 +15,6 @@ class AdminFacade extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'admin';
+        return 'lora';
     }
 }

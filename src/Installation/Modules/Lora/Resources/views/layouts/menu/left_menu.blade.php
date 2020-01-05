@@ -6,6 +6,4 @@
         ->orderBy('position')
         ->get()
         ])
-
-
 </ul>

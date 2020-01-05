@@ -9,13 +9,11 @@ use Dosarkz\Lora\Installation\Modules\Lora\Models\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class MenuItemController extends ModuleController
+class MenuItemController extends BasicController
 {
     public function __construct()
     {
-        $model = MenuItem::class;
-        $this->setModule(config('menu.module.alias'));
-        $this->setModel(new $model);
+        $this->setModel(new MenuItem());
     }
 
     /**
@@ -27,7 +25,7 @@ class MenuItemController extends ModuleController
         $model = $this->getModel()->where('menu_id', $id)->paginate();
         $module = $this->getModule();
         $menu = Menu::findOrFail($id);
-        return view($this->getModule()->alias.'::item.index', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.index', compact('model', 'module', 'menu'));
     }
 
     /**
@@ -39,7 +37,7 @@ class MenuItemController extends ModuleController
         $model = $this->getModel();
         $module = $this->getModule();
         $menu = Menu::findOrFail($id);
-        return view($this->getModule()->alias.'::item.create', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.create', compact('model', 'module', 'menu'));
     }
 
     /**
@@ -63,7 +61,7 @@ class MenuItemController extends ModuleController
      */
     public function show()
     {
-        return view($this->getModule()->alias.'::item.show');
+        return view('lora::item.show');
     }
 
     /**
@@ -76,7 +74,7 @@ class MenuItemController extends ModuleController
         $model = $this->getModel()->findOrFail($id);
         $module = $this->getModule();
         $menu = Menu::findOrFail($menu_id);
-        return view($this->getModule()->alias.'::item.edit', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.edit', compact('model', 'module', 'menu'));
     }
 
     /**

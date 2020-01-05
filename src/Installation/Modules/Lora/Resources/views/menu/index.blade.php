@@ -1,48 +1,47 @@
-@extends('admin::layouts.app')
+@extends('lora::layouts.app')
 
 @section('content')
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('admin::base.menu')}}</a></li>
-            <li class="pull-right"><a href="/admin/modules/{{$module->alias}}/settings" class="text-muted"><i class="fa fa-gear"></i></a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('lora::base.menu')}}</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
-
-
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <a class="btn btn-primary" href="/admin/{{$module->alias}}/create">{{trans('admin::base.create')}}</a>
+                                <a class="btn btn-primary" href="/admin/menu/create">{{trans('lora::base.create')}}</a>
                             </div>
                             <table class="table">
                                 <thead class="thead-inverse">
                                 <tr>
-                                    <th>{{trans('admin::base.id')}}</th>
-                                    <th>{{trans('admin::base.name')}}</th>
-                                    <th>{{trans('admin::base.items')}}</th>
-                                    <th>{{trans('admin::base.status')}}</th>
-                                    <th>{{trans('admin::base.actions')}}</th>
+                                    <th>{{trans('lora::base.id')}}</th>
+                                    <th>{{trans('lora::base.name')}}</th>
+                                    <th>{{trans('lora::base.items')}}</th>
+                                    <th>{{trans('lora::base.status')}}</th>
+                                    <th>{{trans('lora::base.actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(isset($model))
-                                    @foreach($model as $item)
+                                @if(isset($models))
+                                    @foreach($models as $item)
                                         <tr>
                                             <td>{{$item->id}}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td><a href="/admin/{{$module->alias}}/{{$item->id}}/items">{{$item->menuItems->count()}}</a></td>
+                                            <td><a href="/admin/menu/{{$item->id}}/items">{{$item->menuItems->count()}}</a></td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a class="btn btn-xs btn-primary"  href="/admin/{{$module->alias}}/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                {{ Form::open(array('url' => '/admin/'.$module->alias.'/' . $item->id, 'style' => 'display:inline;')) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                <button class="btn btn-xs btn-danger delete" data-target="#confirm"
-                                                        data-toggle="modal" data-action="/admin/{{$module->alias}}/{{$item->id}}"
-                                                        type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                                {{ Form::close() }}
+                                                <a class="btn btn-xs btn-primary"  href="/admin/menu/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                <form action="{{route('menu.destroy', $item->id)}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-xs btn-danger delete" data-target="#confirm"
+                                                            data-toggle="modal" data-action="/admin/menu/{{$item->id}}"
+                                                            type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                                </form>
+
                                             </td>
 
                                         </tr>
@@ -58,7 +57,7 @@
 
                         <div class="col-md-10">
                             <div class="form-group">
-                                {{ $model->links() }}
+                                {{ $models->links() }}
                             </div>
                         </div>
 
@@ -69,7 +68,7 @@
         <!-- /.tab-content -->
     </div>
 
-    @include('admin::modals.base_modal')
+    @include('lora::modals.base_modal')
 @endsection
 
 @section('js-append')

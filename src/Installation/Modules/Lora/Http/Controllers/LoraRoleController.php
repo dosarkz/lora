@@ -8,7 +8,7 @@ use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class LoraRoleController extends ModuleController
+class LoraRoleController extends BasicController
 {
     public function __construct()
     {

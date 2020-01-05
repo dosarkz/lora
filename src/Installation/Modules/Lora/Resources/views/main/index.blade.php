@@ -3,11 +3,7 @@
 @section('title_page_description')система управления сайтом @endsection
 @section('content')
     <section class="content">
-        <!-- Info boxes -->
-
-
         <div class="row">
-
             @if(auth()->guard('admin')->user()->hasRole('admin'))
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box">
@@ -49,17 +45,7 @@
                     <!-- /.info-box -->
                 </div>
         @endif
-        <!-- /.col -->
-
-            <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
-
-            <!-- /.col -->
-
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
-
-
     </section>
 @endsection

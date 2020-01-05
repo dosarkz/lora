@@ -1,4 +1,4 @@
-@extends('lora::layouts.login')
+@extends('app.loas')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,6 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{trans('lora::base.about')}}</div>
-
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -17,7 +16,6 @@
                             </ul>
                         </div>
                     @endif
-
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('admin.postLogin') }}">

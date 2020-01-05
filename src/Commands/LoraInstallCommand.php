@@ -80,7 +80,7 @@ class LoraInstallCommand extends Command
     public function createSuperUser()
     {
         $data['username']     = $this->ask('Administrator login', 'admin');
-        $data['name'] = $this->ask('Administrator name', 'Admin');
+        $data['name'] = $this->ask('Administrator name', 'Lora');
         $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');
         $data['password'] = bcrypt($this->secret('Administrator password'));
         $role_admin = Role::where('alias', 'admin')->first();
@@ -92,7 +92,7 @@ class LoraInstallCommand extends Command
             'role_id' => $role_admin->id,
         ]);
 
-        $this->info('Admin User has been created');
+        $this->info('Lora User has been created');
     }
 
     public function databaseSeeder()

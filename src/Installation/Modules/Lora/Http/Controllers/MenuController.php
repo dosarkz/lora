@@ -4,6 +4,7 @@ namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
 
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\StoreMenuRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateMenuRequest;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\Menu;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\MenuRole;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
 use Illuminate\Http\Request;
@@ -11,22 +12,14 @@ use Illuminate\Http\Response;
 
 class MenuController extends ModuleController
 {
-    public function __construct()
-    {
-        $model = config('menu.admin.model');
-        $this->setModule(config('menu.module.alias'));
-        $this->setModel(new $model);
-    }
-
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        $model = $this->getModel()->paginate();
-        $module = $this->getModule();
-        return view($this->getModule()->alias.'::index', compact('model', 'module'));
+        $models = Menu::paginate();
+        return view('lora::menu.index', compact('models'));
     }
 
     /**
@@ -35,16 +28,14 @@ class MenuController extends ModuleController
      */
     public function create()
     {
-        $model = $this->getModel();
-        $module = $this->getModule();
+        $model = new Menu();
         $roles = Role::all();
-        return view($this->getModule()->alias.'::create', compact('model', 'module', 'roles'));
+        return view('lora::menu.create', compact('model','roles'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
+     * @param StoreMenuRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreMenuRequest $request)
     {
@@ -65,7 +56,7 @@ class MenuController extends ModuleController
                 ]);
             }
         }
-        return redirect()->back()->with('success', trans('admin::base.resource_created'));
+        return redirect()->back()->with('success', trans('lora::base.resource_created'));
     }
 
     /**
@@ -74,30 +65,19 @@ class MenuController extends ModuleController
      */
     public function show()
     {
-        return view($this->getModule()->alias.'::show');
+        return view('lora::menu.show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
-        $model = $this->getModel()->findOrFail($id);
-        $module = $this->getModule();
+        $model = Menu::findOrFail($id);
         $roles = Role::all();
-        return view($this->getModule()->alias.'::edit', compact('model', 'module', 'roles'));
+        return view('lora::menu.edit', compact('model','roles'));
     }
 
-    /**
-     * @param UpdateMenuRequest $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function update(UpdateMenuRequest $request, $id)
     {
-        $model = $this->getModel()->findOrFail($id);
+        $model = Menu::findOrFail($id);
 
         if($request->has('menuRole'))
         {
@@ -113,7 +93,7 @@ class MenuController extends ModuleController
 
         $model->update($request->all());
 
-        return redirect('admin/menu')->with('success', trans('admin::base.resource_updated'));
+        return redirect('admin/menu')->with('success', trans('lora::base.resource_updated'));
     }
 
     /**
@@ -122,8 +102,8 @@ class MenuController extends ModuleController
      */
     public function destroy($id)
     {
-        $model = $this->getModel()->findOrFail($id);
+        $model = Menu::findOrFail($id);
         $model->delete();
-        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
+        return redirect()->back()->with('success', trans('lora::base.resource_deleted'));
     }
 }

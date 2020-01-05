@@ -6,11 +6,11 @@ use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUser;
 
-class AuthController extends Controller
+class AuthController extends BasicController
 {
     public function showLoginForm()
     {
-        return view('lora::auth.login');
+        return $this->view('auth.login');
     }
 
     public function postLogin(LoginRequest $request)
@@ -20,7 +20,7 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $user = SuperUser::where('username',$request->input('username'))->first();
             Auth::guard('admin')->login($user);
-            return redirect()->intended('admin')->with('success', trans('admin::base.you_have_successfully_logged_in'));
+            return redirect()->intended('admin')->with('success', trans('lora::base.you_have_successfully_logged_in'));
         }
 
         return redirect()->back()->withInput()->withErrors(['username' => 'Username is entered incorrectly']);

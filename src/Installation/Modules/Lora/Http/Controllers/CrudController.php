@@ -5,7 +5,7 @@ use Dosarkz\Lora\Installation\Modules\Lora\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CrudController extends Controller
+class CrudController extends BasicController
 {
     /**
      * @var

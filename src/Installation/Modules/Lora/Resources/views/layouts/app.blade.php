@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lora') }}</title>
 
     <!-- Styles -->
     <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
@@ -34,17 +34,12 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
-
 <div class="wrapper">
     <header class="main-header">
-
-
         <a href="/admin" class="logo">
             <span class="logo-mini">DCMS</span>
-            <span class="logo-lg"><b>Lora</b>cms</span>
+            <span class="logo-lg"><b>Lora</b></span>
         </a>
-
-
 
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
@@ -96,25 +91,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-
-
-
                     </ul>
                 </div>
-
             @endif
         </nav>
     </header>
 
     @if(!auth()->guard('admin')->guest())
         <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- sidebar menu: : style can be found in sidebar.less -->
                 @include('lora::layouts.menu.left_menu')
             </section>
-            <!-- /.sidebar -->
         </aside>
     @endif
 
