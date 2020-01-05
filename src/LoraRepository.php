@@ -3,23 +3,42 @@ namespace Dosarkz\Lora;
 
 class LoraRepository
 {
-    public $viewPath = 'layouts.app';
-    public $groupName = 'lora';
+    const VIEW_GROUP_NAME = 'lora';
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function layout()
+    public $viewPath = 'layouts.app';
+    public $authViewPath = 'layouts.login';
+
+    public function getLayoutPath() : string
     {
-        return $this->renderView($this->viewPath);
+        return $this->getViewPath($this->viewPath);
+    }
+
+    public function getAuthLayoutPath() : string
+    {
+        return $this->getViewPath($this->authViewPath);
     }
 
     /**
      * @param $route
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return string
      */
-    public function renderView($route)
+    public function renderView($route) : string
     {
-        return view(sprintf("%s::%s", $this->groupName, $route));
+        return view($this->getViewPath($route));
+    }
+
+    public function getRoutePath($route)
+    {
+        return $this->getViewPath($route);
+    }
+
+    /**
+     * @param $route
+     * @param string $group
+     * @return string
+     */
+    private function getViewPath($route, $group = self::VIEW_GROUP_NAME) : string
+    {
+        return sprintf("%s::%s", $group, $route);
     }
 }

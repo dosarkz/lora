@@ -1,4 +1,4 @@
-@extends('lora::layouts.app')
+@extends($layoutPath)
 @section('content')
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <a class="btn btn-primary" href="/admin/{{$module->alias}}/{{$menu->id}}/items/create">{{trans('admin::base.create')}}</a>
+                                <a class="btn btn-primary" href="/admin/menu/{{$menu->id}}/items/create">{{trans('admin::base.create')}}</a>
                             </div>
                             <table class="table">
                                 <thead class="thead-inverse">
@@ -31,13 +31,8 @@
                                             <td>{{ $item->url }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td><a class="btn btn-primary"
-                                                   href="/admin/{{$module->alias}}/{{$item->menu_id}}/items/{{$item->id}}/edit">Редактировать</a>
-                                                {{ Form::open(array('url' => '/admin/'.$module->alias.'/' .$item->menu_id .'/items/'. $item->id, 'class' => 'pull-right')) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                {{ Form::button('удалить', array('class' => 'btn btn-warning',
-                                                'data-target' => '#confirm', 'data-toggle' => 'modal',
-                                                'data-action' => '/admin/'.$module->alias.'/' .$item->menu_id .'/items/'. $item->id)) }}
-                                                {{ Form::close() }}
+                                                   href="{{route('menu.items.update',[$item->menu_id, $item->id])}}">Редактировать</a>
+
                                             </td>
 
                                         </tr>
@@ -64,7 +59,7 @@
         <!-- /.tab-content -->
     </div>
 
-    @include('admin::modals.base_modal')
+    @include('lora::modals.base_modal')
 @endsection
 
 @section('js-append')

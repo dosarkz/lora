@@ -1,4 +1,4 @@
-@extends('lora::layouts.app')
+@extends($layoutPath)
 @section('title')
     {{trans('lora::base.add')}}
 @endsection
@@ -10,7 +10,5 @@
         <div class="box-body">
             @include('lora::menu.form',compact('model'))
         </div>
-
     </div>
-
 @endsection

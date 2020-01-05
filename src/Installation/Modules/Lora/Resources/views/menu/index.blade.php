@@ -1,4 +1,4 @@
-@extends('lora::layouts.app')
+@extends($layoutPath)
 
 @section('content')
 

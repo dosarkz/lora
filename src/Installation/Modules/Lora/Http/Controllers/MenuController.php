@@ -10,7 +10,7 @@ use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class MenuController extends ModuleController
+class MenuController extends BasicController
 {
     /**
      * Display a listing of the resource.

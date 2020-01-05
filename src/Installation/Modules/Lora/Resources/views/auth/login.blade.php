@@ -1,4 +1,4 @@
-@extends('app.loas')
+@extends($authLayoutPath)
 
 @section('content')
     <div class="container">

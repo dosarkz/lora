@@ -1,4 +1,4 @@
-@extends('admin::layouts.app')
+@extends($layoutPath)
 @section('title_page')Modules @endsection
 @section('content')
     <div class="col-md-12">

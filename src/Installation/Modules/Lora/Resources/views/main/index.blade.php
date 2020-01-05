@@ -1,4 +1,4 @@
-@extends('lora::layouts.app')
+@extends($layoutPath)
 @section('title_page') Главная @endsection
 @section('title_page_description')система управления сайтом @endsection
 @section('content')

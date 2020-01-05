@@ -1,4 +1,4 @@
-@extends('lora::layouts.app')
+@extends($layoutPath)
 @section('title')
     {{trans('lora::base.reset_password')}}
 @endsection

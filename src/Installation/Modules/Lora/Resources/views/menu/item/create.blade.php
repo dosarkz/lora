@@ -1,4 +1,4 @@
-@extends('admin::layouts.app')
+@extends($layoutPath)
 @section('title')
     Добавить menu
 @endsection

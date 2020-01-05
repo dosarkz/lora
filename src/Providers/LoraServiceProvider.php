@@ -31,7 +31,7 @@ class LoraServiceProvider extends ServiceProvider
         $this->registerGuard();
         $this->registerTranslations();
 
-        View::composer('*', LayoutComposer::class);
+        View::composer(['lora::*'], LayoutComposer::class);
     }
 
 

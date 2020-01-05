@@ -5,13 +5,6 @@ use Illuminate\View\View;
 
 class LayoutComposer
 {
-    public $template;
-
-    public function __construct()
-    {
-        $this->template = Lora::layout();
-    }
-
     /**
      * Bind data to the view.
      *
@@ -20,6 +13,9 @@ class LayoutComposer
      */
     public function compose(View $view)
     {
-        $view->with('template', $this->template);
+        $view->with([
+            'layoutPath' => Lora::getLayoutPath(),
+            'authLayoutPath' => Lora::getAuthLayoutPath(),
+        ]);
     }
 }

@@ -2,8 +2,10 @@
 namespace Dosarkz\Lora\Facade;
 
 use Illuminate\Support\Facades\Facade;
+
 /**
- * @method static  renderView(string $route)
+ * @method static string getLayoutPath()
+ * @method static string getAuthLayoutPath()
  *
  * @see \Dosarkz\Lora\LoraRepository
  */

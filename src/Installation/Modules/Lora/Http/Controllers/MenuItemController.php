@@ -23,9 +23,8 @@ class MenuItemController extends BasicController
     public function index($id)
     {
         $model = $this->getModel()->where('menu_id', $id)->paginate();
-        $module = $this->getModule();
         $menu = Menu::findOrFail($id);
-        return view('lora::menu.item.index', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.index', compact('model',  'menu'));
     }
 
     /**
