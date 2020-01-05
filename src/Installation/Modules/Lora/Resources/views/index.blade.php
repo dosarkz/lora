@@ -73,7 +73,7 @@
         <!-- /.tab-content -->
     </div>
 
-    @include('admin::modals.base_modal')
+    @include('lora::modals.base_modal')
 @endsection
 
 @section('js-append')

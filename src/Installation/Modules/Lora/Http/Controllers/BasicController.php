@@ -36,9 +36,9 @@ class BasicController extends Controller
         $this->model = $model;
     }
 
-    public function view($route)
+    public function view($route, $data = [], $mergedData = [])
     {
-        return Lora::renderView($route);
+        return Lora::renderView($route, $data, $mergedData);
     }
 
 

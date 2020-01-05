@@ -35,7 +35,7 @@
     </div>
 
 
-    @include('admin::modals.base_modal')
+    @include('lora::modals.base_modal')
 @endsection
 
 

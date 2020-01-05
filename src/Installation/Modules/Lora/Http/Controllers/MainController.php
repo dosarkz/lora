@@ -9,18 +9,18 @@ use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\ResetPasswordRequest;
 use Dosarkz\LaravelUploader\BaseUploader;
 use Illuminate\Support\Facades\Hash;
 
-class MainController
+class MainController extends BasicController
 {
     public function index()
     {
         $countSuperUsers = SuperUser::all()->count();
         $count_modules = Module::all()->count();
-        return view('lora::main.index', compact('countSuperUsers', 'count_modules'));
+        return $this->view('main.index', compact('countSuperUsers', 'count_modules'));
     }
 
     public function getResetPassword()
     {
-        return view('admin::main.reset_password');
+        return $this->view('main.reset_password');
     }
 
     public function postResetPassword(ResetPasswordRequest $request)
@@ -38,7 +38,7 @@ class MainController
 
     public function settings()
     {
-        return view('admin::main.settings');
+        return $this->view('main.settings');
     }
 
 

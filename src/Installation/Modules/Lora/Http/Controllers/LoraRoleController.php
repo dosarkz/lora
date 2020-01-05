@@ -12,7 +12,6 @@ class LoraRoleController extends BasicController
 {
     public function __construct()
     {
-        $this->setModule('role');
         $this->setModel(new Role());
     }
 
@@ -23,7 +22,6 @@ class LoraRoleController extends BasicController
     public function index()
     {
         $model = $this->getModel()->paginate();
-        $module = $this->getModule();
         return view($this->getModule()->alias . '::backend.index', compact('model', 'module'));
     }
 
@@ -34,7 +32,6 @@ class LoraRoleController extends BasicController
     public function create()
     {
         $model = $this->getModel();
-        $module = $this->getModule();
         return view($this->getModule()->alias . '::backend.create', compact('model', 'module'));
     }
 
