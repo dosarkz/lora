@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Lora\Models;
+namespace Dosarkz\Lora\Installation\Utilities\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

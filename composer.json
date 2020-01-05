@@ -18,7 +18,7 @@
       "src/Providers",
       "src/Commands",
       "src/Contracts",
-      "src/Exceptions"
+      "src/Installations"
     ],
     "psr-4": {
       "Dosarkz\\Lora\\": "src/"

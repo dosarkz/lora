@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Lora\Providers;
+namespace Dosarkz\Lora\Installation\Utilities\Providers;
 
 
 use Illuminate\Filesystem\Filesystem;

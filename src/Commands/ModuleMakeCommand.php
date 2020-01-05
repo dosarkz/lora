@@ -60,7 +60,7 @@ class ModuleMakeCommand extends Command
             ]);
 
             $this->info('Installation was successful');
-            $this->info('Please include ServiceProvider for initial module to the config file, config/admin.php');
+            $this->info('Please include ServiceProvider for initial module to the config file, config/lora.php');
             $this->info("'".lcfirst($module_name)."' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class");
 
 

@@ -1,0 +1,40 @@
+<?php
+namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUser;
+
+class AuthController extends Controller
+{
+    public function showLoginForm()
+    {
+        return view('lora::auth.login');
+    }
+
+    public function postLogin(LoginRequest $request)
+    {
+        $credentials = $request->only(['username', 'password']);
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $user = SuperUser::where('username',$request->input('username'))->first();
+            Auth::guard('admin')->login($user);
+            return redirect()->intended('admin')->with('success', trans('admin::base.you_have_successfully_logged_in'));
+        }
+
+        return redirect()->back()->withInput()->withErrors(['username' => 'Username is entered incorrectly']);
+    }
+
+    /**
+     * User logout.
+     *
+     * @return Redirect
+     */
+    public function getLogout()
+    {
+        Auth::guard('admin')->logout();
+        session()->forget('url.intented');
+        return redirect(route('admin.getLogin'));
+    }
+}
