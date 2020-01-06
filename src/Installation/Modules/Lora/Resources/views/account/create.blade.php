@@ -1,13 +1,13 @@
 @extends($layoutPath)
 @section('title')
-    Добавить superUser
+    Добавить администратора
 @endsection
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">{{trans('admin::base.add')}} {{ucfirst($module->name)}}</h3>
+            <h3 class="box-title">{{trans('lora::base.add')}} Администратора</h3>
         </div>
-        @include('superUser::form',compact('model'))
+        @include('lora::account.form',compact('model'))
     </div>
 
 @endsection

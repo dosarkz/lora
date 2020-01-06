@@ -4,7 +4,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Редактировать superUser</h3>
         </div>
-        @include($module->alias.'::item.form',compact('model'))
+        @include('lora::item.form',compact('model'))
     </div>
 @endsection
 

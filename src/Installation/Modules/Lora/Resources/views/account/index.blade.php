@@ -4,8 +4,7 @@
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('admin::base.users')}}</a></li>
-            <li class="pull-right"><a href="/admin/modules/superUser/settings" class="text-muted"><i class="fa fa-gear"></i></a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('lora::base.users')}}</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -15,7 +14,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <a class="btn btn-primary" href="/admin/superUser/create">{{trans('admin::base.create')}}</a>
+                                <a class="btn btn-primary" href="/admin/account/create">{{trans('lora::base.create')}}</a>
                             </div>
                             <table class="table">
                                 <thead class="thead-inverse">

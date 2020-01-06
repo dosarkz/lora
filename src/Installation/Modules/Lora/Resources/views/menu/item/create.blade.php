@@ -7,7 +7,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Добавить menu</h3>
         </div>
-        @include($module->alias.'::item.form',compact('model'))
+        @include('lora::item.form',compact('model'))
     </div>
 
 @endsection

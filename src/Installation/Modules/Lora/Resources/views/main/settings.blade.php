@@ -16,14 +16,13 @@
                     <div class="form-group">
                         <form class="form-horizontal" enctype="multipart/form-data"
                               role="form" method="POST" action="{{ url('/admin/settings') }}">
-
-                            {!! csrf_field() !!}
+                            @csrf
 
                             <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                                <label class="cab-def control-label">{{trans('lora::base.current_password')}}</label>
+                                <label for="password" class="cab-def control-label">{{trans('lora::base.current_password')}}</label>
 
                                 <div class="cab-def">
-                                    <input type="password" class="form-control" name="old_password" value="{{ old('old_password') }}">
+                                    <input type="password" id="password" class="form-control" name="old_password" value="{{ old('old_password') }}">
 
                                     @if ($errors->has('old_password'))
                                         <span class="help-block">
@@ -63,16 +62,12 @@
 
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label class="cab-def control-label">{{trans('admin::base.avatar')}}</label>
-                                    {{Form::file('image')}}
+                                <input type="file" name="image" class="form-control">
                                     @if ($errors->has('image'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('image') }}</strong>
                                         </span>
                                     @endif
-
-
-
-
                             </div>
                             @if($image = auth()->guard('admin')->user()->image)
                                 <div class="form-group well">
@@ -86,12 +81,14 @@
                                 </div>
                             @endif
 
-
                             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                 <label class="cab-def control-label">{{trans('lora::base.locale')}}</label>
                                 <div class="cab-def">
-                                   {{Form::select('locale', ['ru'   =>  'Русский', 'en' =>  'English'], app()->getLocale(),
-                                   ['placeholder'   =>  trans('admin::base.locale'), 'class'    =>  'form-control'] )}}
+                                    <select name="locale" id="locale" class="form-control">
+                                        @foreach(['ru'   =>  'Русский', 'en' =>  'English'] as $key => $locale)
+                                            <option value="{{$key}}">{{$locale}}</option>
+                                        @endforeach
+                                    </select>
 
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">

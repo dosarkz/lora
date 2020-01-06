@@ -2,9 +2,9 @@
     <div class="col-md-12">
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#en" aria-controls="en" role="tab"
-                                                      data-toggle="tab">{{trans('admin::base.in_english')}}</a></li>
+                                                      data-toggle="tab">{{trans('lora::base.in_english')}}</a></li>
             <li role="presentation"><a href="#ru" aria-controls="ru" role="tab"
-                                       data-toggle="tab">{{trans('admin::base.in_russian')}}</a></li>
+                                       data-toggle="tab">{{trans('lora::base.in_russian')}}</a></li>
         </ul>
 
 
@@ -18,21 +18,23 @@
             </div>
         @endif
         @if($model->exists)
-            {{ Form::open(array('url' => '/admin/'.$module->alias.'/'.$model->id,'method'=> 'PUT', 'name'=>'update-office', 'files' => true))}}
+            <form action="{{route('admin.role.update', $model->id)}}" id="" method="PUT" enctype="multipart/form-data">
+           @method('put')
         @else
-            {{ Form::open(array('url' => '/admin/'.$module->alias,'method'=> 'POST', 'name'=>'post-office','files' => true))}}
+            <form action="{{route('admin.role', $model->id)}}" id="" method="POST" enctype="multipart/form-data">
         @endif
-
+            @csrf
         <div class="tab-content">
 
             <div role="tabpanel" class="tab-pane  active" id="en">
                 <br>
                 <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">{{trans('admin::base.title')}}</label>
+                        <label for="name_en" class="col-md-4 control-label">{{trans('lora::base.title')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::text('name_en', $model->name_en, ['class' => 'form-control', 'placeholder' => trans('admin::base.title')])}}
+                            <input type="text" id="name_en" name="name_en" value="{{$model->name_en}}"
+                                   class="form-control">
 
                             @if ($errors->has('name_en'))
                                 <span class="help-block">
@@ -46,10 +48,10 @@
 
                 <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">{{trans('admin::base.alias')}}</label>
+                        <label for="alias" class="col-md-4 control-label">{{trans('lora::base.alias')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::text('alias', $model->alias, ['class' => 'form-control', 'placeholder' => trans('admin::base.alias')])}}
+                            <input type="text" id="alias" name="alias" value="{{$model->alias}}" class="form-control">
 
                             @if ($errors->has('alias'))
                                 <span class="help-block">
@@ -66,10 +68,10 @@
                 <br>
                 <div class="form-group{{ $errors->has('name_ru') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="name" class="col-md-4 control-label">{{trans('admin::base.title')}}</label>
+                        <label for="name_ru" class="col-md-4 control-label">{{trans('lora::base.title')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::text('name_ru', $model->name_ru, ['class' => 'form-control', 'placeholder' => trans('admin::base.title')])}}
+                            <input type="text" id="name_ru" name="name_ru" value="{{$model->name_ru}}" class="form-control">
 
                             @if ($errors->has('name_ru'))
                                 <span class="help-block">
@@ -84,11 +86,15 @@
 
         <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
             <div class="row">
-                <label for="name" class="col-md-4 control-label">{{trans('admin::base.status')}}</label>
+                <label for="status_id" class="col-md-4 control-label">{{trans('lora::base.status')}}</label>
 
                 <div class="col-md-6">
-                    {{Form::select('status_id', $model->statuses, $model->status_id, ['class' => 'form-control',
-                     'placeholder' => trans('admin::base.status')])}}
+
+                    <select name="status_id" id="status_id" class="form-control">
+                        @foreach($model->statuses as  $i => $status)
+                            <option value="{{$i}}">{{$status}}</option>
+                        @endforeach
+                    </select>
 
                     @if ($errors->has('status_id'))
                         <span class="help-block">
@@ -103,13 +109,13 @@
 
         <div class="form-group">
             @if($model->exists)
-                {{ Form::submit(trans('admin::base.update'), ['class' => 'btn btn-primary']) }}
+                <button type="submit" class="btn btn-primary">{{trans('admin::base.update')}}</button>
             @else
-                {{ Form::submit(trans('admin::base.create'), ['class' => 'btn btn-primary']) }}
+                <button type="submit" class="btn btn-primary">{{trans('admin::base.create')}}</button>
             @endif
         </div>
 
 
-        {{ Form::close() }}
+            </form>
     </div>
 </div>

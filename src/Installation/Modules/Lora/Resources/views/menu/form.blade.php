@@ -1,11 +1,11 @@
-@if($model->exists)
+    @if($model->exists)
     <form class="form-horizontal" method="PUT" action="{{ route('menu.update', $model->id) }}"
           enctype="multipart/form-data">
         @method('put')
-        @else
-            <form class="form-horizontal" method="POST" action="{{ route('menu'}}" enctype="multipart/form-data">
-                @method('post')
-         @endif
+    @else
+     <form class="form-horizontal" method="POST" action="{{ route('menu')}}" enctype="multipart/form-data">
+        @method('post')
+    @endif
                 @csrf
 
                 @if (count($errors) > 0)
@@ -21,10 +21,10 @@
 
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#en" aria-controls="en" role="tab"
-                                                              data-toggle="tab">{{trans('admin::base.in_english')}}</a>
+                                                              data-toggle="tab">{{trans('lora::base.in_english')}}</a>
                     </li>
                     <li role="presentation"><a href="#ru" aria-controls="ru" role="tab"
-                                               data-toggle="tab">{{trans('admin::base.in_russian')}}</a></li>
+                                               data-toggle="tab">{{trans('lora::base.in_russian')}}</a></li>
                 </ul>
 
 
@@ -34,10 +34,10 @@
                         <br>
                         <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
                             <div class="row">
-                                <label for="name" class="col-md-4 control-label">{{trans('admin::base.name')}}</label>
+                                <label for="name_en" class="col-md-4 control-label">{{trans('lora::base.name')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::text('name_en', $model->name_en, ['class' => 'form-control', 'placeholder' => trans('admin::base.title')])}}
+                                    <input type="text" id="name_en" name="name_en" value="{{$model->name_en}}" class="form-control">
 
                                     @if ($errors->has('name_en'))
                                         <span class="help-block">
@@ -50,11 +50,14 @@
 
                         <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
                             <div class="row">
-                                <label for="name" class="col-md-4 control-label">{{trans('admin::base.type')}}</label>
+                                <label for="type_id" class="col-md-4 control-label">{{trans('lora::base.type')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::select('type_id', $model->types, $model->type_id, ['class' => 'form-control',
-                                     'placeholder' => trans('admin::base.choose')])}}
+                                    <select name="type_id" id="type_id" class="form-control">
+                                        @foreach($model->types as $k => $type)
+                                            <option value="{{$k}}">{{$type}}</option>
+                                            @endforeach
+                                    </select>
 
                                     @if ($errors->has('type_id'))
                                         <span class="help-block">
@@ -68,11 +71,15 @@
 
                         <div class="form-group{{ $errors->has('module_id') ? ' has-error' : '' }}">
                             <div class="row">
-                                <label for="name" class="col-md-4 control-label">{{trans('admin::base.module')}}</label>
+                                <label for="module_id" class="col-md-4 control-label">{{trans('lora::base.module')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::select('module_id', $model->modules, $model->module_id, ['class' => 'form-control',
-                                     'placeholder' => trans('admin::base.choose')])}}
+
+                                    <select name="module_id" id="module_id" class="form-control">
+                                        @foreach($model->modules as $k => $module)
+                                            <option value="{{$k}}">{{$module}}</option>
+                                        @endforeach
+                                    </select>
 
                                     @if ($errors->has('type_id'))
                                         <span class="help-block">
@@ -85,12 +92,11 @@
 
                         <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
                             <div class="row">
-                                <label for="icon"
-                                       class="col-md-4 control-label">{{trans('admin::base.position')}}</label>
+                                <label for="position"
+                                       class="col-md-4 control-label">{{trans('lora::base.position')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::number('position', $model->position, ['class' => 'form-control', 'placeholder' =>
-                                    trans('admin::base.position')])}}
+                                    <input type="number" id="position" value="{{$model->position}}" class="form-control">
 
                                     @if ($errors->has('position'))
                                         <span class="help-block">
@@ -104,11 +110,14 @@
 
                         <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
                             <div class="row">
-                                <label for="name" class="col-md-4 control-label">{{trans('admin::base.status')}}</label>
+                                <label for="status_id" class="col-md-4 control-label">{{trans('admin::base.status')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::select('status_id', $model->statuses, $model->status_id, ['class' => 'form-control',
-                                     'placeholder' => trans('admin::base.status')])}}
+                                    <select name="status_id" id="status_id" class="form-control">
+                                        @foreach($model->statuses as $k => $status)
+                                            <option value="{{$k}}">{{$status}}</option>
+                                            @endforeach
+                                    </select>
 
                                     @if ($errors->has('status_id'))
                                         <span class="help-block">
@@ -120,7 +129,7 @@
                         </div>
 
 
-                        <h3>{{trans('admin::base.visible')}}</h3>
+                        <h3>{{trans('lora::base.visible')}}</h3>
 
                         @foreach($roles as $role)
                             <div class="form-group">
@@ -128,11 +137,11 @@
                                     <label for="role-{{$role->alias}}"
                                            class="col-md-4 control-label">{{$role->name}}</label>
                                     <div class="col-md-6">
-                                        @if(\Dosarkz\Lora\Modules\Menu\Models\MenuRole::where('menu_id', $model->id)
+                                        @if(\Dosarkz\Lora\Installation\Modules\Lora\Models\MenuRole::where('menu_id', $model->id)
                                         ->where('role_id', $role->id)->first())
-                                            {{Form::checkbox('menuRole['.$role->id.']', true, true, ['id' => 'role-'.$role->alias])}}
+                                            <input type="checkbox" name="menuRole[{{$role->id}}]" checked="true" id="role-{{$role->alias}}">
                                         @else
-                                            {{Form::checkbox('menuRole['.$role->id.']', false, false, ['id' => 'role-'.$role->alias])}}
+                                            <input type="checkbox" name="menuRole[{{$role->id}}]" checked="false" id="role-{{$role->alias}}">
                                         @endif
 
                                     </div>
@@ -151,7 +160,7 @@
                                        class="col-md-4 control-label">{{trans('admin::base.name')}}</label>
 
                                 <div class="col-md-6">
-                                    {{Form::text('name_ru', $model->name_ru, ['class' => 'form-control', 'placeholder' => trans('admin::base.title')])}}
+                                    <input id="name_ru" type="text" name="name_ru" value="{{$model->name_ru}}" class="form-control">
 
                                     @if ($errors->has('name_ru'))
                                         <span class="help-block">
@@ -165,9 +174,9 @@
 
                     <br>
                     @if($model->exists)
-                        {{ Form::submit(trans('admin::base.update'), ['class' => 'btn btn-primary']) }}
+                        <button type="submit" class="btn btn-primary">{{trans('admin::base.update')}}</button>
                     @else
-                        {{ Form::submit(trans('admin::base.create'), ['class' => 'btn btn-primary']) }}
+                        <button type="submit" class="btn btn-primary">{{trans('admin::base.create')}}</button>
                     @endif
 
                     <a class="btn btn-info" href="{{url()->previous()}}">{{trans('admin::base.back')}}</a>

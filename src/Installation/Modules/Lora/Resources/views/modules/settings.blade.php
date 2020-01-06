@@ -6,21 +6,23 @@
             <div class="box-header">
                 <i class="fa fa-cog"></i>
 
-                <h3 class="box-title">{{trans('admin::base.settings')}} {{$model->name}}</h3>
+                <h3 class="box-title">{{trans('lora::base.settings')}} {{$model->name}}</h3>
             </div>
             <div class="box-body">
                 @if($model->exists)
-                    {{ Form::open(array('url' => '/admin/modules/'.$model->id,'method'=> 'PUT', 'name'=>'update-modules', 'files' => true))}}
+                    <form method="put" action="{{route('modules.update', $model->id)}}" enctype="multipart/form-data">
+                    @method('put')
                 @else
-                    {{ Form::open(array('url' => '/admin/modules','method'=> 'POST', 'name'=>'post-modules','files' => true))}}
+                    <form method="post" action="{{route('modules')}}" enctype="multipart/form-data">
+                    @method('post')
                 @endif
 
                 <div class="form-group{{ $errors->has('menu_active') ? ' has-error' : '' }}">
                     <div class="row">
-                        <label for="menu_active" class="col-md-4 control-label">{{trans('admin::base.show_in_menu')}}</label>
+                        <label for="menu_active" class="col-md-4 control-label">{{trans('lora::base.show_in_menu')}}</label>
 
                         <div class="col-md-6">
-                            {{Form::checkbox('menu_active',null, $model->menu_active, ['id' => 'menu_active'])}}
+                            <input type="checkbox" name="menu_active" id="menu_active" value="{{$model->menu_active}}">
 
                             @if ($errors->has('menu_active'))
                                 <span class="help-block">
@@ -33,23 +35,18 @@
 
                 <br>
                 @if($model->exists)
-                    {{ Form::submit('Обновить', ['class' => 'btn btn-primary']) }}
+                    <button type="submit" class="btn btn-primary">Обновить</button>
                 @else
-                    {{ Form::submit('Добавить', ['class' => 'btn btn-primary']) }}
+                    <button type="submit" class="btn btn-primary">Добавить</button>
                 @endif
 
                 <a class="btn btn-info" href="{{url()->previous()}}">{{trans('admin::base.back')}}</a>
 
             </div>
-            {{ Form::close() }}
+            </form>
 
 
         </div>
         <!-- /.box -->
     </div>
-    </div>
-
-
-
-
 @endsection
