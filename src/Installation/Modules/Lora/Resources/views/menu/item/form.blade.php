@@ -15,7 +15,7 @@
                   enctype="multipart/form-data">
                 @method('put')
             @else
-                <form class="form-horizontal" method="POST" action="{{ route('menu.items', $menu->id}}"
+                <form class="form-horizontal" method="POST" action="{{ route('menu.items.store', $menu->id)}}"
                   enctype="multipart/form-data">
                 @method('post')
             @endif

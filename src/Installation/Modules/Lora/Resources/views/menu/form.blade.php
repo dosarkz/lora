@@ -3,7 +3,7 @@
           enctype="multipart/form-data">
         @method('put')
     @else
-     <form class="form-horizontal" method="POST" action="{{ route('menu')}}" enctype="multipart/form-data">
+     <form class="form-horizontal" method="POST" action="{{ route('menu.store')}}" enctype="multipart/form-data">
         @method('post')
     @endif
                 @csrf
@@ -183,6 +183,6 @@
 
                 </div>
 
-    {{ Form::close() }}
+     </form>
 
 

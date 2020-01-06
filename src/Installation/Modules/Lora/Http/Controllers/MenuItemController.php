@@ -34,9 +34,8 @@ class MenuItemController extends BasicController
     public function create($id)
     {
         $model = $this->getModel();
-        $module = $this->getModule();
         $menu = Menu::findOrFail($id);
-        return view('lora::menu.item.create', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.create', compact('model',  'menu'));
     }
 
     /**
@@ -71,9 +70,8 @@ class MenuItemController extends BasicController
     public function edit($menu_id, $id)
     {
         $model = $this->getModel()->findOrFail($id);
-        $module = $this->getModule();
         $menu = Menu::findOrFail($menu_id);
-        return view('lora::menu.item.edit', compact('model', 'module', 'menu'));
+        return view('lora::menu.item.edit', compact('model',  'menu'));
     }
 
     /**
