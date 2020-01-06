@@ -3,7 +3,7 @@
 @section('content')
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{$module->name}}</a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Role</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <a class="btn btn-primary" href="{{route('admin.role.create')}}">{{trans('lora::base.create')}}</a>
+                                <a class="btn btn-primary" href="{{route('role.create')}}">{{trans('lora::base.create')}}</a>
                             </div>
                             <table class="table">
                                 <thead class="thead-inverse">
@@ -34,12 +34,12 @@
                                             <td>{{ $item->alias }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a class="btn btn-xs btn-primary" href="{{route('admin.role.update', $item->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                <a class="btn btn-xs btn-primary" href="{{route('role.update', $item->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                 @if($item->status_id != $item::STATUS_DEFAULT)
 
                                                     <button class="btn btn-xs btn-danger delete"
                                                             type="button" data-target="#confirm" data-toggle="modal"
-                                                            data-action="{{route('admin.role.destroy', $item->id}}"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                                            data-action="{{route('role.destroy', $item->id)}}"><i class="fa fa-times" aria-hidden="true"></i></button>
 
                                                  @endif
                                             </td>

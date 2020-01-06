@@ -28,5 +28,6 @@ Route::group([
 
         Route::resource('menu','MenuController');
         Route::resource('menu.items', 'MenuItemController');
+        Route::resource('role', 'LoraRoleController');
     });
 });

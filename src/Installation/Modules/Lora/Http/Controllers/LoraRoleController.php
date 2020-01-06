@@ -22,7 +22,7 @@ class LoraRoleController extends BasicController
     public function index()
     {
         $model = $this->getModel()->paginate();
-        return view($this->getModule()->alias . '::backend.index', compact('model', 'module'));
+        return $this->view('role.index', compact('model'));
     }
 
     /**
@@ -32,7 +32,7 @@ class LoraRoleController extends BasicController
     public function create()
     {
         $model = $this->getModel();
-        return view($this->getModule()->alias . '::backend.create', compact('model', 'module'));
+        return $this->view('role.create', compact('model'));
     }
 
     /**
@@ -44,7 +44,7 @@ class LoraRoleController extends BasicController
     {
         $this->getModel()->create($request->all());
 
-        return redirect('/admin/' . $this->getModule()->alias)
+        return redirect('/admin/role')
             ->with('success', trans('admin::base.resource_created'));
     }
 
@@ -65,8 +65,7 @@ class LoraRoleController extends BasicController
     public function edit($id)
     {
         $model = $this->getModel()->findOrFail($id);
-        $module = $this->getModule();
-        return view($this->getModule()->alias . '::backend.edit', compact('model', 'module'));
+        return $this->view('role.edit', compact('model'));
     }
 
     /**
@@ -78,10 +77,9 @@ class LoraRoleController extends BasicController
     public function update(UpdateRoleRequest $request, $id)
     {
         $model = $this->getModel()->findOrFail($id);
-
         $model->update($request->only('name', 'status_id'));
 
-        return redirect('/admin/' . $this->getModule()->alias)->with('success', trans('admin::base.resource_updated'));
+        return redirect('/admin/role')->with('success', trans('lora::base.resource_updated'));
     }
 
     /**
@@ -92,6 +90,6 @@ class LoraRoleController extends BasicController
     {
         $model = $this->getModel()->findOrFail($id);
         $model->delete();
-        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
+        return redirect()->back()->with('success', trans('lora::base.resource_deleted'));
     }
 }
