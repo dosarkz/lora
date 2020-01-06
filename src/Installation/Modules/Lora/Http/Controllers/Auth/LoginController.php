@@ -1,12 +1,12 @@
 <?php
-namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
+namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\BasicController;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUser;
 
-class AuthController extends BasicController
+class LoginController extends BasicController
 {
     public function showLoginForm()
     {

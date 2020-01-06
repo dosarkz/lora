@@ -1,7 +1,8 @@
 <?php
 
-namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
+namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\Resources;
 
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\BasicController;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\StoreMenuItemRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateMenuItemRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\Menu;

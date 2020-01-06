@@ -10,10 +10,6 @@ class BasicController extends Controller
     /**
      * @var
      */
-    private $module;
-    /**
-     * @var
-     */
     protected $model;
     /**
      * @var
@@ -36,11 +32,14 @@ class BasicController extends Controller
         $this->model = $model;
     }
 
+    /**
+     * @param $route
+     * @param array $data
+     * @param array $mergedData
+     * @return mixed
+     */
     public function view($route, $data = [], $mergedData = [])
     {
         return Lora::renderView($route, $data, $mergedData);
     }
-
-
-
 }

@@ -1,20 +1,20 @@
 <?php
 
-namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
+namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\Resources;
 
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\BasicController;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\StoreSuperUserRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateSuperUserRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SuperUserController extends ModuleController
+class AccountController extends BasicController
 {
     public function __construct()
     {
         $model = config('superUser.admin.model');
         $this->setModel(new $model);
-        $this->setModule('superUser');
     }
 
     /**
@@ -24,9 +24,8 @@ class SuperUserController extends ModuleController
     public function index()
     {
         $model = $this->getModel()->paginate();
-        $module = $this->getModule();
 
-        return view('superUser::index', compact('model', 'module'));
+        return view('superUser::index', compact('model'));
     }
 
     /**
@@ -36,9 +35,7 @@ class SuperUserController extends ModuleController
     public function create()
     {
         $model = $this->getModel();
-        $module = $this->getModule();
-
-        return view('superUser::create', compact('model', 'module'));
+        return view('superUser::create', compact('model'));
     }
 
     /**
@@ -59,7 +56,7 @@ class SuperUserController extends ModuleController
             'role_id' => $request->input('role_id'),
         ]);
 
-        return redirect()->back()->with('success', trans('admin::base.resource_created'));
+        return redirect()->back()->with('success', trans('lora::base.resource_created'));
     }
 
     /**

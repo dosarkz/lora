@@ -1,14 +1,15 @@
 <?php
 
-namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers;
+namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\Resources;
 
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\BasicController;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\StoreRoleRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateRoleRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class LoraRoleController extends BasicController
+class RoleController extends BasicController
 {
     public function __construct()
     {

@@ -9,7 +9,7 @@ use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\ResetPasswordRequest;
 use Dosarkz\LaravelUploader\BaseUploader;
 use Illuminate\Support\Facades\Hash;
 
-class MainController extends BasicController
+class AppController extends BasicController
 {
     public function index()
     {

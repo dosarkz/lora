@@ -22,8 +22,8 @@ class GuardAuth
         {
             DB::connection()->getPdo();
 
-            if (!Auth::guard($guard)->check() && $request->getRequestUri() != '/admin/login') {
-                return redirect('/admin/login');
+            if (!Auth::guard($guard)->check() && $request->getRequestUri() != '/lora/login') {
+                return redirect('/lora/login');
             }
 
         } catch (\Exception $e) {

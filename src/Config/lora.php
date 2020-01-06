@@ -1,5 +1,5 @@
 <?php
-use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\AuthController;
+use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\LoginController;
 
 return [
     'name' => 'Lora panel',
@@ -37,7 +37,7 @@ return [
     ],
     'lora' => [
         'controllers' => [
-            'auth' => AuthController::class,
+            'auth' => LoginController::class,
         ]
     ]
 
