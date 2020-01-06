@@ -20,7 +20,7 @@ class LoginController extends BasicController
         if (Auth::guard('admin')->attempt($credentials)) {
             $user = SuperUser::where('username',$request->input('username'))->first();
             Auth::guard('admin')->login($user);
-            return redirect()->intended('admin')->with('success', trans('lora::base.you_have_successfully_logged_in'));
+            return redirect()->intended('lora')->with('success', trans('lora::base.you_have_successfully_logged_in'));
         }
 
         return redirect()->back()->withInput()->withErrors(['username' => 'Username is entered incorrectly']);
