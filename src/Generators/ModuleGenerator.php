@@ -70,7 +70,7 @@ class ModuleGenerator
                     ]),
                     new Folder('Http', '', [
                         new Folder('Controllers', 'Http/Controllers', [], [
-                            new File('RoleController.stub', 'RoleController.phpphp',
+                            new File('BackendController.stub', 'BackendController.php',
                                 [
                                     'module_name'       => ucfirst($this->name),
                                     'lc_module_name'    =>  lcfirst($this->name)

@@ -1,12 +1,13 @@
 <?php
 namespace App\Modules\$module_name$\Database\Seeders;
 
-use Dosarkz\Lora\Models\Module;
-use Dosarkz\Lora\Modules\Menu\Models\Menu;
-use Dosarkz\Lora\Modules\Menu\Models\MenuItem;
-use Dosarkz\Lora\Modules\Menu\Models\MenuRole;
-use Dosarkz\Lora\Modules\Role\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\MenuItem;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\MenuRole;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\Module;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\Menu;
 
 class ModuleSeeder extends Seeder
 {
