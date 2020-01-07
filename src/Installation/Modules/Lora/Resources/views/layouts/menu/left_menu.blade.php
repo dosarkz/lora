@@ -1,5 +1,4 @@
-<ul class="sidebar-menu">
-    <li class="header">{{trans('lora::base.navigation')}}</li>
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     @include('lora::navigation.menu',[
     'lists'=> \Dosarkz\Lora\Installation\Modules\Lora\Models\Menu::where('type_id', 1)
         ->visible()

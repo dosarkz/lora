@@ -9,18 +9,14 @@
 
     <title>{{ config('app.name', 'Lora') }}</title>
 
-    <!-- Styles -->
-    <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/vendor/admin/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/vendor/admin/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/vendor/admin/adminlte/css/AdminLTE.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins -->
-
-    <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
-
+    <link rel="stylesheet" href="/vendor/admin/adminlte/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     @yield('css')
 
@@ -32,80 +28,118 @@
     </script>
     @yield('js')
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 <div class="wrapper">
-    <header class="main-header">
-        <a href="{{route('lora.dashboard.index')}}" class="logo">
-            <span class="logo-mini">Lora</span>
-            <span class="logo-lg"><b>Lora</b></span>
-        </a>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{route('lora.dashboard.index')}}" class="nav-link">{{trans('lora::base.main')}}</a>
+            </li>
+        </ul>
 
-        <nav class="navbar navbar-static-top">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
             @if(!auth()->guard('admin')->guest())
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <li class="nav-item dropdown user-menu">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 @if(auth()->guard('admin')->user()->avatar)
-                                    <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="user-image" alt="User Image">
+                                    <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="user-image img-circle elevation-2" alt="User Image">
                                 @else
-                                    <img src="/vendor/admin/adminlte/img/sheldon_cooper.png" class="user-image" alt="User Image">
+                                    <img src="/vendor/admin/adminlte/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
                                 @endif
-                                <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- User image -->
-                                <li class="user-header">
 
+                                <span class="d-none d-md-inline">{{auth()->guard('admin')->user()->name}}</span>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <!-- User image -->
+                                <li class="user-header bg-primary">
                                     @if(auth()->guard('admin')->user()->avatar)
-                                        <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="img-circle" alt="User Image">
+                                        <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="img-circle elevation-2" alt="User Image">
                                     @else
-                                    <img src="/vendor/admin/adminlte/img/sheldon_cooper.png" class="img-circle" alt="User Image">
+                                        <img src="/vendor/admin/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                                     @endif
                                     <p>
                                         <span class="hidden-xs"> {{auth()->guard('admin')->user()->name}}</span>
                                     </p>
+
                                 </li>
 
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="/admin/settings" class="btn btn-default btn-flat">{{trans('lora::base.settings')}}</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        @if (auth()->guard('admin')->guest())
-                                            <a class="btn btn-default btn-flat" href="{{ route('lora.login.show') }}">{{trans('lora::base.sign_in')}}</a>
-                                        @else
-                                            <a href="{{ route('lora.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                                    <a href="{{route('lora.accounts.settings')}}" class="btn btn-default btn-flat">{{trans('lora::base.settings')}}</a>
+                                    @if (auth()->guard('admin')->guest())
+                                        <a class="btn btn-default btn-flat float-right" href="{{ route('lora.auth.show') }}">{{trans('lora::base.sign_in')}}</a>
+                                    @else
+                                        <a href="{{ route('lora.logout') }}" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">{{trans('lora::base.log_out')}}</a>
 
-                                            <form id="logout-form" action="{{ route('lora.logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        @endif
-                                    </div>
+                                        <form id="logout-form" action="{{ route('lora.logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    @endif
                                 </li>
+
                             </ul>
                         </li>
-                    </ul>
-                </div>
             @endif
-        </nav>
-    </header>
+        </ul>
+    </nav>
 
     @if(!auth()->guard('admin')->guest())
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                @include('lora::layouts.menu.left_menu')
-            </section>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="{{route('lora.dashboard.index')}}" class="brand-link">
+                <span class="brand-text font-weight-light align-items-center">Lora CMS</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    @include('lora::layouts.menu.left_menu')
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
         </aside>
     @endif
 
     <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">@yield('title')</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+{{--                        <ol class="breadcrumb float-sm-right">--}}
+{{--                            <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+{{--                            <li class="breadcrumb-item active">Dashboard v2</li>--}}
+{{--                        </ol>--}}
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
         <!-- Main content -->
         <section class="content">
@@ -125,14 +159,16 @@
 
 
 </div>
-<!-- Scripts -->
-<script src="/vendor/admin/jquery/jquery-3.2.1.min.js"></script>
-<script src="/vendor/admin/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="/vendor/admin/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/vendor/admin/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/vendor/admin/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/vendor/admin/adminlte/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/vendor/admin/adminlte/js/demo.js"></script>
+<script src="/vendor/admin/adminlte/dist/js/adminlte.js"></script>
 
 @yield('js-append')
 </body>

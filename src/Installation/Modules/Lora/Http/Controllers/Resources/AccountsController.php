@@ -24,8 +24,7 @@ class AccountsController extends BasicController
     public function index()
     {
         $model = $this->getModel()->paginate();
-
-        return view('superUser::index', compact('model'));
+        return $this->view('accounts.index', compact('model'));
     }
 
     /**
@@ -35,7 +34,7 @@ class AccountsController extends BasicController
     public function create()
     {
         $model = $this->getModel();
-        return view('superUser::create', compact('model'));
+        return $this->view('accounts.create', compact('model'));
     }
 
     /**
@@ -76,9 +75,7 @@ class AccountsController extends BasicController
     public function edit($id)
     {
         $model = $this->getModel()->findOrFail($id);
-        $module = $this->getModule();
-
-        return view('superUser::edit', compact('model', 'module'));
+        return $this->view('accounts.edit', compact('model'));
     }
 
     /**
@@ -101,7 +98,7 @@ class AccountsController extends BasicController
 
         $model->update($request->all());
 
-        return redirect()->back()->with('success', trans('admin::base.resource_updated'));
+        return redirect()->back()->with('success', trans('lora::base.resource_updated'));
     }
 
     /**
@@ -113,10 +110,10 @@ class AccountsController extends BasicController
         $model = $this->getModel()->findOrFail($id);
         if($model->currentUser($id))
         {
-            return redirect()->back()->with('error', 'You cannot delete current admin account');
+            return redirect()->back()->with('error', 'You cannot delete current admin accounts');
         }
 
         $model->delete();
-        return redirect()->back()->with('success', trans('admin::base.resource_deleted'));
+        return redirect()->back()->with('success', trans('lora::base.resource_deleted'));
     }
 }

@@ -35,6 +35,6 @@ class LoginController extends BasicController
     {
         Auth::guard('admin')->logout();
         session()->forget('url.intented');
-        return redirect(route('admin.getLogin'));
+        return redirect(route('lora.auth.show'));
     }
 }

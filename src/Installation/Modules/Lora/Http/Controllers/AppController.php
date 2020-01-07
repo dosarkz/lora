@@ -88,7 +88,7 @@ class AppController extends BasicController
             session()->put('locale', $request->input('locale'));
         }
 
-        return redirect()->back()->with('success', trans('admin::base.settings_updated'));
+        return redirect()->back()->with('success', trans('lora::base.settings_updated'));
     }
 
     public function removeImage()

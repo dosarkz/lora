@@ -8,16 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Lora') }}</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/vendor/admin/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/vendor/admin/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/vendor/admin/adminlte/css/AdminLTE.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins -->
-
-    <link rel="stylesheet" href="/vendor/admin/adminlte/css/skins/_all-skins.min.css">
-    <link href="/vendor/admin/adminlte/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/admin/adminlte/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     @yield('css')
 
@@ -29,7 +27,7 @@
     </script>
     @yield('js')
 </head>
-<body >
+<body class="hold-transition login-page">
 
 <section class="content">
     @if(Session::has('success'))
@@ -43,14 +41,15 @@
     @yield('content')
 
 </section>
-<!-- Scripts -->
-<script src="/vendor/admin/jquery/jquery-3.2.1.min.js"></script>
-<script src="/vendor/admin/bootstrap/js/bootstrap.min.js"></script>
-
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="/vendor/admin/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/vendor/admin/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/vendor/admin/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/vendor/admin/adminlte/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/vendor/admin/adminlte/js/demo.js"></script>
+<script src="/vendor/admin/adminlte/dist/js/adminlte.js"></script>
 
 @yield('js-append')
 </body>

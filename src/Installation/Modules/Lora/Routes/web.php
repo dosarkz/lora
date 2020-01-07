@@ -2,7 +2,7 @@
 
 Route::group([
     'prefix' => 'lora',
-    'name' => 'lora.',
+    'as' => 'lora.',
     'middleware' => [ 'web', 'language'],
     'namespace' => 'Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers'], function () {
 
@@ -11,11 +11,11 @@ Route::group([
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::get('/', 'AppController@index')->name('dashboard.index');
-        Route::get('settings','AppController@settings')->name('account.settings.show');
-        Route::post('settings', 'AppController@postSettings')->name('account.settings.update');
-        Route::delete('settings/remove-image', 'AppController@removeImage')->name('account.image.destroy');
-        Route::get('/reset-password', 'AppController@getResetPassword')->name('account.password.index');
-        Route::post('/reset-password', 'AppController@postResetPassword')->name('account.password.update');
+        Route::get('settings','AppController@settings')->name('accounts.settings');
+        Route::post('settings', 'AppController@postSettings')->name('accounts.settings');
+        Route::delete('settings/remove-image', 'AppController@removeImage')->name('accounts.image.destroy');
+        Route::get('/reset-password', 'AppController@getResetPassword')->name('accounts.password.index');
+        Route::post('/reset-password', 'AppController@postResetPassword')->name('accounts.password.update');
 
 
         Route::post('logout','Auth\LoginController@getLogout')->name('logout');

@@ -15,7 +15,7 @@
 
                     <div class="form-group">
                         <form class="form-horizontal" enctype="multipart/form-data"
-                              role="form" method="POST" action="{{ url('/admin/settings') }}">
+                              role="form" method="POST" action="{{ route('lora.accounts.settings') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
@@ -61,7 +61,7 @@
 
 
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                <label class="cab-def control-label">{{trans('admin::base.avatar')}}</label>
+                                <label class="cab-def control-label">{{trans('lora::base.avatar')}}</label>
                                 <input type="file" name="image" class="form-control">
                                     @if ($errors->has('image'))
                                         <span class="help-block">
