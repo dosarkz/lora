@@ -1,9 +1,9 @@
     @if($model->exists)
-    <form class="form-horizontal" method="PUT" action="{{ route('menu.update', $model->id) }}"
+    <form class="form-horizontal" method="PUT" action="{{ route('menus.update', $model->id) }}"
           enctype="multipart/form-data">
         @method('put')
     @else
-     <form class="form-horizontal" method="POST" action="{{ route('menu.store')}}" enctype="multipart/form-data">
+     <form class="form-horizontal" method="POST" action="{{ route('menus.store')}}" enctype="multipart/form-data">
         @method('post')
     @endif
                 @csrf

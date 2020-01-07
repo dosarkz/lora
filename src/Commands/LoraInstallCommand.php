@@ -71,21 +71,28 @@ class LoraInstallCommand extends Command
     public function publishFiles()
     {
         $this->callSilent('vendor:publish', [
-            '--tag'   => ['lora'],
-          //  '--force' => true
+            '--tag' => ['lora'],
+            //  '--force' => true
         ]);
         $this->info('Publish vendor transferred successfully');
     }
 
     public function createSuperUser()
     {
-        $data['username']     = $this->ask('Administrator login', 'admin');
-        $data['name'] = $this->ask('Administrator name', 'Lora');
-        $data['email']    = $this->ask('Administrator email', 'ashenov.e@gmail.com');
-        $data['password'] = bcrypt($this->secret('Administrator password'));
+        $admin = new SuperUser();
         $role_admin = Role::where('alias', 'admin')->first();
-        $data['role_id']  = $role_admin->id;
-        $user = SuperUser::firstOrCreate($data);
+        if (!$role_admin) return false;
+
+        $admin->username = $this->ask('Administrator login', 'admin');
+        $admin->name = $this->ask('Administrator name', 'Lora');
+        $admin->email = $this->ask('Administrator email', 'ashenov.e@gmail.com');
+        $admin->password = bcrypt($this->secret('Administrator password'));
+        $admin->role_id = $role_admin->id;
+
+        if (!$user = SuperUser::where('username', $admin->username)->orWhere('email', $admin->email)->first()) {
+            $admin->save();
+            $user = $admin;
+        }
 
         SuperUserRole::create([
             'super_user_id' => $user->id,
@@ -104,10 +111,9 @@ class LoraInstallCommand extends Command
 
     public function installModules()
     {
-        if(is_null(config('admin.modules.providers')))
-        {
+        if (is_null(config('admin.modules.providers'))) {
             $modules = [];
-        }else {
+        } else {
             $modules = config('admin.modules.providers');
         }
 

@@ -78,7 +78,7 @@ class ModuleSeeder extends Seeder
         $MenuItem =  MenuItem::create([
             'title_ru' => 'Меню',
             'title_en'  =>  'Menu',
-            'url' => route('menu.index'),
+            'url' => route('menus.index'),
             'icon' => 'fa-bars',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -88,7 +88,7 @@ class ModuleSeeder extends Seeder
         MenuItem::create([
             'title_ru' => 'Список меню',
             'title_en'  =>  'List',
-            'url' => route('menu.index'),
+            'url' => route('menus.index'),
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,
@@ -99,7 +99,7 @@ class ModuleSeeder extends Seeder
         MenuItem::create([
             'title_ru' => 'Добавить',
             'title_en'  =>  'Add',
-            'url' => route('menu.create'),
+            'url' => route('menus.create'),
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,
@@ -119,7 +119,7 @@ class ModuleSeeder extends Seeder
         MenuItem::create([
             'title_ru' => 'Панель инструментов',
             'title_en'  =>  'Dashboard',
-            'url' => route('lora.index'),
+            'url' => route('lora.dashboard.index'),
             'icon' => 'fa-dashboard',
             'menu_id' => $main->id,
             'position' => 1,
@@ -154,7 +154,7 @@ class ModuleSeeder extends Seeder
           MenuItem::create([
             'title_ru' => 'Настройки',
             'title_en'  =>  'Settings',
-            'url' => route('lora.account.settings.index'),
+            'url' => route('lora.account.settings.show'),
             'icon' => 'fa-briefcase',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -165,7 +165,7 @@ class ModuleSeeder extends Seeder
         $MenuItem =  MenuItem::create([
             'title_ru' => 'Роли',
             'title_en'  =>  'Roles',
-            'url' => route('lora.account.roles.index'),
+            'url' => route('roles.index'),
             'icon' => 'fa-briefcase',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -175,7 +175,7 @@ class ModuleSeeder extends Seeder
         MenuItem::create([
             'title_ru' => 'Добавить',
             'title_en'  =>  'Add',
-            'url' => route('lora.account.roles.create'),
+            'url' => route('roles.create'),
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,
@@ -186,7 +186,7 @@ class ModuleSeeder extends Seeder
         MenuItem::create([
             'title_ru' => 'Список',
             'title_en'  =>  'List',
-            'url' => route('lora.account.roles.index'),
+            'url' => route('roles.index'),
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,

@@ -8,11 +8,15 @@ use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateMenuRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\Menu;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\MenuRole;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class MenuController extends BasicController
 {
+    public function __construct()
+    {
+        $this->setModel(new Menu);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -29,7 +33,7 @@ class MenuController extends BasicController
      */
     public function create()
     {
-        $model = new Menu();
+        $model = $this->getModel();
         $roles = Role::all();
         return view('lora::menu.create', compact('model','roles'));
     }
@@ -71,14 +75,14 @@ class MenuController extends BasicController
 
     public function edit($id)
     {
-        $model = Menu::findOrFail($id);
+        $model = $this->model()->findOrFail($id);
         $roles = Role::all();
         return view('lora::menu.edit', compact('model','roles'));
     }
 
     public function update(UpdateMenuRequest $request, $id)
     {
-        $model = Menu::findOrFail($id);
+        $model = $this->model()->findOrFail($id);
 
         if($request->has('menuRole'))
         {
@@ -103,7 +107,7 @@ class MenuController extends BasicController
      */
     public function destroy($id)
     {
-        $model = Menu::findOrFail($id);
+        $model = $this->model()->findOrFail($id);
         $model->delete();
         return redirect()->back()->with('success', trans('lora::base.resource_deleted'));
     }

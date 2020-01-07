@@ -5,16 +5,16 @@ namespace Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\Resources;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\BasicController;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\StoreSuperUserRequest;
 use Dosarkz\Lora\Installation\Modules\Lora\Http\Requests\UpdateSuperUserRequest;
+use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUser;
 use Dosarkz\Lora\Installation\Modules\Lora\Models\SuperUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class AccountController extends BasicController
+class AccountsController extends BasicController
 {
     public function __construct()
     {
-        $model = config('superUser.admin.model');
-        $this->setModel(new $model);
+        $this->setModel(new SuperUser());
     }
 
     /**

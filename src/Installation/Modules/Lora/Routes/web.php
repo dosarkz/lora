@@ -2,29 +2,27 @@
 
 Route::group([
     'prefix' => 'lora',
+    'name' => 'lora.',
     'middleware' => [ 'web', 'language'],
     'namespace' => 'Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers'], function () {
 
-    Route::get('login','Auth\LoginController@showLoginForm')->name('admin.getLogin');
-    Route::post('login','Auth\LoginController@postLogin')->name('admin.postLogin');
+    Route::get('login','Auth\LoginController@showLoginForm')->name('auth.show');
+    Route::post('login','Auth\LoginController@postLogin')->name('auth.login');
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
-        Route::get('/', 'AppController@index');
-        Route::get('settings','AppController@settings');
-        Route::post('settings', 'AppController@postSettings');
-        Route::delete('settings/remove-image', 'AppController@removeImage');
-        Route::get('/reset-password', 'AppController@getResetPassword');
-        Route::post('/reset-password', 'AppController@postResetPassword');
+        Route::get('/', 'AppController@index')->name('dashboard.index');
+        Route::get('settings','AppController@settings')->name('account.settings.show');
+        Route::post('settings', 'AppController@postSettings')->name('account.settings.update');
+        Route::delete('settings/remove-image', 'AppController@removeImage')->name('account.image.destroy');
+        Route::get('/reset-password', 'AppController@getResetPassword')->name('account.password.index');
+        Route::post('/reset-password', 'AppController@postResetPassword')->name('account.password.update');
 
-        Route::post('logout','Auth\LoginController@getLogout')->name('admin.logout');
 
-//        Route::group(['prefix' => 'modules'], function(){
-//            Route::get('{module_alias}/settings', 'ModulesController@settings');
-//        });
+        Route::post('logout','Auth\LoginController@getLogout')->name('logout');
 
-//        Route::resource('modules', 'ModulesController');
-        Route::resource('menu','Resources\MenuController');
-        Route::resource('menu.items', 'Resources\MenuItemController');
-        Route::resource('role', 'Resources\RoleController');
+        Route::resource('accounts', 'Resources\AccountsController');
+        Route::resource('menus','Resources\MenuController');
+        Route::resource('menus.items', 'Resources\MenuItemController');
+        Route::resource('roles', 'Resources\RoleController');
     });
 });

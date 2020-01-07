@@ -36,8 +36,8 @@
 
 <div class="wrapper">
     <header class="main-header">
-        <a href="/admin" class="logo">
-            <span class="logo-mini">DCMS</span>
+        <a href="{{route('lora.dashboard.index')}}" class="logo">
+            <span class="logo-mini">Lora</span>
             <span class="logo-lg"><b>Lora</b></span>
         </a>
 
@@ -78,12 +78,12 @@
                                     </div>
                                     <div class="pull-right">
                                         @if (auth()->guard('admin')->guest())
-                                            <a class="btn btn-default btn-flat" href="{{ route('admin.getLogin') }}">{{trans('lora::base.sign_in')}}</a>
+                                            <a class="btn btn-default btn-flat" href="{{ route('lora.login.show') }}">{{trans('lora::base.sign_in')}}</a>
                                         @else
-                                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                                            <a href="{{ route('lora.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">{{trans('lora::base.log_out')}}</a>
 
-                                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('lora.logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         @endif

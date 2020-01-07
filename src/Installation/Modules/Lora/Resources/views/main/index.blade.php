@@ -10,7 +10,7 @@
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <a href="/admin/superUser" class="info-box-text">{{trans('lora::base.count_of_superusers')}}</a>
+                            <a href="{{route('lora.accounts.index')}}" class="info-box-text">{{trans('lora::base.count_of_superusers')}}</a>
                             <span class="info-box-number">{{$countSuperUsers}}</span>
                         </div>
                         <!-- /.info-box-content -->

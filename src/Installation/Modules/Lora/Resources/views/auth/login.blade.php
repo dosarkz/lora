@@ -18,7 +18,7 @@
                     @endif
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('admin.postLogin') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('lora.login.auth') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">

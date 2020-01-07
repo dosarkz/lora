@@ -34,7 +34,7 @@
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <a class="btn btn-xs btn-primary"  href="/admin/menu/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                <form action="{{route('menu.destroy', $item->id)}}">
+                                                <form action="{{route('menus.destroy', $item->id)}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-xs btn-danger delete" data-target="#confirm"
