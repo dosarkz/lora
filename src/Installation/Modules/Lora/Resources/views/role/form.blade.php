@@ -18,10 +18,10 @@
             </div>
         @endif
         @if($model->exists)
-            <form action="{{route('role.update', $model->id)}}" id="" method="PUT" enctype="multipart/form-data">
+            <form action="{{route('lora.roles.update', $model->id)}}" id="" method="POST" enctype="multipart/form-data">
            @method('put')
         @else
-            <form action="{{route('role.store', $model->id)}}" id="" method="POST" enctype="multipart/form-data">
+            <form action="{{route('lora.roles.store', $model->id)}}" id="" method="POST" enctype="multipart/form-data">
         @endif
             @csrf
         <div class="tab-content">

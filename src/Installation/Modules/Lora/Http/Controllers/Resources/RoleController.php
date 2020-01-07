@@ -55,7 +55,7 @@ class RoleController extends BasicController
      */
     public function show()
     {
-      //  return view($this->getModule()->alias . '::show');
+      return $this->view('role.show', compact('model'));
     }
 
     /**
@@ -80,7 +80,7 @@ class RoleController extends BasicController
         $model = $this->getModel()->findOrFail($id);
         $model->update($request->only('name', 'status_id'));
 
-        return redirect('/admin/role')->with('success', trans('lora::base.resource_updated'));
+        return redirect(route('lora.roles.index'))->with('success', trans('lora::base.resource_updated'));
     }
 
     /**

@@ -1,9 +1,9 @@
     @if($model->exists)
-    <form class="form-horizontal" method="PUT" action="{{ route('menus.update', $model->id) }}"
+    <form class="form-horizontal" method="PUT" action="{{ route('lora.menus.update', $model->id) }}"
           enctype="multipart/form-data">
         @method('put')
     @else
-     <form class="form-horizontal" method="POST" action="{{ route('menus.store')}}" enctype="multipart/form-data">
+     <form class="form-horizontal" method="POST" action="{{ route('lora.menus.store')}}" enctype="multipart/form-data">
         @method('post')
     @endif
                 @csrf
@@ -174,12 +174,11 @@
 
                     <br>
                     @if($model->exists)
-                        <button type="submit" class="btn btn-primary">{{trans('admin::base.update')}}</button>
+                        <button type="submit" class="btn btn-primary">{{trans('lora::base.update')}}</button>
                     @else
-                        <button type="submit" class="btn btn-primary">{{trans('admin::base.create')}}</button>
+                        <button type="submit" class="btn btn-primary">{{trans('lora::base.create')}}</button>
                     @endif
 
-                    <a class="btn btn-info" href="{{url()->previous()}}">{{trans('admin::base.back')}}</a>
 
                 </div>
 

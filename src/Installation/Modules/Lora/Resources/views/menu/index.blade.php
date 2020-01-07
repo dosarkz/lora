@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <a class="btn btn-primary" href="/admin/menu/create">{{trans('lora::base.create')}}</a>
+                                <a class="btn btn-primary" href="{{route('lora.menus.create')}}">{{trans('lora::base.create')}}</a>
                             </div>
                             <table class="table">
                                 <thead class="thead-inverse">
@@ -30,11 +30,11 @@
                                         <tr>
                                             <td>{{$item->id}}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td><a href="/admin/menu/{{$item->id}}/items">{{$item->menuItems->count()}}</a></td>
+                                            <td><a href="{{route('lora.menus.items.index',$item->id)}}">{{$item->menuItems->count()}}</a></td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a class="btn btn-xs btn-primary"  href="/admin/menu/{{$item->id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                <form action="{{route('menus.destroy', $item->id)}}">
+                                                <a class="btn btn-xs btn-primary"  href="{{route('lora.menus.edit', $item->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                <form action="{{route('lora.menus.destroy', $item->id)}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-xs btn-danger delete" data-target="#confirm"

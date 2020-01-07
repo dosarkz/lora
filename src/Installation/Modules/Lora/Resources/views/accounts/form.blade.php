@@ -11,11 +11,11 @@
                 </div>
             @endif
             @if($model->exists)
-                    <form action="{{route('accounts', $model->id)}}" enctype="multipart/form-data" method="put" class="update-account">
+                    <form action="{{route('lora.accounts.update', $model->id)}}" enctype="multipart/form-data" method="put" class="update-account">
                 @method('put')
 
             @else
-                    <form action="{{route('lora.account')}}" enctype="multipart/form-data" method="post" class="update-account">
+                    <form action="{{route('lora.accounts.store')}}" enctype="multipart/form-data" method="post" class="update-account">
                     @method('post')
             @endif
                 @csrf
@@ -117,12 +117,11 @@
 
             <br>
             @if($model->exists)
-                <button type="submit" class="btn btn-primary">{{trans_url('lora::base.update')}}</button>
+                <button type="submit" class="btn btn-primary">{{trans('lora::base.update')}}</button>
             @else
-                <button type="submit" class="btn btn-primary">{{trans_url('lora::base.create')}}</button>
+                <button type="submit" class="btn btn-primary">{{trans('lora::base.create')}}</button>
             @endif
 
-                <a class="btn btn-info" href="{{url()->previous()}}">{{trans('admin::base.back')}}</a>
 
         </div>
         </form>

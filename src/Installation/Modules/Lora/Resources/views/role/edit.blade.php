@@ -5,7 +5,7 @@
             <h3 class="box-title">{{trans('lora::base.edit')}} Roles</h3>
         </div>
         <div class="box-body">
-            @include('lora::backend.form',compact('model'))
+            @include('lora::role.form',compact('model'))
         </div>
     </div>
 @endsection
