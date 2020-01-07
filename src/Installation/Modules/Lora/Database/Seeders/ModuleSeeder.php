@@ -93,7 +93,7 @@ class ModuleSeeder extends Seeder
             'title_ru' => 'Настроика шаблона',
             'title_en'  =>  'Layout settings',
             'url' => "#",
-            'icon' => 'fa-bars',
+            'icon' => 'fa-sliders-h',
             'position' => 2,
             'menu_id' => $menu->id,
             'status_id' => 1
@@ -103,7 +103,7 @@ class ModuleSeeder extends Seeder
             'title_ru' => 'Меню',
             'title_en'  =>  'Menu',
             'url' => route('lora.menus.index',[], false),
-            'icon' => 'fa-bars',
+            'icon' => 'fa-route',
             'position' => 1,
             'menu_id' => $menu->id,
             'parent_id' => $menuItemLayoutSettings->id,
@@ -111,13 +111,13 @@ class ModuleSeeder extends Seeder
         ]);
 
         MenuItem::create([
-            'title_ru' => 'Список меню',
+            'title_ru' => 'Список',
             'title_en'  =>  'List',
             'url' => route('lora.menus.index',[], false),
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
             'parent_id' => $menuItem->id,
-            'position' => 1,
+            'position' => 2,
             'status_id' => 1
         ]);
 

@@ -7,7 +7,7 @@ return [
     'roles'     => 'Roles',
     'status'    => 'Status',
     'actions'   => 'Actions',
-    'about'     =>  'Dynamic content system - Dosmin',
+    'about'     =>  'Lora',
     'login'     =>  'Login',
     'main' => 'Main',
     'password'  =>  'Password',

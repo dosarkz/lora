@@ -1,6 +1,6 @@
 @foreach($lists as $list)
     @foreach($list->menuParentItems as $item)
-        <li class="nav-item @if($item->subs->count() > 0)has-treeview @endif">
+        <li class="nav-item @if($item->subs->count() > 0)has-treeview @endif {{active_link_with_class($item->url,'menu-open')}}">
             <a href="{{$item->url}}" class="nav-link {{active_link_sub($item->url)}}">
                 <i class="nav-icon fas {{$item->icon}}"></i>
                 <p>{{$item->title}} @if($item->subs->count() > 0)<i class="right fas fa-angle-left">@endif</i></p>
