@@ -37,8 +37,8 @@ class Menu extends I18nModel
     public function getStatusesAttribute()
     {
         return [
-            0 => trans('admin::base.deactivate'),
-            1 => trans('admin::base.active')
+            0 => trans('lora::base.deactivate'),
+            1 => trans('lora::base.active')
         ];
     }
     public function menuItems()

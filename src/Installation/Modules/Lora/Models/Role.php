@@ -27,9 +27,9 @@ class Role extends I18nModel
     public function getStatusesAttribute()
     {
         return [
-            1   =>  trans('admin::base.default'),
-            2 => trans('admin::base.active'),
-            3   =>  trans('admin::base.deactivate')
+            1   =>  trans('lora::base.default'),
+            2 => trans('lora::base.active'),
+            3   =>  trans('lora::base.deactivate')
         ];
     }
 

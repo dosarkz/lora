@@ -3,9 +3,10 @@
     Добавить администратора
 @endsection
 @section('content')
-    <div class="box box-primary">
-
-        @include('lora::accounts.form',compact('model'))
+    <div class="card card-default">
+        <div class="card-body">
+            @include('lora::accounts.form',compact('model'))
+        </div>
     </div>
 
 @endsection

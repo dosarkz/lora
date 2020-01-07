@@ -14,7 +14,7 @@ class MenuController extends BasicController
 {
     public function __construct()
     {
-        $this->setModel(new Menu);
+        $this->setModel(new Menu());
     }
 
     /**
@@ -75,14 +75,14 @@ class MenuController extends BasicController
 
     public function edit($id)
     {
-        $model = $this->model()->findOrFail($id);
+        $model = $this->getModel()->findOrFail($id);
         $roles = Role::all();
-        return view('lora::menu.edit', compact('model','roles'));
+       return $this->view('menu.edit', compact('model', 'roles'));
     }
 
     public function update(UpdateMenuRequest $request, $id)
     {
-        $model = $this->model()->findOrFail($id);
+        $model = $this->getModel()->findOrFail($id);
 
         if($request->has('menuRole'))
         {
@@ -98,7 +98,7 @@ class MenuController extends BasicController
 
         $model->update($request->all());
 
-        return redirect('admin/menu')->with('success', trans('lora::base.resource_updated'));
+        return redirect(route('lora.menus.index'))->with('success', trans('lora::base.resource_updated'));
     }
 
     /**

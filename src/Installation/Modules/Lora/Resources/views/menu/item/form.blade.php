@@ -1,6 +1,3 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -10,16 +7,19 @@
                     </ul>
                 </div>
             @endif
+
             @if($model->exists)
-                <form class="form-horizontal" method="PUT" action="{{ route('menu.items.update', [$menu->id, $model->id]) }}"
+                <form class="form-horizontal" method="post" action="{{ route('lora.menus.items.update', [$menu->id, $model->id]) }}"
                   enctype="multipart/form-data">
                 @method('put')
             @else
-                <form class="form-horizontal" method="POST" action="{{ route('menu.items.store', $menu->id)}}"
+                <form class="form-horizontal" method="POST" action="{{ route('lora.menus.items.store', $menu->id)}}"
                   enctype="multipart/form-data">
                 @method('post')
             @endif
                 @csrf
+
+                    <div class="card-body">
 
             <div class="form-group{{ $errors->has('title_ru') ? ' has-error' : '' }}">
                 <div class="row">
@@ -90,6 +90,7 @@
 
                         <div class="col-md-6">
                             <select name="parent_id" id="parent_id" class="form-control">
+                                <option value="">Выберите</option>
                                 @foreach($model->parents($menu->id) as $i => $item)
                                     <option value="{{$i}}">{{$item}}</option>
                                 @endforeach
@@ -127,8 +128,9 @@
 
                         <div class="col-md-6">
                             <select name="status_id" id="status_id" class="form-control">
+                                <option value="">Выберите</option>
                                 @foreach($model->statuses as $i => $item)
-                                    <option value="{{$i}}">{{$item}}</option>
+                                    <option  value="{{$i}}">{{$item}}</option>
                                 @endforeach
                             </select>
 
@@ -143,15 +145,21 @@
 
 
             <br>
-            @if($model->exists)
-                <button type="submit" class="btn btn-primary">Обновить</button>
-            @else
-              <button type="submit" class="btn btn-primary">Добавить</button>
-            @endif
+
+
+
+                    </div>
+
+                    <div class="card-footer">
+                        @if($model->exists)
+                            <button type="submit" class="btn btn-primary">Обновить</button>
+                        @else
+                            <button type="submit" class="btn btn-primary">Добавить</button>
+                        @endif
+                    </div>
 
                 </form>
         </div>
 
 
     </div>
-</div>

@@ -11,7 +11,7 @@
                 </div>
             @endif
             @if($model->exists)
-                    <form action="{{route('lora.accounts.update', $model->id)}}" enctype="multipart/form-data" method="put" class="update-account">
+                    <form action="{{route('lora.accounts.update', $model->id)}}" enctype="multipart/form-data" method="post" class="update-account">
                 @method('put')
 
             @else

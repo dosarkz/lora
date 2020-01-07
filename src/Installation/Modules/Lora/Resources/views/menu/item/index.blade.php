@@ -1,62 +1,50 @@
 @extends($layoutPath)
+@section('title') Элементы меню @endsection
 @section('content')
-    <div class="nav-tabs-custom">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Пункты меню</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <a class="btn btn-primary" href="/admin/menu/{{$menu->id}}/items/create">{{trans('admin::base.create')}}</a>
-                            </div>
-                            <table class="table">
-                                <thead class="thead-inverse">
-                                <tr>
-                                    <th>{{trans('admin::base.id')}}</th>
-                                    <th>{{trans('admin::base.title')}}</th>
-                                    <th>{{trans('admin::base.url')}}</th>
-                                    <th>{{trans('admin::base.status')}}</th>
-                                    <th>{{trans('admin::base.actions')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if(isset($model))
-                                    @foreach($model as $item)
-                                        <tr>
-                                            <td>{{$item->id}}</td>
-                                            <td>{{ $item->title }}</td>
-                                            <td>{{ $item->url }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td><a class="btn btn-primary"
-                                                   href="{{route('menu.items.update',[$item->menu_id, $item->id])}}">Редактировать</a>
-
-                                            </td>
-
-                                        </tr>
-
-                                    @endforeach
-                                @endif
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                {{ $model->links() }}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+    <div class="card card-default">
+        <div class="card-header">
+            <div class="form-group">
+                <a class="btn btn-primary" href="{{route('lora.menus.items.create', $menu->id)}}">{{trans('lora::base.create')}}</a>
             </div>
         </div>
-        <!-- /.tab-content -->
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>{{trans('lora::base.id')}}</th>
+                    <th>{{trans('lora::base.title')}}</th>
+                    <th>{{trans('lora::base.url')}}</th>
+                    <th>{{trans('lora::base.status')}}</th>
+                    <th>{{trans('lora::base.actions')}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if(isset($model))
+                    @foreach($model as $item)
+                        <tr>
+                            <td>{{$item->id}}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->url }}</td>
+                            <td>{{ $item->status }}</td>
+                            <td><a class="btn btn-primary"
+                                   href="{{route('lora.menus.items.edit',[$item->menu_id, $item->id])}}">Редактировать</a>
+
+                            </td>
+
+                        </tr>
+
+                    @endforeach
+                @endif
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="form-group">
+            {{ $model->links() }}
+        </div>
     </div>
 
     @include('lora::modals.base_modal')

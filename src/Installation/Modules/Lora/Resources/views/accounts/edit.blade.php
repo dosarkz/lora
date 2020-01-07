@@ -1,10 +1,11 @@
 @extends($layoutPath)
+@section('title') {{trans('lora::base.edit')}} пользователя  @endsection
 @section('content')
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{trans('admin::base.edit')}} Admin</h3>
-        </div>
-        @include('lora::accounts.form',compact('model'))
+    <div class="card card-default">
+
+       <div class="card-body">
+           @include('lora::accounts.form',compact('model'))
+       </div>
     </div>
 @endsection
 

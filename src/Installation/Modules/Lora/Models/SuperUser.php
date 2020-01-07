@@ -65,14 +65,14 @@ class SuperUser extends Authenticatable
 
     public function getStatusAttribute()
     {
-        return $this->status_id ? $this->statuses[$this->status_id] : trans('admin::base.none');
+        return $this->status_id ? $this->statuses[$this->status_id] : trans('lora::base.none');
     }
 
     public function getStatusesAttribute()
     {
         return [
-            0 => trans('admin::base.deactivate'),
-            1 => trans('admin::base.active')
+            0 => trans('lora::base.deactivate'),
+            1 => trans('lora::base.active')
         ];
     }
 
