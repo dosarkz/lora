@@ -111,10 +111,10 @@ class LoraInstallCommand extends Command
 
     public function installModules()
     {
-        if (is_null(config('admin.modules.providers'))) {
+        if (is_null(config('lora.modules.providers'))) {
             $modules = [];
         } else {
-            $modules = config('admin.modules.providers');
+            $modules = config('lora.modules.providers');
         }
 
         foreach ($modules as $module => $path) {

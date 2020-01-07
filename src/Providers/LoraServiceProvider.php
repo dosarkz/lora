@@ -105,10 +105,10 @@ class LoraServiceProvider extends ServiceProvider
     {
         $modules = [];
 
-        if (is_null(config('admin.modules.providers'))) {
+        if (is_null(config('lora.modules.providers'))) {
             $config = [];
         } else {
-            $config = config('admin.modules.providers');
+            $config = config('lora.modules.providers');
         }
 
         return array_merge($config, $modules);
