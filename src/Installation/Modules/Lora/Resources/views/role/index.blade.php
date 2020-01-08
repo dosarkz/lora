@@ -29,11 +29,11 @@
                                        <td>{{ $item->alias }}</td>
                                        <td>{{ $item->status }}</td>
                                        <td>
-                                           <a class="btn btn-xs btn-primary"
+                                           <a class="btn btn-sm btn-primary"
                                               href="{{route('lora.roles.edit', $item->id)}}"><i
                                                    class="fas fa-edit" aria-hidden="true"></i></a>
                                            @if($item->status_id != $item::STATUS_DEFAULT)
-                                               <button class="btn btn-xs btn-danger delete"
+                                               <button class="btn btn-sm btn-danger delete"
                                                        type="button" data-target="#confirm" data-toggle="modal"
                                                        data-action="{{route('lora.roles.destroy', $item->id)}}"><i
                                                        class="fa fa-times" aria-hidden="true"></i></button>

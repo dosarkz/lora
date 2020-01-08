@@ -31,15 +31,11 @@
                             </td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a class="btn btn-xs btn-primary" href="{{route('lora.menus.edit', $item->id)}}"><i
+                                <a class="btn btn-sm btn-primary" href="{{route('lora.menus.edit', $item->id)}}"><i
                                         class="fa fa-edit" aria-hidden="true"></i></a>
-                                <form action="{{route('lora.menus.destroy', $item->id)}}">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-xs btn-danger delete" data-target="#confirm"
-                                            data-toggle="modal" data-action="/admin/menu/{{$item->id}}"
-                                            type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                </form>
+                                <button class="btn btn-sm btn-danger delete" data-target="#confirm"
+                                        data-toggle="modal" data-action="{{route('lora.menus.destroy', $item->id)}}"
+                                        type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
 
                             </td>
 

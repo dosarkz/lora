@@ -45,8 +45,8 @@ class RoleController extends BasicController
     {
         $this->getModel()->create($request->all());
 
-        return redirect('/admin/role')
-            ->with('success', trans('admin::base.resource_created'));
+        return redirect(route('lora.roles.index'))
+            ->with('success', trans('lora::base.resource_created'));
     }
 
     /**

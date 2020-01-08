@@ -71,7 +71,7 @@
                                        <img  src="{{url($image->getThumb())}}" alt="" width="150" height="150">
 
                                        <button type="button" class="btn btn-warning remove-product-image"
-                                               data-action="/admin/settings/remove-image"
+                                               data-action="{{route('lora.accounts.image.destroy')}}"
                                                data-toggle="modal" data-target="#remove-image">
                                            <span  class="glyphicon glyphicon-remove"></span> {{trans('lora::base.delete')}}
                                        </button>

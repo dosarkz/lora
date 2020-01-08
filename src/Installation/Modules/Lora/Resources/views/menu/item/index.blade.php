@@ -26,11 +26,13 @@
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->url }}</td>
                             <td>{{ $item->status }}</td>
-                            <td><a class="btn btn-primary"
-                                   href="{{route('lora.menus.items.edit',[$item->menu_id, $item->id])}}">Редактировать</a>
-
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="{{route('lora.menus.items.edit',
+                                [$item->menu_id, $item->id])}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                <button class="btn btn-sm btn-danger delete" data-target="#confirm"
+                                        data-toggle="modal" data-action="{{route('lora.menus.items.destroy', [$item->menu_id, $item->id])}}"
+                                        type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                             </td>
-
                         </tr>
 
                     @endforeach

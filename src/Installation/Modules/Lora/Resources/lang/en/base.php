@@ -65,5 +65,6 @@ return [
     'photo_deleted' =>  'Photo is successfully deleted',
     'users' =>  'Users',
     'role'  =>  'Role',
-    'password_again'    =>  'password again'
+    'password_again'    =>  'password again',
+    'search' => 'Search'
 ];

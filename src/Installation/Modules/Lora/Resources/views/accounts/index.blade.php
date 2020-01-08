@@ -28,20 +28,17 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
+                                        <a class="btn btn-sm btn-primary" href="{{route('lora.accounts.edit', $item->id)}}">
+                                            <i class="fas fa-edit" aria-hidden="true"></i></a>
 
-                                        <a class="btn btn-xs btn-primary" href="{{route('lora.accounts.edit', $item->id)}}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i></a>
-
-                                        <form action="{{route('lora.accounts.destroy', $item->id)}}" method="delete">
-                                            @method('delete')
-                                            <button class="btn btn-xs btn-danger delete" type="button"
-                                                    data-target="#confirm"  data-toggle="modal" data-user_id="{{$item->id}}"><i class="fa fa-times" aria-hidden="true"></i></button>
-
-                                        </form>
+                                        @if($item->currentUser($item->id))
+                                            <button class="btn btn-sm btn-danger delete" type="button"
+                                               data-target="#confirm"
+                                               data-toggle="modal" data-action="{{route('lora.accounts.destroy', $item->id)}}">
+                                                <i class="fas fa-times" aria-hidden="true"></i></button>
+                                        @endif
                                     </td>
-
                                 </tr>
-
                             @endforeach
                         @endif
 
@@ -76,7 +73,7 @@
             var button = $(event.relatedTarget);
             var modal = $(this);
 
-            modal.find('#removeForm').attr('action','/admin/superUser/' + button.data('user_id'))
+            modal.find('#removeForm').attr('action', button.data('action'))
         })
     </script>
     @endsection
