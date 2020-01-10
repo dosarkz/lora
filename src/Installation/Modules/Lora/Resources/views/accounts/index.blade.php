@@ -1,7 +1,6 @@
 @extends($layoutPath)
 @section('title') Пользователи системы @endsection
 @section('content')
-
             <div class="card card-default">
                 <div class="card-header">
                     <div class="form-group float-right">
