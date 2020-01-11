@@ -36,7 +36,7 @@ class SuperUser extends Authenticatable
 
     public function image()
     {
-        return $this->belongsTo(Image::class, 'avatar');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function currentUser($id)

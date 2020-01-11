@@ -59,7 +59,7 @@
             @if(!auth()->guard('admin')->guest())
                         <li class="nav-item dropdown user-menu">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                @if(auth()->guard('admin')->user()->avatar)
+                                @if(auth()->guard('admin')->user()->image)
                                     <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="user-image img-circle elevation-2" alt="User Image">
                                 @else
                                     <img src="/vendor/admin/adminlte/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
@@ -71,7 +71,7 @@
                             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                 <!-- User image -->
                                 <li class="user-header bg-primary">
-                                    @if(auth()->guard('admin')->user()->avatar)
+                                    @if(auth()->guard('admin')->user()->image)
                                         <img src="{{url(auth()->guard('admin')->user()->image->getThumb())}}" class="img-circle elevation-2" alt="User Image">
                                     @else
                                         <img src="/vendor/admin/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">

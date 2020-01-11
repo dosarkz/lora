@@ -18,7 +18,7 @@ class CreateImagesTable extends Migration
             $table->string('name');
             $table->string('thumb');
             $table->string('path');
-            $table->morphs('model');
+            $table->morphs('imageable');
             $table->integer('status_id')->nullable();
             $table->timestamps();
         });

@@ -83,7 +83,7 @@
                                    <div class="cab-def">
                                        <select name="locale" id="locale" class="form-control">
                                            @foreach(['ru'   =>  'Русский', 'en' =>  'English'] as $key => $locale)
-                                               <option value="{{$key}}">{{$locale}}</option>
+                                               <option @if($key == app()->getLocale()) selected @endif value="{{$key}}">{{$locale}}</option>
                                            @endforeach
                                        </select>
 

@@ -15,6 +15,10 @@ class BasicController extends Controller
      * @var
      */
     protected $view;
+    /**
+     * @var
+     */
+    public $viewPath = 'lora';
 
     /**
      * @return mixed
@@ -33,6 +37,24 @@ class BasicController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function getViewPath()
+    {
+        return $this->viewPath;
+    }
+
+    /**
+     * @param mixed $viewPath
+     */
+    public function setViewPath($viewPath): void
+    {
+        $this->viewPath = $viewPath;
+    }
+
+
+
+    /**
      * @param $route
      * @param array $data
      * @param array $mergedData
@@ -40,6 +62,6 @@ class BasicController extends Controller
      */
     public function view($route, $data = [], $mergedData = [])
     {
-        return Lora::renderView($route, $data, $mergedData);
+        return Lora::renderView($route, $data, $mergedData, $this->getViewPath());
     }
 }

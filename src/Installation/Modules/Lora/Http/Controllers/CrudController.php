@@ -14,7 +14,7 @@ class CrudController extends BasicController
     /**
      * @var
      */
-    protected $viewPath;
+    public $viewPath;
     /**
      * @var
      */
@@ -88,10 +88,8 @@ class CrudController extends BasicController
         return $this->viewPath;
     }
 
-    /**
-     * @param mixed $viewPath
-     */
-    public function setViewPath($viewPath)
+
+    public function setViewPath($viewPath) : void
     {
         $this->viewPath = $viewPath;
     }

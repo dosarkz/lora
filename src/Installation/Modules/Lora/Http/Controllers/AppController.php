@@ -71,15 +71,12 @@ class AppController extends BasicController
             }
            $uploader =  BaseUploader::image($request->file('image'));
 
-            $image = Image::create([
+            auth('admin')->user()->image()->create([
                 'name' => $uploader->getFileName(),
                 'thumb' => $uploader->getThumb(),
                 'path' => $uploader->getDestination(),
             ]);
 
-            auth()->guard('admin')->user()->update([
-                'avatar' => $image->id
-            ]);
         }
 
         if($request->has('locale'))

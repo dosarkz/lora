@@ -17,15 +17,17 @@ class LoraRepository
     {
         return $this->getViewPath($this->authViewPath);
     }
+
     /**
      * @param $route
      * @param array $data
      * @param array $mergeData
+     * @param string $group
      * @return string
      */
-    public function renderView($route, $data = [], $mergeData = []) : string
+    public function renderView($route, $data = [], $mergeData = [], $group = self::VIEW_GROUP_NAME) : string
     {
-        return view($this->getViewPath($route), $data, $mergeData);
+        return view($this->getViewPath($route, $group), $data, $mergeData);
     }
 
     public function getRoutePath($route)

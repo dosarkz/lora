@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static string getLayoutPath()
  * @method static string getAuthLayoutPath()
- * @method static renderView(string $route, array $data = [], array $mergeData = [])
+ * @method static renderView(string $route, array $data = [], array $mergeData = [], string $group = 'lora')
  *
  * @see \Dosarkz\Lora\LoraRepository
  */
