@@ -102,7 +102,7 @@
                                            class="col-md-4 control-label">{{trans('lora::base.position')}}</label>
 
                                     <div class="col-md-6">
-                                        <input type="number" id="position" value="{{$model->position}}"
+                                        <input type="number" name="position" id="position" value="{{$model->position}}"
                                                class="form-control">
 
                                         @if ($errors->has('position'))

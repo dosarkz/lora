@@ -110,7 +110,7 @@
                         <label for="position" class="col-md-4 control-label">position</label>
 
                         <div class="col-md-6">
-                            <input type="number" id="position" class="form-control" value="{{$model->position}}">
+                            <input type="number" name="position" id="position" class="form-control" value="{{$model->position}}">
 
                             @if ($errors->has('position'))
                                 <span class="help-block">
