@@ -56,7 +56,7 @@ class LoraInstallCommand extends Command
             $this->installModules();
             $this->info('5. Create admin user');
             $this->createSuperUser();
-            $this->info('Installation was successful. Visit your_domain.com/admin to access admin panel');
+            $this->info('Installation was successful. Visit your_domain.com/lora to access admin panel');
             return true;
 
         } catch (\Exception $e) {
