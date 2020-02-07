@@ -107,7 +107,7 @@ class MenuController extends BasicController
      */
     public function destroy($id)
     {
-        $model = $this->model()->findOrFail($id);
+        $model = $this->getModel()->findOrFail($id);
         $model->delete();
         return redirect()->back()->with('success', trans('lora::base.resource_deleted'));
     }
