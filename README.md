@@ -3,10 +3,8 @@ Features:
 - Module System
 - Module Generator with command
 - Remove modules
-- Default modules (superAdmin, role, image, article, menu )
 - AdminLte template
 - Upload image files with resize
-- Visible modules for role
 - Language support: English, Russian
 
 ## Installation
@@ -16,9 +14,9 @@ Features:
 - Install admin package
 `composer require dosarkz/Lora`
 - Make Lora system
-`php artisan admin:install`
+`php artisan lora:install`
 - Go through all the necessary steps
-- Visit `your_project/admin`
+- Visit `your_project/lora`
 - and Be Happy!
 
 
@@ -34,8 +32,6 @@ Features:
 `
 
 - Visit new module on admin menu
-
-
 
 ## Module install 
 
