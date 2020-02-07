@@ -18,7 +18,4 @@ Route::group([
     ], function () {
         Route::get('/','FrontendController@index');
     });
-
-
-
 });

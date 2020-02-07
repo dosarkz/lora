@@ -1,8 +1,8 @@
 <?php
 
-namespace Dosarkz\Dosmin\Commands;
+namespace Dosarkz\Lora\Commands;
 
-use Dosarkz\Dosmin\Generators\ModuleGenerator;
+use Dosarkz\Lora\Generators\ModuleGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
@@ -15,7 +15,7 @@ class ModuleMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'module:make {module}';
+    protected $signature = 'make:module {module}';
 
     /**
      * The console command description.
@@ -60,7 +60,7 @@ class ModuleMakeCommand extends Command
             ]);
 
             $this->info('Installation was successful');
-            $this->info('Please include ServiceProvider for initial module to the config file, config/admin.php');
+            $this->info('Please include ServiceProvider for initial module to the config file, config/lora.php');
             $this->info("'".lcfirst($module_name)."' =>  \App\Modules\\$module_name\Providers\\$module_name"."ServiceProvider::class");
 
 

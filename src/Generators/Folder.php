@@ -1,8 +1,8 @@
 <?php
-namespace Dosarkz\Dosmin\Generators;
+namespace Dosarkz\Lora\Generators;
 /**
  * Class Folder
- * @package Dosarkz\Dosmin\Generators
+ * @package Dosarkz\Lora\Generators
  */
 class Folder
 {

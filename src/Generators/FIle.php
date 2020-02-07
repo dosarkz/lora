@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Generators;
+namespace Dosarkz\Lora\Generators;
 
 class File
 {

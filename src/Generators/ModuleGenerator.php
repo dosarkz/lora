@@ -1,5 +1,5 @@
 <?php
-namespace Dosarkz\Dosmin\Generators;
+namespace Dosarkz\Lora\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
