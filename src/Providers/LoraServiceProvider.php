@@ -126,14 +126,14 @@ class LoraServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        if (file_exists(public_path('vendor/admin/views'))) {
-            $path = public_path('vendor/admin/views');
-        } else {
-            // load default layout of repository
-            $path = __DIR__ . '/../Installation/Modules/Lora/Resources/views';
-        }
+//        if (file_exists(public_path('vendor/admin/views'))) {
+//            $path = public_path('vendor/admin/views');
+//        } else {
+//            // load default layout of repository
+//            $path = __DIR__ . '/../Installation/Modules/Lora/Resources/views';
+//        }
 
-        $this->loadViewsFrom($path, 'lora');
+        $this->loadViewsFrom( __DIR__ . '/../Installation/Modules/Lora/Resources/views', 'lora');
     }
 
     public function registerRoutes()
