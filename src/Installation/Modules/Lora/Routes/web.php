@@ -4,25 +4,24 @@ Route::group([
     'prefix' => 'lora',
     'as' => 'lora.',
     'middleware' => [ 'web', 'language'],
-    'namespace' => 'Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers'], function () {
+    'namespace' => config('lora.routes.namespace')], function () {
 
-    Route::get('login','Auth\LoginController@showLoginForm')->name('auth.show');
-    Route::post('login','Auth\LoginController@postLogin')->name('auth.login');
+    Route::get('login', config('lora.routes.auth.getLogin'))->name('auth.show');
+    Route::post('login', config('lora.routes.auth.postLogin'))->name('auth.login');
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
-        Route::get('/', 'AppController@index')->name('dashboard.index');
-        Route::get('settings','AppController@settings')->name('accounts.settings');
-        Route::post('settings', 'AppController@postSettings')->name('accounts.settings');
-        Route::delete('settings/remove-image', 'AppController@removeImage')->name('accounts.image.destroy');
-        Route::get('/reset-password', 'AppController@getResetPassword')->name('accounts.password.index');
-        Route::post('/reset-password', 'AppController@postResetPassword')->name('accounts.password.update');
+        Route::get('/', config('lora.routes.main.index'))->name('dashboard.index');
+        Route::get('settings', config('lora.routes.main.getSettings'))->name('accounts.settings');
+        Route::post('settings', config('lora.routes.main.postSettings'))->name('accounts.settings');
+        Route::delete('settings/remove-image', config('lora.routes.main.destroyAvatar'))->name('accounts.image.destroy');
+        Route::get('/reset-password',  config('lora.routes.main.getResetPassword'))->name('accounts.password.index');
+        Route::post('/reset-password', config('lora.routes.main.postResetPassword'))->name('accounts.password.update');
 
+        Route::post('logout', config('lora.routes.auth.logout'))->name('logout');
 
-        Route::post('logout','Auth\LoginController@getLogout')->name('logout');
-
-        Route::resource('accounts', 'Resources\AccountsController');
-        Route::resource('menus','Resources\MenuController');
-        Route::resource('menus.items', 'Resources\MenuItemController');
-        Route::resource('roles', 'Resources\RoleController');
+        Route::resource('accounts', config('lora.routes.resources.accounts'));
+        Route::resource('menus', config('lora.routes.resources.menus'));
+        Route::resource('menus.items', config('lora.routes.resources.menuItems'));
+        Route::resource('roles', config('lora.routes.resources.roles'));
     });
 });

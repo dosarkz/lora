@@ -1,5 +1,4 @@
 <?php
-use Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers\LoginController;
 
 return [
     'name' => 'Lora panel',
@@ -35,9 +34,26 @@ return [
 
         ]
     ],
-    'lora' => [
-        'controllers' => [
-            'auth' => LoginController::class,
+    'routes' => [
+        'namespace' => 'Dosarkz\Lora\Installation\Modules\Lora\Http\Controllers',
+        'auth' => [
+            'getLogin' =>  'Auth\LoginController@showLoginForm',
+            'postLogin' => 'Auth\LoginController@postLogin',
+            'logout' => 'Auth\LoginController@getLogout',
+        ],
+        'main' => [
+            'index' =>  'AppController@index',
+            'getSettings' => 'AppController@settings',
+            'postSettings' =>  'AppController@postSettings',
+            'destroyAvatar' => 'AppController@removeImage',
+            'getResetPassword' => 'AppController@getResetPassword',
+            'postResetPassword' =>  'AppController@postResetPassword'
+        ],
+        'resources' => [
+            'accounts' => 'Resources\AccountsController',
+            'menus' => 'Resources\MenuController',
+            'menuItems' => 'Resources\MenuItemController',
+            'roles' => 'Resources\RoleController'
         ]
     ]
 

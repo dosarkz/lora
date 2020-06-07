@@ -58,8 +58,9 @@
 
                         <div class="col-md-6">
                             <select name="role_id" id="role_id" class="form-control">
+                                <option value="">Выберите</option>
                                 @foreach($model->roles as $i => $role)
-                                    <option value="{{$i}}">{{$role}}</option>
+                                    <option @if($model->role_id === $i) selected @endif value="{{$i}}">{{$role}}</option>
                                 @endforeach
                             </select>
 

@@ -100,7 +100,7 @@
 
                                 <select name="status_id" id="status_id" class="form-control">
                                     @foreach($model->statuses as  $i => $status)
-                                        <option value="{{$i}}">{{$status}}</option>
+                                        <option @if($model->status_id === $i) selected @endif value="{{$i}}">{{$status}}</option>
                                     @endforeach
                                 </select>
 
