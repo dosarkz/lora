@@ -1,4 +1,5 @@
 <?php
+
 namespace Dosarkz\Lora\Installation\Modules\Lora\Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -25,60 +26,71 @@ class ModuleSeeder extends Seeder
             'menu_active' => true,
             'description_ru' => 'Системный модуль lora',
             'description_en' => 'The module lora',
-            'version' =>  0.01,
+            'version' => 0.01,
             'status_id' => 1,
             'alias' => 'accounts',
             'installed' => true,
         ]);
 
-        Role::firstOrCreate([
-            'name_ru' => 'Администратор',
-            'name_en'   =>  'Admin',
-            'alias' => 'admin',
-            'status_id' => 1
-        ]);
+        $admin = Role::whereAlias('admin')->first();
 
-        Role::firstOrCreate([
-            'name_ru' => 'Менеджер',
-            'name_en'   =>  'Manager',
-            'alias' => 'manager',
-            'status_id' => 1
-        ]);
+        if (!$admin) {
+            Role::create([
+                'name_ru' => 'Администратор',
+                'name_en' => 'Admin',
+                'alias' => 'admin',
+                'status_id' => 1
+            ]);
+        }
 
+        $manager = Role::whereAlias('manager')->first();
 
-        Role::firstOrCreate([
-            'name_ru' => 'Пользователь',
-            'name_en'   =>  'User',
-            'alias' => 'user',
-            'status_id' => 1
-        ]);
+        if (!$manager) {
+            Role::create([
+                'name_ru' => 'Менеджер',
+                'name_en' => 'Manager',
+                'alias' => 'manager',
+                'status_id' => 1
+            ]);
+        }
+
+        $user = Role::whereAlias('user')->first();
+
+        if (!$user) {
+            Role::create([
+                'name_ru' => 'Пользователь',
+                'name_en' => 'User',
+                'alias' => 'user',
+                'status_id' => 1
+            ]);
+        }
 
         $adminRole = Role::where('alias', 'admin')->first();
         $managerRole = Role::where('alias', 'manager')->first();
 
-        $menu =   Menu::firstOrCreate([
+        $menu = Menu::firstOrCreate([
             'name_ru' => 'Lora',
-            'name_en'   =>  'Lora',
-            'alias' =>  'lora',
+            'name_en' => 'Lora',
+            'alias' => 'lora',
             'type_id' => Menu::TYPE_LEFT_SIDE_MENU,
             'status_id' => 1,
-            'position'  => 1,
+            'position' => 1,
         ]);
 
 
         MenuItem::firstOrCreate([
             'title_ru' => 'Панель инструментов',
-            'title_en'  =>  'Dashboard',
-            'url' => route('lora.dashboard.index',[], false),
+            'title_en' => 'Dashboard',
+            'url' => route('lora.dashboard.index', [], false),
             'icon' => 'fa-columns',
             'menu_id' => $menu->id,
             'position' => 1,
             'status_id' => 1
         ]);
 
-        $menuItemLayoutSettings =  MenuItem::firstOrCreate([
+        $menuItemLayoutSettings = MenuItem::firstOrCreate([
             'title_ru' => 'Настроика шаблона',
-            'title_en'  =>  'Layout settings',
+            'title_en' => 'Layout settings',
             'url' => "#",
             'icon' => 'fa-sliders-h',
             'position' => 2,
@@ -86,10 +98,10 @@ class ModuleSeeder extends Seeder
             'status_id' => 1
         ]);
 
-        $menuItem =  MenuItem::firstOrCreate([
+        $menuItem = MenuItem::firstOrCreate([
             'title_ru' => 'Меню',
-            'title_en'  =>  'Menu',
-            'url' => route('lora.menus.index',[], false),
+            'title_en' => 'Menu',
+            'url' => route('lora.menus.index', [], false),
             'icon' => 'fa-route',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -99,8 +111,8 @@ class ModuleSeeder extends Seeder
 
         MenuItem::firstOrCreate([
             'title_ru' => 'Список',
-            'title_en'  =>  'List',
-            'url' => route('lora.menus.index',[], false),
+            'title_en' => 'List',
+            'url' => route('lora.menus.index', [], false),
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
             'parent_id' => $menuItem->id,
@@ -110,8 +122,8 @@ class ModuleSeeder extends Seeder
 
         MenuItem::firstOrCreate([
             'title_ru' => 'Добавить',
-            'title_en'  =>  'Add',
-            'url' => route('lora.menus.create',[], false),
+            'title_en' => 'Add',
+            'url' => route('lora.menus.create', [], false),
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
             'parent_id' => $menuItem->id,
@@ -121,7 +133,7 @@ class ModuleSeeder extends Seeder
 
         $accountManagementMenuItem = MenuItem::firstOrCreate([
             'title_ru' => 'Аккаунт',
-            'title_en'  =>  'Account',
+            'title_en' => 'Account',
             'url' => route('lora.accounts.index', [], false),
             'icon' => 'fa-user',
             'position' => 3,
@@ -129,10 +141,10 @@ class ModuleSeeder extends Seeder
             'status_id' => 1
         ]);
 
-          MenuItem::firstOrCreate([
+        MenuItem::firstOrCreate([
             'title_ru' => 'Пользователи',
-            'title_en'  =>  'Super Users',
-            'url' => route('lora.accounts.index',[], false),
+            'title_en' => 'Super Users',
+            'url' => route('lora.accounts.index', [], false),
             'icon' => 'fa-user',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -140,10 +152,10 @@ class ModuleSeeder extends Seeder
             'status_id' => 1
         ]);
 
-        $MenuItem =  MenuItem::firstOrCreate([
+        $MenuItem = MenuItem::firstOrCreate([
             'title_ru' => 'Роли',
-            'title_en'  =>  'Roles',
-            'url' => route('lora.roles.index',[], false),
+            'title_en' => 'Roles',
+            'url' => route('lora.roles.index', [], false),
             'icon' => 'fa-user-circle',
             'position' => 1,
             'menu_id' => $menu->id,
@@ -153,8 +165,8 @@ class ModuleSeeder extends Seeder
 
         MenuItem::firstOrCreate([
             'title_ru' => 'Добавить',
-            'title_en'  =>  'Add',
-            'url' => route('lora.roles.create',[], false),
+            'title_en' => 'Add',
+            'url' => route('lora.roles.create', [], false),
             'icon' => 'fa-plus-circle',
             'menu_id' => $menu->id,
             'parent_id' => $MenuItem->id,
@@ -164,7 +176,7 @@ class ModuleSeeder extends Seeder
 
         MenuItem::firstOrCreate([
             'title_ru' => 'Список',
-            'title_en'  =>  'List',
+            'title_en' => 'List',
             'url' => route('lora.roles.index', [], false),
             'icon' => 'fa-list-ul',
             'menu_id' => $menu->id,
@@ -174,13 +186,13 @@ class ModuleSeeder extends Seeder
         ]);
 
         MenuRole::firstOrCreate([
-            'role_id' =>  $adminRole->id,
-            'menu_id'   => $menu->id,
+            'role_id' => $adminRole->id,
+            'menu_id' => $menu->id,
         ]);
 
         MenuRole::firstOrCreate([
             'role_id' => $managerRole->id,
-            'menu_id'   => $menu->id,
+            'menu_id' => $menu->id,
         ]);
     }
 }
