@@ -20,7 +20,7 @@
             @endif
 
             <div class="col-12 col-sm-6 col-md-3">
-                <a href="{{route('lora.accounts.settings')}}" class="info-box mb-3">
+                <a href="{{route('lora.accounts.settings.index')}}" class="info-box mb-3">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                     <div class="info-box-content">

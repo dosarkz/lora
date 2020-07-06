@@ -11,7 +11,7 @@ Route::group([
 
     Route::group(['middleware' => 'guardAuth:admin'], function() {
         Route::get('/', config('lora.routes.main.index'))->name('dashboard.index');
-        Route::get('settings', config('lora.routes.main.getSettings'))->name('accounts.settings');
+        Route::get('settings', config('lora.routes.main.getSettings'))->name('accounts.settings.index');
         Route::post('settings', config('lora.routes.main.postSettings'))->name('accounts.settings');
         Route::delete('settings/remove-image', config('lora.routes.main.destroyAvatar'))->name('accounts.image.destroy');
         Route::get('/reset-password',  config('lora.routes.main.getResetPassword'))->name('accounts.password.index');

@@ -83,7 +83,7 @@
                                 </li>
 
                                 <li class="user-footer">
-                                    <a href="{{route('lora.accounts.settings')}}" class="btn btn-default btn-flat">{{trans('lora::base.settings')}}</a>
+                                    <a href="{{route('lora.accounts.settings.index')}}" class="btn btn-default btn-flat">{{trans('lora::base.settings')}}</a>
                                     @if (auth()->guard('admin')->guest())
                                         <a class="btn btn-default btn-flat float-right" href="{{ route('lora.auth.show') }}">{{trans('lora::base.sign_in')}}</a>
                                     @else
